@@ -1,0 +1,19 @@
+apiVersion: 1
+
+datasources:
+- name: Azure Managed Service for Prometheus
+  uid: grafana-azureprometheus
+  type: grafana-azureprometheus-datasource
+  url: http://prometheus:9090
+  access: proxy
+  editable: true
+  jsonData:
+    # httpMethod: POST
+    # manageAlerts: true
+    # prometheusType: Prometheus
+    # prometheusVersion: 2.44.0
+    # cacheLevel: 'High'
+    # disableRecordingRules: false
+    # incrementalQueryOverlapWindow: 10m
+    defaultEditor: builder
+    externalId: externalId
