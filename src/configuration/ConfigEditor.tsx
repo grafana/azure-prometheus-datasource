@@ -1,29 +1,50 @@
 import { css } from '@emotion/css';
+import { hasCredentials } from '@grafana/azure-sdk';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
 import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/prometheus';
+import { config } from '@grafana/runtime';
 import { Alert, FieldValidationMessage, useTheme2 } from '@grafana/ui';
 import React, { JSX } from 'react';
 
+import { AzureAuthSettings } from './AzureAuthSettings';
+import { AzurePromDataSourceSettings, setDefaultCredentials, resetCredentials } from './AzureCredentialsConfig';
+import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
+
 export const PROM_CONFIG_LABEL_WIDTH = 30;
 
-export type Props = DataSourcePluginOptionsEditorProps<PromOptions>;
+export type Props = DataSourcePluginOptionsEditorProps<PromOptions, {}>;
 
 export const ConfigEditor = (props: Props) => {
   const { options, onOptionsChange } = props;
   const theme = useTheme2();
   const styles = overhaulStyles(theme);
 
+  const azureAuthSettings = {
+    azureAuthSupported: config.azureAuthEnabled,
+    getAzureAuthEnabled: (config: AzurePromDataSourceSettings): boolean => hasCredentials(config),
+    setAzureAuthEnabled: (config: AzurePromDataSourceSettings, enabled: boolean) =>
+      enabled ? setDefaultCredentials(config) : resetCredentials(config),
+    azureSettingsUI: AzureAuthSettings,
+  };
+
   return (
     <>
       {options.access === 'direct' && (
         <Alert title="Error" severity="error">
-          Browser access mode in the Azure Managed Service for Prometheus data source is no longer available. Switch to server access mode.
+          Browser access mode in the Amazon Managed Service for Prometheus data source is no longer available. Switch to server access mode.
         </Alert>
       )}
       <DataSourceDescription
-        dataSourceName="Azure Managed Service for Prometheus"
-        docsLink="https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/"
+        dataSourceName="Amazon Managed Service for Prometheus"
+        docsLink="https://grafana.com/docs/grafana/latest/datasources/prometheus/configure-prometheus-data-source/"
+      />
+      <hr className={`${styles.hrTopSpace} ${styles.hrBottomSpace}`} />
+      <DataSourceHttpSettingsOverhaul
+        options={options}
+        onOptionsChange={onOptionsChange}
+        azureAuthSettings={azureAuthSettings}
+        secureSocksDSProxyEnabled={config.secureSocksDSProxyEnabled}
       />
       <hr />
       <ConfigSection
@@ -49,7 +70,7 @@ export const ConfigEditor = (props: Props) => {
  * @returns
  */
 export function docsTip(url?: string) {
-  const docsUrl = 'https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/';
+  const docsUrl = 'https://grafana.com/grafana/plugins/grafana-amazonprometheus-datasource/';
 
   return (
     <a href={url ? url : docsUrl} target="_blank" rel="noopener noreferrer">

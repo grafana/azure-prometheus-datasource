@@ -1,4 +1,4 @@
-module github.com/grafana/grafana-azureprometheus-datasource
+module github.com/grafana/azureprometheus-datasource
 
 go 1.23.5
 
@@ -8,6 +8,16 @@ require (
 	github.com/grafana/grafana-plugin-sdk-go v0.265.0
 	github.com/grafana/grafana/pkg/promlib v0.0.8
 	github.com/stretchr/testify v1.10.0
+)
+
+require (
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.17.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.8.1 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/internal v1.10.0 // indirect
+	github.com/AzureAD/microsoft-authentication-library-for-go v1.3.2 // indirect
+	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
+	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
+	golang.org/x/crypto v0.32.0 // indirect
 )
 
 require (
@@ -44,13 +54,14 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grafana/dskit v0.0.0-20250131191929-eab36484cec2 // indirect
+	github.com/grafana/grafana-azure-sdk-go/v2 v2.1.6
 	github.com/grafana/otel-profiling-go v0.5.1 // indirect
 	github.com/grafana/pyroscope-go/godeltaprof v0.1.8 // indirect
 	github.com/grafana/regexp v0.0.0-20240518133315-a468a5bfb3bc // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus v1.0.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0 // indirect
-	github.com/hashicorp/go-hclog v1.6.3 // indirect
+	github.com/hashicorp/go-hclog v1.6.3
 	github.com/hashicorp/go-plugin v1.6.3 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
 	github.com/josharian/intern v1.0.0 // indirect

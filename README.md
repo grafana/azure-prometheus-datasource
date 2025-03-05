@@ -8,6 +8,18 @@ Read more about it here:
 
 TODO link to azure prom docs
 
+### Enforcing trusted Azure Prometheus endpoints
+
+For additional security, enforcing a list of trusted Prometheus endpoints against which the cluster URL will be verified is possible. This prevents a request from being redirected to a third-party endpoint.
+
+This can be enabled by setting `enforce_trusted_endpoints` in your Grafana configuration under the `[plugin.grafana-azureprometheus-datasource]` section:
+
+```ini
+[plugin.grafana-azureprometheus-datasource]
+enforce_trusted_endpoints = true
+```
+
+
 ## Getting started
 
 ### Backend
