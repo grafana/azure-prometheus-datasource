@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/grafana/grafana-azure-sdk-go/v2/azsettings"
+	"github.com/grafana/grafana-azure-sdk-go/v2/azusercontext"
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	sdkhttpclient "github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/instancemgmt"
@@ -29,11 +30,13 @@ type Datasource struct {
 
 func (d *Datasource) QueryData(ctx context.Context, req *backend.QueryDataRequest) (*backend.QueryDataResponse, error) {
 	ctx = d.contextualMiddlewares(ctx)
+	ctx = azusercontext.WithUserFromQueryReq(ctx, req)
 	return d.Service.QueryData(ctx, req)
 }
 
 func (d *Datasource) CallResource(ctx context.Context, req *backend.CallResourceRequest, sender backend.CallResourceResponseSender) error {
 	ctx = d.contextualMiddlewares(ctx)
+	ctx = azusercontext.WithUserFromResourceReq(ctx, req)
 	return d.Service.CallResource(ctx, req, sender)
 }
 
@@ -49,6 +52,7 @@ func (d *Datasource) GetHeuristics(ctx context.Context, req promlib.HeuristicsRe
 
 func (d *Datasource) CheckHealth(ctx context.Context, req *backend.CheckHealthRequest) (*backend.CheckHealthResult,
 	error) {
+	ctx = azusercontext.WithUserFromHealthCheckReq(ctx, req)
 	ctx = d.contextualMiddlewares(ctx)
 	return d.Service.CheckHealth(ctx, req)
 }
