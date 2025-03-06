@@ -21,7 +21,6 @@ export const ConfigEditor = (props: Props) => {
   const styles = overhaulStyles(theme);
 
   const azureAuthSettings = {
-    azureAuthSupported: config.azureAuthEnabled,
     getAzureAuthEnabled: (config: AzurePromDataSourceSettings): boolean => hasCredentials(config),
     setAzureAuthEnabled: (config: AzurePromDataSourceSettings, enabled: boolean) =>
       enabled ? setDefaultCredentials(config) : resetCredentials(config),

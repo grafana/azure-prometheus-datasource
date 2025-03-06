@@ -3,9 +3,6 @@ import * as React from 'react';
 
 
 export interface AzureAuthSettings {
-  /** Set to true if Azure authentication supported by the datasource */
-  readonly azureAuthSupported: boolean;
-
   /** Gets whether the Azure authentication currently enabled for the datasource */
   readonly getAzureAuthEnabled: (config: DataSourceSettings) => boolean;
 

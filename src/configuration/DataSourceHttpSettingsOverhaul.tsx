@@ -43,14 +43,11 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
 
   // for custom auth methods sigV4
   let customMethods: CustomMethod[] = [];
-
-
   const azureAuthEnabled: boolean =
-    (azureAuthSettings?.azureAuthSupported && azureAuthSettings.getAzureAuthEnabled(options)) || false;
+    (azureAuthSettings.getAzureAuthEnabled(options)) || false;
 
   
   const [azureAuthSelected, setAzureAuthSelected] = useState<boolean>(azureAuthEnabled);
-
   const azureAuthId = 'custom-azureAuthId';
 
 
@@ -67,13 +64,10 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
     ),
   };
 
-  // allow the option to show in the dropdown
-  if (azureAuthSettings?.azureAuthSupported) {
     customMethods.push(azureAuthOption);
-  }
 
-  function returnSelectedMethod() {
-
+  function returnSelectedMethod(): `custom-${string}` | AuthMethod {
+    
     if (azureAuthSelected) {
       return azureAuthId;
     }
@@ -120,10 +114,8 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
         onAuthMethodSelect={(method) => {
 
           // Azure
-          if (azureAuthSettings?.azureAuthSupported) {
             setAzureAuthSelected(method === azureAuthId);
             azureAuthSettings.setAzureAuthEnabled(options, method === azureAuthId);
-          }
 
           onOptionsChange({
             ...options,
@@ -136,8 +128,6 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
             },
           });
         }}
-        //DataSourceSettings<AzurePromDataSourceOptions, AzureDataSourceSecureJsonData>.jsonData: AzurePromDataSourceOptions
-        //DataSourceSettings<AzurePromDataSourceOptions, AzureDataSourceSecureJsonData>.jsonData: AzurePromDataSourceOptions
         selectedMethod={returnSelectedMethod()}
       />
       <div className={styles.sectionBottomPadding} />
