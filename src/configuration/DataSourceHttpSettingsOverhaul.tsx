@@ -109,6 +109,7 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
           });
         }}
         selectedMethod={returnSelectedMethod()}
+        visibleMethods={[azureAuthId]}
       />
       <div className={styles.sectionBottomPadding} />
       {secureSocksDSProxyEnabled && (
