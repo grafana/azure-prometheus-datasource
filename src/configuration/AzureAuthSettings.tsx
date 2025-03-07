@@ -70,29 +70,6 @@ export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
         onCredentialsChange={onCredentialsChange}
         disabled={dataSourceConfig.readOnly}
       />
-      {overrideAudienceAllowed && (
-        <>
-          <h6>Azure configuration</h6>
-          <div className="gf-form-group">
-            <InlineFieldRow>
-              <InlineField labelWidth={24} label="Override AAD audience" disabled={dataSourceConfig.readOnly}>
-                <InlineSwitch value={overrideAudienceChecked} onChange={onOverrideAudienceChange} />
-              </InlineField>
-            </InlineFieldRow>
-            {overrideAudienceChecked && (
-              <InlineFieldRow>
-                <InlineField labelWidth={24} label="Resource ID" disabled={dataSourceConfig.readOnly}>
-                  <Input
-                    className={cx('width-20')}
-                    value={dataSourceConfig.jsonData.azureEndpointResourceId || ''}
-                    onChange={onResourceIdChange}
-                  />
-                </InlineField>
-              </InlineFieldRow>
-            )}
-          </div>
-        </>
-      )}
     </>
   );
 };
