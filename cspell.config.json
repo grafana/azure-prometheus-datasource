@@ -29,10 +29,15 @@
     "import\\s*.*\".*?\""
   ],
   "words": [
-    "grafana",
+    "azsettings",
+    "azureauth",
+    "azusercontext",
     "datasource",
     "datasources",
-    "tsdb",
+    "grafana",
+    "plog",
     "promlib",
+    "sdkhttpclient",
+    "tsdb"
   ]
 }

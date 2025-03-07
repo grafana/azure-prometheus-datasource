@@ -2,8 +2,12 @@ import { css } from '@emotion/css';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
 import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/prometheus';
+import { config } from '@grafana/runtime';
 import { Alert, FieldValidationMessage, useTheme2 } from '@grafana/ui';
 import React, { JSX } from 'react';
+
+import { AzureAuthSettings } from './AzureAuthSettings';
+import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
 
 export const PROM_CONFIG_LABEL_WIDTH = 30;
 
@@ -23,7 +27,15 @@ export const ConfigEditor = (props: Props) => {
       )}
       <DataSourceDescription
         dataSourceName="Azure Managed Service for Prometheus"
-        docsLink="https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/"
+        // TODO Update this to Azure prom docs when available 
+        docsLink="https://grafana.com/docs/grafana/latest/datasources/prometheus/configure-prometheus-data-source/"
+      />
+      <hr className={`${styles.hrTopSpace} ${styles.hrBottomSpace}`} />
+      <DataSourceHttpSettingsOverhaul
+        options={options}
+        onOptionsChange={onOptionsChange}
+        azureAuthEditor={<AzureAuthSettings dataSourceConfig={options} onChange={onOptionsChange}></AzureAuthSettings>}
+        secureSocksDSProxyEnabled={config.secureSocksDSProxyEnabled}
       />
       <hr />
       <ConfigSection
