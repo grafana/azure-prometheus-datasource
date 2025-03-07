@@ -11,7 +11,7 @@ import (
 	"github.com/grafana/grafana-plugin-sdk-go/backend/instancemgmt"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
 
-	"github.com/grafana/azureprometheus-datasource/pkg/azureauth"
+	"github.com/grafana/azure-prometheus-datasource/pkg/azureauth"
 	"github.com/grafana/grafana/pkg/promlib"
 )
 

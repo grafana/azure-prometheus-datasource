@@ -1,4 +1,4 @@
-module github.com/grafana/azureprometheus-datasource
+module github.com/grafana/azure-prometheus-datasource
 
 go 1.23.5
 
