@@ -21,6 +21,7 @@ const setup = (propsFunc?: (props: Props) => Props) => {
     ],
     onCredentialsChange: jest.fn(),
     getSubscriptions: jest.fn().mockResolvedValue([]),
+    userIdentityEnabled: false
   };
 
   if (propsFunc) {

@@ -1,5 +1,4 @@
 import { css } from '@emotion/css';
-import { hasCredentials } from '@grafana/azure-sdk';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
 import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/prometheus';
@@ -8,24 +7,16 @@ import { Alert, FieldValidationMessage, useTheme2 } from '@grafana/ui';
 import React, { JSX } from 'react';
 
 import { AzureAuthSettings } from './AzureAuthSettings';
-import { AzurePromDataSourceSettings, setDefaultCredentials, resetCredentials } from './AzureCredentialsConfig';
 import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
 
 export const PROM_CONFIG_LABEL_WIDTH = 30;
 
-export type Props = DataSourcePluginOptionsEditorProps<PromOptions, {}>;
+export type Props = DataSourcePluginOptionsEditorProps<PromOptions>;
 
 export const ConfigEditor = (props: Props) => {
   const { options, onOptionsChange } = props;
   const theme = useTheme2();
   const styles = overhaulStyles(theme);
-
-  const azureAuthSettings = {
-    getAzureAuthEnabled: (config: AzurePromDataSourceSettings): boolean => hasCredentials(config),
-    setAzureAuthEnabled: (config: AzurePromDataSourceSettings, enabled: boolean) =>
-      enabled ? setDefaultCredentials(config) : resetCredentials(config),
-    azureSettingsUI: AzureAuthSettings,
-  };
 
   return (
     <>
@@ -42,7 +33,7 @@ export const ConfigEditor = (props: Props) => {
       <DataSourceHttpSettingsOverhaul
         options={options}
         onOptionsChange={onOptionsChange}
-        azureAuthSettings={azureAuthSettings}
+        azureAuthEditor={<AzureAuthSettings dataSourceConfig={options} onChange={onOptionsChange}></AzureAuthSettings>}
         secureSocksDSProxyEnabled={config.secureSocksDSProxyEnabled}
       />
       <hr />
@@ -69,7 +60,7 @@ export const ConfigEditor = (props: Props) => {
  * @returns
  */
 export function docsTip(url?: string) {
-  const docsUrl = 'https://grafana.com/grafana/plugins/grafana-amazonprometheus-datasource/';
+  const docsUrl = 'https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/';
 
   return (
     <a href={url ? url : docsUrl} target="_blank" rel="noopener noreferrer">

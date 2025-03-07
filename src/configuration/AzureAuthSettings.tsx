@@ -1,5 +1,6 @@
 import { cx } from '@emotion/css';
 import { AzureCredentials } from '@grafana/azure-sdk';
+import { DataSourceJsonData, DataSourceSettings } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { InlineField, InlineFieldRow, InlineSwitch, Input } from '@grafana/ui';
 import React, { FormEvent, useMemo, useState } from 'react';
@@ -7,7 +8,15 @@ import { useEffectOnce } from 'react-use';
 
 import { getAzureCloudOptions, getCredentials, updateCredentials } from './AzureCredentialsConfig';
 import { AzureCredentialsForm } from './AzureCredentialsForm';
-import { HttpSettingsBaseProps } from './types';
+
+export interface HttpSettingsBaseProps<JSONData extends DataSourceJsonData = any, SecureJSONData = any> {
+  /** The configuration object of the data source */
+  dataSourceConfig: DataSourceSettings<JSONData, SecureJSONData>;
+  /** Callback for handling changes to the configuration object */
+  onChange: (config: DataSourceSettings<JSONData, SecureJSONData>) => void;
+  /** Show the Forward OAuth identity option */
+  showForwardOAuthIdentityOption?: boolean;
+}
 
 export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
   const { dataSourceConfig, onChange } = props;

@@ -68,11 +68,6 @@ func (d *Datasource) contextualMiddlewares(ctx context.Context) context.Context 
 }
 
 func extendClientOpts(ctx context.Context, settings backend.DataSourceInstanceSettings, clientOpts *sdkhttpclient.Options, plog log.Logger) error {
-	// Set SigV4 service namespace
-	if clientOpts.SigV4 != nil {
-		clientOpts.SigV4.Service = "aps"
-	}
-
 	azureSettings, err := azsettings.ReadSettings(ctx)
 	if err != nil {
 		return fmt.Errorf("failed to read Azure settings from Grafana: %v", err)

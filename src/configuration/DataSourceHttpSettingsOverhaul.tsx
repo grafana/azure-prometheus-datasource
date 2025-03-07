@@ -1,24 +1,23 @@
 import { Auth, AuthMethod, ConnectionSettings, convertLegacyAuthProps } from '@grafana/plugin-ui';
 import { overhaulStyles } from '@grafana/prometheus';
 import { SecureSocksProxySettings, useTheme2 } from '@grafana/ui';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
 import { useEffectOnce } from 'react-use';
 
 import { AzurePromDataSourceSettings } from './AzureCredentialsConfig';
-import { AzureAuthSettings } from './types';
 
 
 type Props = {
   options: AzurePromDataSourceSettings;
   onOptionsChange: (options: AzurePromDataSourceSettings) => void;
-  azureAuthSettings: AzureAuthSettings;
+  azureAuthEditor: React.ReactNode;
   secureSocksDSProxyEnabled: boolean;
 };
 
 export const DataSourceHttpSettingsOverhaul = (props: Props) => {
   const { options,
-    onOptionsChange, 
-    azureAuthSettings,
+    onOptionsChange,
+    azureAuthEditor,
     secureSocksDSProxyEnabled
   } = props;
 
@@ -28,8 +27,6 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
   });
 
   useEffectOnce(() => {
-    // Since we are not allowing users to select another auth,
-    // need to update sigV4Auth field to true for auth to work.
     onOptionsChange({
       ...options,
       jsonData: {
@@ -41,13 +38,8 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
   const theme = useTheme2();
   const styles = overhaulStyles(theme);
 
-  // for custom auth methods sigV4
   let customMethods: CustomMethod[] = [];
-  const azureAuthEnabled: boolean =
-    (azureAuthSettings.getAzureAuthEnabled(options)) || false;
 
-  
-  const [azureAuthSelected, setAzureAuthSelected] = useState<boolean>(azureAuthEnabled);
   const azureAuthId = 'custom-azureAuthId';
 
 
@@ -57,9 +49,7 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
     description: 'Authenticate with Azure',
     component: (
       <>
-        {azureAuthSettings.azureSettingsUI && (
-          <azureAuthSettings.azureSettingsUI dataSourceConfig={options} onChange={onOptionsChange} />
-        )}
+        {azureAuthEditor}
       </>
     ),
   };
@@ -67,12 +57,7 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
     customMethods.push(azureAuthOption);
 
   function returnSelectedMethod(): `custom-${string}` | AuthMethod {
-    
-    if (azureAuthSelected) {
-      return azureAuthId;
-    }
-
-    return newAuthProps.selectedMethod;
+    return azureAuthId;
   }
 
   // Do we need this switch anymore? Update the language.
@@ -112,11 +97,6 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
         {...newAuthProps}
         customMethods={customMethods}
         onAuthMethodSelect={(method) => {
-
-          // Azure
-            setAzureAuthSelected(method === azureAuthId);
-            azureAuthSettings.setAzureAuthEnabled(options, method === azureAuthId);
-
           onOptionsChange({
             ...options,
             basicAuth: method === AuthMethod.BasicAuth,
