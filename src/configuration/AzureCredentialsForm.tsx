@@ -62,8 +62,8 @@ export const AzureCredentialsForm = (props: Props) => {
   }, [managedIdentityEnabled, workloadIdentityEnabled, userIdentityEnabled]);
 
   const onAuthTypeChange = (selected: SelectableValue<AzureAuthType>) => {
-    const defaultAuthType = managedIdentityEnabled
-      ? 'msi'
+    const defaultAuthType = userIdentityEnabled
+      ? 'currentuser'
       : workloadIdentityEnabled
         ? 'workloadidentity'
         : 'clientsecret';
