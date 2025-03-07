@@ -11,12 +11,11 @@ import (
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	sdkhttpclient "github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
-	"github.com/grafana/grafana-plugin-sdk-go/data/utils/maputil"
 
 	"github.com/grafana/grafana/pkg/promlib/utils"
 )
 
-func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, azureSettings *azsettings.AzureSettings, clientOpts *sdkhttpclient.Options, audienceOverride bool, log log.Logger) error {
+func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, azureSettings *azsettings.AzureSettings, clientOpts *sdkhttpclient.Options, log log.Logger) error {
 	jsonData, err := utils.GetJsonData(settings)
 	if err != nil {
 		return fmt.Errorf("failed to get jsonData: %w", err)
@@ -29,10 +28,6 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 
 	if credentials != nil {
 		var scopes []string
-
-		if scopes, err = getOverriddenScopes(jsonData, audienceOverride, log); err != nil {
-			return err
-		}
 
 		if scopes == nil {
 			if scopes, err = getPrometheusScopes(azureSettings, credentials); err != nil {
@@ -47,31 +42,6 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 	}
 
 	return nil
-}
-
-func getOverriddenScopes(jsonData map[string]any, audienceOverride bool, log log.Logger) ([]string, error) {
-	resourceIdStr, err := maputil.GetStringOptional(jsonData, "azureEndpointResourceId")
-	if err != nil {
-		err = fmt.Errorf("overridden resource ID (audience) invalid")
-		return nil, err
-	} else if resourceIdStr == "" {
-		return nil, nil
-	}
-
-	if !audienceOverride {
-		log.Warn("Specifying an audience override requires the prometheusAzureOverrideAudience feature toggle to be enabled. This functionality is deprecated and will be removed in a future release.")
-		return nil, nil
-	}
-
-	resourceId, err := url.Parse(resourceIdStr)
-	if err != nil || resourceId.Scheme == "" || resourceId.Host == "" {
-		err = fmt.Errorf("overridden endpoint resource ID (audience) '%s' invalid", resourceIdStr)
-		return nil, err
-	}
-
-	resourceId.Path = path.Join(resourceId.Path, ".default")
-	scopes := []string{resourceId.String()}
-	return scopes, nil
 }
 
 func getPrometheusScopes(settings *azsettings.AzureSettings, credentials azcredentials.AzureCredentials) ([]string, error) {
