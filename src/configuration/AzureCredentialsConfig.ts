@@ -35,8 +35,6 @@ export function getCredentials(options: AzureDataSourceSettings): AzureCredentia
     return credentials;
   }
 
-  // If no credentials saved, then return empty credentials
-  // of type based on whether the managed identity enabled
   return getDefaultCredentials();
 }
 

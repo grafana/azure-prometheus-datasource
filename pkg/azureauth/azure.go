@@ -29,10 +29,8 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 	if credentials != nil {
 		var scopes []string
 
-		if scopes == nil {
-			if scopes, err = getPrometheusScopes(azureSettings, credentials); err != nil {
-				return err
-			}
+		if scopes, err = getPrometheusScopes(azureSettings, credentials); err != nil {
+			return err
 		}
 
 		authOpts := azhttpclient.NewAuthOptions(azureSettings)
