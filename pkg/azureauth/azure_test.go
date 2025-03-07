@@ -1,7 +1,6 @@
 package azureauth
 
 import (
-	"bytes"
 	"context"
 	"testing"
 
@@ -47,7 +46,7 @@ func TestConfigureAzureAuthentication(t *testing.T) {
 
 		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
 
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, false, testLogger)
+		err := ConfigureAzureAuthentication(settings, azureSettings, opts, testLogger)
 		require.NoError(t, err)
 
 		require.NotNil(t, opts.Middlewares)
@@ -61,7 +60,7 @@ func TestConfigureAzureAuthentication(t *testing.T) {
 
 		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
 
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, false, testLogger)
+		err := ConfigureAzureAuthentication(settings, azureSettings, opts, testLogger)
 		require.NoError(t, err)
 
 		assert.NotContains(t, opts.CustomOptions, "_azureCredentials")
@@ -76,88 +75,8 @@ func TestConfigureAzureAuthentication(t *testing.T) {
 		}
 
 		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, false, testLogger)
+		err := ConfigureAzureAuthentication(settings, azureSettings, opts, testLogger)
 		assert.Error(t, err)
-	})
-
-	t.Run("should set Azure middleware when JsonData contains credentials and valid audience", func(t *testing.T) {
-		settings := backend.DataSourceInstanceSettings{
-			JSONData: []byte(`{
-					"httpMethod": "POST",
-					"azureCredentials": {
-						"authType": "msi"
-					},
-					"azureEndpointResourceId": "https://api.example.com/abd5c4ce-ca73-41e9-9cb2-bed39aa2adb5"
-				}`),
-		}
-		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
-
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, true, testLogger)
-		require.NoError(t, err)
-
-		require.NotNil(t, opts.Middlewares)
-		assert.Len(t, opts.Middlewares, 1)
-	})
-
-	t.Run("should not set Azure middleware when JsonData doesn't contain credentials", func(t *testing.T) {
-		settings := backend.DataSourceInstanceSettings{
-			JSONData: []byte(`{
-					"httpMethod":              "POST",
-					"azureEndpointResourceId": "https://api.example.com/abd5c4ce-ca73-41e9-9cb2-bed39aa2adb5"
-				}`),
-		}
-		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
-
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, true, testLogger)
-		require.NoError(t, err)
-
-		if opts.Middlewares != nil {
-			assert.Len(t, opts.Middlewares, 0)
-		}
-	})
-
-	t.Run("should return error when JsonData contains invalid audience", func(t *testing.T) {
-		settings := backend.DataSourceInstanceSettings{
-			JSONData: []byte(`{
-					"httpMethod": "POST",
-					"azureCredentials": {
-						"authType": "msi"
-					},
-					"azureEndpointResourceId": "invalid"
-				}`),
-		}
-
-		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
-
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, true, testLogger)
-		assert.Error(t, err)
-	})
-	t.Run("should warn if an audience is specified and the feature toggle is not enabled", func(t *testing.T) {
-		settings := backend.DataSourceInstanceSettings{
-			JSONData: []byte(`{
-					"httpMethod": "POST",
-					"azureCredentials": {
-						"authType": "msi"
-					},
-					"azureEndpointResourceId": "https://api.example.com/abd5c4ce-ca73-41e9-9cb2-bed39aa2adb5"
-				}`),
-		}
-
-		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
-		var buf bytes.Buffer
-		testLogger := hclog.New(&hclog.LoggerOptions{
-			Name:   "test",
-			Output: &buf,
-		})
-		log := fakeLogger{
-			Logger: testLogger,
-		}
-
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, false, log)
-		str := buf.String()
-		t.Log(str)
-		assert.NoError(t, err)
-		assert.Contains(t, str, "Specifying an audience override requires the prometheusAzureOverrideAudience feature toggle to be enabled. This functionality is deprecated and will be removed in a future release.")
 	})
 }
 
