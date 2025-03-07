@@ -8,7 +8,6 @@ Read more about it here:
 
 TODO link to azure prom docs
 
-
 ## Getting started
 
 ### Backend
