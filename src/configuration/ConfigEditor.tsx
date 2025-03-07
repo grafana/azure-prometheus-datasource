@@ -27,6 +27,7 @@ export const ConfigEditor = (props: Props) => {
       )}
       <DataSourceDescription
         dataSourceName="Azure Managed Service for Prometheus"
+        // TODO Update this to Azure prom docs when available 
         docsLink="https://grafana.com/docs/grafana/latest/datasources/prometheus/configure-prometheus-data-source/"
       />
       <hr className={`${styles.hrTopSpace} ${styles.hrBottomSpace}`} />
