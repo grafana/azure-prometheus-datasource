@@ -1,7 +1,6 @@
 package azureauth
 
 import (
-	"context"
 	"testing"
 
 	"github.com/grafana/grafana-azure-sdk-go/v2/azcredentials"
@@ -9,26 +8,9 @@ import (
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	sdkhttpclient "github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
-	"github.com/hashicorp/go-hclog"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
-
-type fakeLogger struct {
-	hclog.Logger
-
-	level log.Level
-}
-
-func (l fakeLogger) Level() log.Level {
-	return l.level
-}
-func (l fakeLogger) FromContext(ctx context.Context) log.Logger {
-	return fakeLogger{}
-}
-func (l fakeLogger) With(args ...interface{}) log.Logger {
-	return fakeLogger{}
-}
 
 func TestConfigureAzureAuthentication(t *testing.T) {
 	azureSettings := &azsettings.AzureSettings{}
