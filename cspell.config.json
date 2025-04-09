@@ -22,12 +22,10 @@
     "prometheus/**",
     "provisioning/**",
     "src/dashboards/**",
+    "src/**/*.test.tsx",
     "yarn.lock"
   ],
-  "ignoreRegExpList": [
-    "import\\s*\\((.|[\r\n])*?\\)",
-    "import\\s*.*\".*?\""
-  ],
+  "ignoreRegExpList": ["import\\s*\\((.|[\r\n])*?\\)", "import\\s*.*\".*?\""],
   "words": [
     "azsettings",
     "azureauth",
@@ -38,6 +36,14 @@
     "plog",
     "promlib",
     "sdkhttpclient",
-    "tsdb"
+    "tsdb",
+    "azcredentials",
+    "azhttpclient",
+    "instancemgmt",
+    "azureprometheus",
+    "clientsecret",
+    "currentuser",
+    "azuremonitor",
+    "workloadidentity"
   ]
 }
