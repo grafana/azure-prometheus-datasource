@@ -1,6 +1,6 @@
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-import { test, expect } from '@grafana/plugin-e2e';
+import { expect, test } from '@grafana/plugin-e2e';
 import { PromOptions } from '@grafana/prometheus';
 
 const codeEditorProvFile = 'code-editor.yml';
@@ -230,17 +230,13 @@ test.describe('Prometheus query editor', () => {
       explorePage,
       page,
     }) => {
-      // const dsDefaultEditorBuilder = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({ fileName: 'datasources.yml' });
+      const dsDefaultEditorBuilder = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({
+        fileName: 'datasources.yml',
+      });
 
       await explorePage.goto();
 
-      // await explorePage.datasource.set(dsDefaultEditorBuilder.name);
-
-      await page.getByTestId('data-testid Select a data source').click();
-
-      await page.getByTestId('data-testid Select a data source').fill('Azure Managed Service for Prometheus');
-
-      await page.getByRole('button', { name: 'Azure Managed Service for Prometheus' }).click();
+      await explorePage.datasource.set(dsDefaultEditorBuilder.name);
 
       await explorePage
         .getByGrafanaSelector(selectors.components.DataSource.Prometheus.queryEditor.builder.metricSelect)
@@ -264,17 +260,13 @@ test.describe('Prometheus query editor', () => {
       explorePage,
       page,
     }) => {
-      // const dsDefaultEditorBuilder = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({ fileName: 'datasources.yml' });
+      const dsDefaultEditorBuilder = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({
+        fileName: 'datasources.yml',
+      });
 
       await explorePage.goto();
 
-      // await explorePage.datasource.set(dsDefaultEditorBuilder.name);
-
-      await page.getByTestId('data-testid Select a data source').click();
-
-      await page.getByTestId('data-testid Select a data source').fill('Azure Managed Service for Prometheus');
-
-      await page.getByRole('button', { name: 'Azure Managed Service for Prometheus' }).click();
+      await explorePage.datasource.set(dsDefaultEditorBuilder.name);
 
       await explorePage
         .getByGrafanaSelector(selectors.components.DataSource.Prometheus.queryEditor.builder.metricSelect)
@@ -382,17 +374,13 @@ test.describe('Prometheus query editor', () => {
       explorePage,
       page,
     }) => {
-      // const dsDefaultEditorBuilder = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({ fileName: 'datasources.yml' });
+      const dsDefaultEditorBuilder = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({
+        fileName: 'datasources.yml',
+      });
 
       await explorePage.goto();
 
-      // await explorePage.datasource.set(dsDefaultEditorBuilder.name);
-
-      await page.getByTestId('data-testid Select a data source').click();
-
-      await page.getByTestId('data-testid Select a data source').fill('Azure Managed Service for Prometheus');
-
-      await page.getByRole('button', { name: 'Azure Managed Service for Prometheus' }).click();
+      await explorePage.datasource.set(dsDefaultEditorBuilder.name);
 
       await explorePage
         .getByGrafanaSelector(selectors.components.DataSource.Prometheus.queryEditor.builder.metricSelect)
