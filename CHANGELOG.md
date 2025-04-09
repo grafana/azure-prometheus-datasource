@@ -1,5 +1,5 @@
 # Changelog
 
-## 0.1.0 (Unreleased)
+## 0.0.1-preview
 
-Initial release.
+- Initial release.
