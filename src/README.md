@@ -1,6 +1,6 @@
 ## Compatibility
 
-Azure Managed Service for Prometheus is not compatible with Grafana<11.5.0 If you are running version 11.4.x and lower, please use plugin the core Prometheus plugin.
+Azure Managed Service for Prometheus is not compatible with Grafana<11.5.0 If you are running version 11.4.x and lower, please use plugin the core Prometheus plugin instead.
 
 # Azure Managed Service for Prometheus Data Source
 
@@ -23,10 +23,10 @@ azure_auth_enabled = true
 ```
 
 {{% admonition type="note" %}}
-If you are using Azure authentication settings do not enable `Forward OAuth identity`. Both use the same HTTP authorization headers. Azure settings will get overwritten by the Oauth token.
+If you are using Azure authentication settings do not enable `Forward OAuth identity`. Both use the same HTTP authorization headers. Azure settings will get overwritten by the OAuth token.
 {{% /admonition %}}
 
-## Migrate from core Prometheus to Azure Managed Service for Prometheus
+## Migrate from core Prometheus to Azure Managed Service for Prometheus plugin
 
 Azure AD authentication is deprecated in the core Prometheus plugin. You will need to do the following to migrate your Prometheus plugin using Azure AD to Azure Managed Prometheus plugin.
 
