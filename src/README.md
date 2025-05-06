@@ -85,7 +85,7 @@ Azure AD authentication is deprecated in the core Prometheus plugin. You will ne
       ```
         - Rename the rule and update the `name` field in the exported rule.
         - Delete the old rule.
-      - OR second, Create a new new alert rule [documentation here](https://grafana.com/tutorials/alerting-get-started/).
+      - OR second, Create a new alert rule [documentation here](https://grafana.com/tutorials/alerting-get-started/).
         - Copy the fields from the Prom AD rule.
         - Create a new alert rule and select your AMP data source.
         - Add the fields from the old rule to the new rule.
