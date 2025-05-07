@@ -6,6 +6,7 @@ on:
       - main
   pull_request:
 
+# pinning the go and golangci versions until the versions in plugin-ci-workflows are updated
 jobs:
   ci:
     name: CI
