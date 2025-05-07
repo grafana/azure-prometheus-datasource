@@ -1,3 +1,11 @@
+name: Plugins - CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   ci:
     name: CI
