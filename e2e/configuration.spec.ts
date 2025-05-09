@@ -1,6 +1,6 @@
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
 import { selectors } from '@grafana/e2e-selectors';
-import { test, expect } from '@grafana/plugin-e2e';
+import { expect, test } from '@grafana/plugin-e2e';
 import { PromOptions } from '@grafana/prometheus';
 
 const DATA_SOURCE_NAME = 'prometheus-config';
@@ -84,11 +84,13 @@ test.describe('Configuration tests', () => {
     ).toBeVisible();
   });
 
-  /*  test('"Save & test" should be successful when configuration is valid', async ({
+  test('"Save & test" should be successful when configuration is valid', async ({
     createDataSourceConfigPage,
     readProvisionedDataSource,
   }) => {
-    const ds = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({ fileName: 'datasources.yml' });
+    const ds = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({
+      fileName: 'datasources.yml',
+    });
     const configPage = await createDataSourceConfigPage({ type: ds.type });
 
     await configPage
@@ -97,23 +99,24 @@ test.describe('Configuration tests', () => {
 
     await expect(configPage.saveAndTest()).toBeOK();
   });
-*/
 
-  test('"Save & test" should fail when configuration is invalid', async ({
-    createDataSourceConfigPage,
-    readProvisionedDataSource,
-  }) => {
-    const ds = await readProvisionedDataSource<DataSourcePluginOptionsEditorProps<PromOptions>>({
-      fileName: 'datasources.yml',
-    });
-    const configPage = await createDataSourceConfigPage({ type: ds.type });
-    await expect(configPage.saveAndTest()).not.toBeOK();
-    await expect(configPage).toHaveAlert('error', { hasText: 'empty url' });
+  test('"Save & test" should fail when configuration is invalid', async ({ createDataSourceConfigPage }) => {
+    const configPage = await createDataSourceConfigPage({ type: 'grafana-azureprometheus-datasource' });
+    await configPage
+      .getByGrafanaSelector(selectors.components.DataSource.Prometheus.configPage.connectionSettings)
+      .clear();
+
+    await configPage.getByGrafanaSelector(configPage.ctx.selectors.pages.DataSource.saveAndTest).click();
+    const saveResponsePromise = configPage.ctx.page.waitForResponse((resp) =>
+      resp.url().includes(configPage.datasource.uid)
+    );
+    const saveResponse = await saveResponsePromise;
+    const status = saveResponse.status();
+    expect(status).toBe(400);
   });
 
   test('it should allow a user to add the version when the Prom type is selected', async ({
     createDataSourceConfigPage,
-    // readProvisionedDataSource,
     page,
   }) => {
     const configPage = await createDataSourceConfigPage({
@@ -154,6 +157,4 @@ test.describe('Configuration tests', () => {
       configPage.getByGrafanaSelector(selectors.components.DataSource.Prometheus.configPage.queryOverlapWindow)
     ).toBeVisible();
   });
-
-  // exemplars tested in exemplar.spec
 });
