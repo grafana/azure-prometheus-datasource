@@ -1,10 +1,10 @@
 ## Compatibility
 
-Azure Monitor managed service for Prometheus is not compatible with Grafana<11.5.0 If you are running version 11.4.x and lower, please use plugin the core Prometheus plugin instead.
+Azure Monitor Managed Service for Prometheus is not compatible with Grafana<11.5.0 If you are running version 11.4.x and lower, please use plugin the core Prometheus plugin instead.
 
-# Azure Monitor managed service for Prometheus Data Source
+# Azure Monitor Managed Service for Prometheus Data Source
 
-Azure Monitor managed service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale.
+Azure Monitor Managed Service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale.
 
 Read more about it here: [Azure Monitor and Prometheus](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview)
 
@@ -24,11 +24,11 @@ azure_auth_enabled = true
 If you are using Azure authentication settings do not enable `Forward OAuth identity`. Both use the same HTTP authorization headers. Azure settings will get overwritten by the OAuth token.
 {{% /admonition %}}
 
-## Migrate from core Prometheus to Azure Monitor managed service for Prometheus plugin
+## Migrate from core Prometheus to Azure Monitor Managed Service for Prometheus plugin
 
-Azure AD authentication is deprecated in the core Prometheus plugin. You will need to do the following to migrate your Prometheus plugin using Azure AD to the Azure Monitor managed service for Prometheus plugin.
+Azure AD authentication is deprecated in the core Prometheus plugin. You will need to do the following to migrate your Prometheus plugin using Azure AD to the Azure Monitor Managed Service for Prometheus plugin.
 
-1. Get the `UID` for Prometheus using Azure Authentication and get the `UID` for your new Azure Monitor managed service for Prometheus.
+1. Get the `UID` for Prometheus using Azure Authentication and get the `UID` for your new Azure Monitor Managed Service for Prometheus.
     - Navigate to the configuration page for your new data source.
     - Find the `UID` in the url.
       - Example: `“connections/datasources/edit/<DATA SOURCE UID>”`

@@ -1,7 +1,7 @@
 apiVersion: 1
 
 datasources:
-- name: Azure Monitor managed service for Prometheus
+- name: Azure Monitor Managed Service for Prometheus
   uid: grafana-azureprometheus
   type: grafana-azureprometheus-datasource
   url: http://prometheus:9090

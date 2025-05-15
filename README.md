@@ -1,8 +1,8 @@
-# Azure Monitor managed service for Prometheus Data Source
+# Azure Monitor Managed Service for Prometheus Data Source
 
-This data source plugin is for the Azure Monitor managed service for Prometheus. It has all the features of the Grafana core Prometheus plugin with Azure specific authentication in the configuration page.
+This data source plugin is for the Azure Monitor Managed Service for Prometheus. It has all the features of the Grafana core Prometheus plugin with Azure specific authentication in the configuration page.
 
-Azure Monitor managed service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale.
+Azure Monitor Managed Service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale.
 
 Read more about it here: [Azure Monitor and Prometheus](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview)
 
