@@ -2,7 +2,7 @@
   "category": "tsdb",
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "datasource",
-  "name": "Azure Managed Service for Prometheus",
+  "name": "Azure Monitor Managed Service for Prometheus",
   "id": "grafana-azureprometheus-datasource",
   "executable": "gpx_azureprometheus",
   "routes": [
