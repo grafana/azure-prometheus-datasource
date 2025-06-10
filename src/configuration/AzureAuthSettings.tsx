@@ -20,7 +20,6 @@ export interface HttpSettingsBaseProps<JSONData extends DataSourceJsonData = any
 export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
   const { dataSourceConfig, onChange } = props;
 
-
   const credentials = useMemo(() => getCredentials(dataSourceConfig), [dataSourceConfig]);
 
   const onCredentialsChange = (credentials: AzureCredentials): void => {
@@ -36,7 +35,9 @@ export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
 
   return (
     <>
-      <h6><Trans i18nKey="configuration.azure-auth-settings.azure-authentication">Azure authentication</Trans></h6>
+      <h6>
+        <Trans i18nKey="configuration.azure-auth-settings.azure-authentication">Azure authentication</Trans>
+      </h6>
       <AzureCredentialsForm
         managedIdentityEnabled={config.azure.managedIdentityEnabled}
         workloadIdentityEnabled={config.azure.workloadIdentityEnabled}

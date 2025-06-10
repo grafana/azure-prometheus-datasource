@@ -1,4 +1,3 @@
-
 import { Trans, useTranslate } from '@grafana/i18n';
 import { AadCurrentUserCredentials, AzureCredentials, instanceOfAzureCredential } from '@grafana/azure-sdk';
 import { SelectableValue } from '@grafana/data';
@@ -21,7 +20,7 @@ export interface Props {
 
 export const CurrentUserFallbackCredentials = (props: Props) => {
   const { t } = useTranslate();
-const {
+  const {
     credentials,
     azureCloudOptions,
     onCredentialsChange,
@@ -35,21 +34,30 @@ const {
     let opts: Array<SelectableValue<FallbackCredentialAuthTypeOptions>> = [
       {
         value: 'clientsecret',
-        label: t("configuration.current-user-fallback-credentials.auth-type-options.opts.label.app-registration", "App Registration"),
+        label: t(
+          'configuration.current-user-fallback-credentials.auth-type-options.opts.label.app-registration',
+          'App Registration'
+        ),
       },
     ];
 
     if (managedIdentityEnabled) {
       opts.push({
         value: 'msi',
-        label: t("configuration.current-user-fallback-credentials.auth-type-options.label.managed-identity", "Managed Identity"),
+        label: t(
+          'configuration.current-user-fallback-credentials.auth-type-options.label.managed-identity',
+          'Managed Identity'
+        ),
       });
     }
 
     if (workloadIdentityEnabled) {
       opts.push({
         value: 'workloadidentity',
-        label: t("configuration.current-user-fallback-credentials.auth-type-options.label.workload-identity", "Workload Identity"),
+        label: t(
+          'configuration.current-user-fallback-credentials.auth-type-options.label.workload-identity',
+          'Workload Identity'
+        ),
       });
     }
 
@@ -90,12 +98,18 @@ const {
 
   if (!config.azure.userIdentityFallbackCredentialsEnabled) {
     return (
-      <Alert severity="info" title={t("configuration.current-user-fallback-credentials.title-fallback-credentials-disabled", "Fallback Credentials Disabled")}>
+      <Alert
+        severity="info"
+        title={t(
+          'configuration.current-user-fallback-credentials.title-fallback-credentials-disabled',
+          'Fallback Credentials Disabled'
+        )}
+      >
         <>
           <Trans i18nKey="configuration.current-user-fallback-credentials.body-fallback-credentials-disabled">
-            Fallback credentials have been disabled. As user-based authentication only inherently supports requests with a
-            user in scope, features such as alerting, recorded queries, or reporting will not function as expected. Please
-            review the{' '}
+            Fallback credentials have been disabled. As user-based authentication only inherently supports requests with
+            a user in scope, features such as alerting, recorded queries, or reporting will not function as expected.
+            Please review the{' '}
             <TextLink
               href="https://grafana.com/docs/grafana/latest/datasources/azuremonitor/deprecated-application-insights/"
               external
@@ -110,15 +124,24 @@ const {
   }
 
   return (
-    <ConfigSection title={t("configuration.current-user-fallback-credentials.title-fallback-service-credentials", "Fallback Service Credentials")} isCollapsible={true}>
-      <Alert severity="info" title={t("configuration.current-user-fallback-credentials.title-service-credentials", "Service Credentials")}>
+    <ConfigSection
+      title={t(
+        'configuration.current-user-fallback-credentials.title-fallback-service-credentials',
+        'Fallback Service Credentials'
+      )}
+      isCollapsible={true}
+    >
+      <Alert
+        severity="info"
+        title={t('configuration.current-user-fallback-credentials.title-service-credentials', 'Service Credentials')}
+      >
         <Stack direction={'column'}>
           <div>
             <Trans i18nKey="configuration.current-user-fallback-credentials.user-auth-not-support">
-              User-based authentication does not inherently support Grafana features that make requests to the data source
-              without a users details available to the request. An example of this is alerting. If you wish to ensure that
-              features that do not have a user in the context of the request still function, please provide fallback
-              credentials below.
+              User-based authentication does not inherently support Grafana features that make requests to the data
+              source without a users details available to the request. An example of this is alerting. If you wish to
+              ensure that features that do not have a user in the context of the request still function, please provide
+              fallback credentials below.
             </Trans>
           </div>
           <div>
@@ -132,13 +155,16 @@ const {
         </Stack>
       </Alert>
       <Field
-        label={t("configuration.current-user-fallback-credentials.label-service-credentials", "Service Credentials")}
-        description={t("configuration.current-user-fallback-credentials.description-service-credentials", "Choose if fallback service credentials are enabled or disabled for this data source")}
+        label={t('configuration.current-user-fallback-credentials.label-service-credentials', 'Service Credentials')}
+        description={t(
+          'configuration.current-user-fallback-credentials.description-service-credentials',
+          'Choose if fallback service credentials are enabled or disabled for this data source'
+        )}
       >
         <RadioButtonGroup
           options={[
-            { label: t("configuration.current-user-fallback-credentials.label.enabled", "Enabled"), value: true },
-            { label: t("configuration.current-user-fallback-credentials.label.disabled", "Disabled"), value: false },
+            { label: t('configuration.current-user-fallback-credentials.label.enabled', 'Enabled'), value: true },
+            { label: t('configuration.current-user-fallback-credentials.label.disabled', 'Disabled'), value: false },
           ]}
           value={credentials.serviceCredentialsEnabled ?? false}
           size={'md'}
@@ -149,8 +175,11 @@ const {
         <>
           {authTypeOptions.length > 0 && (
             <Field
-              label={t("configuration.current-user-fallback-credentials.label-authentication", "Authentication")}
-              description={t("configuration.current-user-fallback-credentials.description-choose-authentication-azure-services", "Choose the type of authentication to Azure services")}
+              label={t('configuration.current-user-fallback-credentials.label-authentication', 'Authentication')}
+              description={t(
+                'configuration.current-user-fallback-credentials.description-choose-authentication-azure-services',
+                'Choose the type of authentication to Azure services'
+              )}
               htmlFor="authentication-type"
             >
               <Select

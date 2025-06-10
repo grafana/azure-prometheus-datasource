@@ -94,8 +94,7 @@
       "small": "img/prometheus_logo.svg",
       "large": "img/prometheus_logo.svg"
     },
-    "links": [
-    ]
+    "links": []
   },
   "dependencies": {
     "grafanaDependency": ">=11.5.0",

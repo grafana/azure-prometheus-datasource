@@ -21,7 +21,7 @@ export interface Props {
 
 export const AzureCredentialsForm = (props: Props) => {
   const { t } = useTranslate();
-const {
+  const {
     credentials,
     azureCloudOptions,
     onCredentialsChange,
@@ -35,28 +35,31 @@ const {
     let opts: Array<SelectableValue<AzureAuthType>> = [
       {
         value: 'clientsecret',
-        label: t("configuration.azure-credentials-form.auth-type-options.opts.label.app-registration", "App Registration"),
+        label: t(
+          'configuration.azure-credentials-form.auth-type-options.opts.label.app-registration',
+          'App Registration'
+        ),
       },
     ];
 
     if (managedIdentityEnabled) {
       opts.push({
         value: 'msi',
-        label: t("configuration.azure-credentials-form.auth-type-options.label.managed-identity", "Managed Identity"),
+        label: t('configuration.azure-credentials-form.auth-type-options.label.managed-identity', 'Managed Identity'),
       });
     }
 
     if (workloadIdentityEnabled) {
       opts.push({
         value: 'workloadidentity',
-        label: t("configuration.azure-credentials-form.auth-type-options.label.workload-identity", "Workload Identity"),
+        label: t('configuration.azure-credentials-form.auth-type-options.label.workload-identity', 'Workload Identity'),
       });
     }
 
     if (userIdentityEnabled) {
       opts.unshift({
         value: 'currentuser',
-        label: t("configuration.azure-credentials-form.auth-type-options.label.current-user", "Current User"),
+        label: t('configuration.azure-credentials-form.auth-type-options.label.current-user', 'Current User'),
       });
     }
 
@@ -131,9 +134,15 @@ const {
       {authTypeOptions.length > 1 && (
         <div className="gf-form-inline">
           <div className="gf-form">
-            <InlineFormLabel className="width-12" tooltip={t("configuration.azure-credentials-form.tooltip-choose-authentication-azure-services", "Choose the type of authentication to Azure services")}><Trans i18nKey="configuration.azure-credentials-form.authentication">
-              Authentication
-            </Trans></InlineFormLabel>
+            <InlineFormLabel
+              className="width-12"
+              tooltip={t(
+                'configuration.azure-credentials-form.tooltip-choose-authentication-azure-services',
+                'Choose the type of authentication to Azure services'
+              )}
+            >
+              <Trans i18nKey="configuration.azure-credentials-form.authentication">Authentication</Trans>
+            </InlineFormLabel>
             <Select
               className="width-15"
               value={authTypeOptions.find((opt) => opt.value === credentials.authType)}
@@ -149,9 +158,15 @@ const {
           {azureCloudOptions && (
             <div className="gf-form-inline">
               <div className="gf-form">
-                <InlineFormLabel className="width-12" tooltip={t("configuration.azure-credentials-form.tooltip-choose-an-azure-cloud", "Choose an Azure Cloud")}><Trans i18nKey="configuration.azure-credentials-form.azure-cloud">
-                  Azure Cloud
-                </Trans></InlineFormLabel>
+                <InlineFormLabel
+                  className="width-12"
+                  tooltip={t(
+                    'configuration.azure-credentials-form.tooltip-choose-an-azure-cloud',
+                    'Choose an Azure Cloud'
+                  )}
+                >
+                  <Trans i18nKey="configuration.azure-credentials-form.azure-cloud">Azure Cloud</Trans>
+                </InlineFormLabel>
                 <Select
                   className="width-15"
                   value={azureCloudOptions.find((opt) => opt.value === credentials.azureCloud)}
@@ -164,7 +179,9 @@ const {
           )}
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-12"><Trans i18nKey="configuration.azure-credentials-form.directory-tenant-id">Directory (tenant) ID</Trans></InlineFormLabel>
+              <InlineFormLabel className="width-12">
+                <Trans i18nKey="configuration.azure-credentials-form.directory-tenant-id">Directory (tenant) ID</Trans>
+              </InlineFormLabel>
               <div className="width-15">
                 <Input
                   className={cx('width-20')}
@@ -179,7 +196,11 @@ const {
           </div>
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-12"><Trans i18nKey="configuration.azure-credentials-form.application-client-id">Application (client) ID</Trans></InlineFormLabel>
+              <InlineFormLabel className="width-12">
+                <Trans i18nKey="configuration.azure-credentials-form.application-client-id">
+                  Application (client) ID
+                </Trans>
+              </InlineFormLabel>
               <div className="width-15">
                 <Input
                   className={cx('width-20')}
@@ -195,17 +216,25 @@ const {
           {typeof credentials.clientSecret === 'symbol' ? (
             <div className="gf-form-inline">
               <div className="gf-form">
-                <InlineFormLabel htmlFor="azure-client-secret" className="width-12"><Trans i18nKey="configuration.azure-credentials-form.client-secret">
-                  Client Secret
-                </Trans></InlineFormLabel>
-                <Input id="azure-client-secret" className={cx('width-20')} placeholder={t("configuration.azure-credentials-form.azure-client-secret-placeholder-configured", "configured")} disabled />
+                <InlineFormLabel htmlFor="azure-client-secret" className="width-12">
+                  <Trans i18nKey="configuration.azure-credentials-form.client-secret">Client Secret</Trans>
+                </InlineFormLabel>
+                <Input
+                  id="azure-client-secret"
+                  className={cx('width-20')}
+                  placeholder={t(
+                    'configuration.azure-credentials-form.azure-client-secret-placeholder-configured',
+                    'configured'
+                  )}
+                  disabled
+                />
               </div>
               {!disabled && (
                 <div className="gf-form">
                   <div className={cx('max-width-20 gf-form-inline')}>
-                    <Button variant="secondary" type="button" onClick={onClientSecretReset}><Trans i18nKey="configuration.azure-credentials-form.reset">
-                      reset
-                    </Trans></Button>
+                    <Button variant="secondary" type="button" onClick={onClientSecretReset}>
+                      <Trans i18nKey="configuration.azure-credentials-form.reset">reset</Trans>
+                    </Button>
                   </div>
                 </div>
               )}
@@ -213,7 +242,9 @@ const {
           ) : (
             <div className="gf-form-inline">
               <div className="gf-form">
-                <InlineFormLabel className="width-12"><Trans i18nKey="configuration.azure-credentials-form.client-secret">Client Secret</Trans></InlineFormLabel>
+                <InlineFormLabel className="width-12">
+                  <Trans i18nKey="configuration.azure-credentials-form.client-secret">Client Secret</Trans>
+                </InlineFormLabel>
                 <div className="width-15">
                   <Input
                     className={cx('width-20')}

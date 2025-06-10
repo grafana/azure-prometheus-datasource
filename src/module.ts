@@ -7,7 +7,7 @@ import pluginJson from './plugin.json';
 
 initPluginTranslations(pluginJson.id);
 
-export const plugin = new DataSourcePlugin(PrometheusDatasource) 
+export const plugin = new DataSourcePlugin(PrometheusDatasource)
   .setQueryEditor(PromQueryEditorByApp)
   .setConfigEditor(ConfigEditor)
   .setQueryEditorHelp(PromCheatSheet);
