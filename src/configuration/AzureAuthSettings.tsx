@@ -1,3 +1,4 @@
+import { Trans } from '@grafana/i18n';
 import { AzureCredentials } from '@grafana/azure-sdk';
 import { DataSourceJsonData, DataSourceSettings } from '@grafana/data';
 import { config } from '@grafana/runtime';
@@ -35,7 +36,7 @@ export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
 
   return (
     <>
-      <h6>Azure authentication</h6>
+      <h6><Trans i18nKey="configuration.azure-auth-settings.azure-authentication">Azure authentication</Trans></h6>
       <AzureCredentialsForm
         managedIdentityEnabled={config.azure.managedIdentityEnabled}
         workloadIdentityEnabled={config.azure.workloadIdentityEnabled}
