@@ -30,6 +30,7 @@
     "azsettings",
     "azureauth",
     "azusercontext",
+    "callees",
     "datasource",
     "datasources",
     "grafana",
