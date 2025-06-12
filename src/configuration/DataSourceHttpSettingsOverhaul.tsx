@@ -1,4 +1,4 @@
-import { useTranslate, Trans } from '@grafana/i18n';
+import { t, Trans } from '@grafana/i18n';
 import { Auth, AuthMethod, ConnectionSettings, convertLegacyAuthProps } from '@grafana/plugin-ui';
 import { overhaulStyles } from '@grafana/prometheus';
 import { SecureSocksProxySettings, useTheme2 } from '@grafana/ui';
@@ -15,7 +15,6 @@ type Props = {
 };
 
 export const DataSourceHttpSettingsOverhaul = (props: Props) => {
-  const { t } = useTranslate();
   const { options, onOptionsChange, azureAuthEditor, secureSocksDSProxyEnabled } = props;
 
   const newAuthProps = convertLegacyAuthProps({

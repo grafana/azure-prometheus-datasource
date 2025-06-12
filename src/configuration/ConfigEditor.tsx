@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
+import { Trans, t } from '@grafana/i18n';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
 import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/prometheus';
 import { config } from '@grafana/runtime';
@@ -8,14 +9,12 @@ import React, { JSX } from 'react';
 
 import { AzureAuthSettings } from './AzureAuthSettings';
 import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
-import { Trans, useTranslate } from '@grafana/i18n';
 
 export const PROM_CONFIG_LABEL_WIDTH = 30;
 
 export type Props = DataSourcePluginOptionsEditorProps<PromOptions>;
 
 export const ConfigEditor = (props: Props) => {
-  const { t } = useTranslate();
   const { options, onOptionsChange } = props;
   const theme = useTheme2();
   const styles = overhaulStyles(theme);

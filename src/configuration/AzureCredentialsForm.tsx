@@ -1,7 +1,7 @@
-import { useTranslate, Trans } from '@grafana/i18n';
 import { cx } from '@emotion/css';
 import { AzureAuthType, AzureCredentials } from '@grafana/azure-sdk';
 import { SelectableValue } from '@grafana/data';
+import { t, Trans } from '@grafana/i18n';
 import { InlineFormLabel, Button, Select, Input } from '@grafana/ui';
 import React, { ChangeEvent, useMemo } from 'react';
 
@@ -20,7 +20,6 @@ export interface Props {
 }
 
 export const AzureCredentialsForm = (props: Props) => {
-  const { t } = useTranslate();
   const {
     credentials,
     azureCloudOptions,

@@ -1,6 +1,6 @@
-import { useTranslate, Trans } from '@grafana/i18n';
 import { AzureClientSecretCredentials, AzureCredentials } from '@grafana/azure-sdk';
 import { SelectableValue } from '@grafana/data';
+import { t, Trans } from '@grafana/i18n';
 import { Field, Select, Input, Button } from '@grafana/ui';
 import React, { ChangeEvent } from 'react';
 
@@ -12,7 +12,6 @@ export interface AppRegistrationCredentialsProps {
 }
 
 export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProps) => {
-  const { t } = useTranslate();
   const { azureCloudOptions, disabled, credentials, onCredentialsChange } = props;
 
   const onAzureCloudChange = (selected: SelectableValue<string>) => {

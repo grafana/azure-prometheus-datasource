@@ -1,6 +1,6 @@
-import { Trans, useTranslate } from '@grafana/i18n';
 import { AadCurrentUserCredentials, AzureCredentials, instanceOfAzureCredential } from '@grafana/azure-sdk';
 import { SelectableValue } from '@grafana/data';
+import { Trans, t } from '@grafana/i18n';
 import { ConfigSection } from '@grafana/plugin-ui';
 import { config } from '@grafana/runtime';
 import { Select, Field, RadioButtonGroup, Alert, Stack, TextLink } from '@grafana/ui';
@@ -19,7 +19,6 @@ export interface Props {
 }
 
 export const CurrentUserFallbackCredentials = (props: Props) => {
-  const { t } = useTranslate();
   const {
     credentials,
     azureCloudOptions,
@@ -62,7 +61,7 @@ export const CurrentUserFallbackCredentials = (props: Props) => {
     }
 
     return opts;
-  }, [managedIdentityEnabled, workloadIdentityEnabled, t]);
+  }, [managedIdentityEnabled, workloadIdentityEnabled]);
 
   const onAuthTypeChange = (selected: SelectableValue<FallbackCredentialAuthTypeOptions>) => {
     const defaultAuthType = managedIdentityEnabled

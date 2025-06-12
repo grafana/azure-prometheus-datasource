@@ -33,6 +33,7 @@
     "datasource",
     "datasources",
     "grafana",
+    "httpyourserver",
     "plog",
     "promlib",
     "sdkhttpclient",
