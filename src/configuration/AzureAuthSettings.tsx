@@ -1,6 +1,6 @@
-import { Trans } from '@grafana/i18n';
 import { AzureCredentials } from '@grafana/azure-sdk';
 import { DataSourceJsonData, DataSourceSettings } from '@grafana/data';
+import { Trans } from '@grafana/i18n';
 import { config } from '@grafana/runtime';
 import React, { useMemo } from 'react';
 import { useEffectOnce } from 'react-use';
