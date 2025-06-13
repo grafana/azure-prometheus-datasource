@@ -1,9 +1,10 @@
 import { css } from '@emotion/css';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
+import { Trans, t } from '@grafana/i18n';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
 import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/prometheus';
 import { config } from '@grafana/runtime';
-import { Alert, FieldValidationMessage, useTheme2 } from '@grafana/ui';
+import { Alert, FieldValidationMessage, TextLink, useTheme2 } from '@grafana/ui';
 import React, { JSX } from 'react';
 
 import { AzureAuthSettings } from './AzureAuthSettings';
@@ -21,13 +22,16 @@ export const ConfigEditor = (props: Props) => {
   return (
     <>
       {options.access === 'direct' && (
-        <Alert title="Error" severity="error">
-          Browser access mode in the Azure Monitor Managed Service for Prometheus data source is no longer available. Switch to server access mode.
+        <Alert title={t('configuration.config-editor.title-error', 'Error')} severity="error">
+          <Trans i18nKey="configuration.config-editor.browser-access-mode-error">
+            Browser access mode in the Azure Monitor Managed Service for Prometheus data source is no longer available.
+            Switch to server access mode.
+          </Trans>
         </Alert>
       )}
       <DataSourceDescription
         dataSourceName="Azure Monitor Managed Service for Prometheus"
-        // TODO Update this to Azure prom docs when available 
+        // TODO Update this to Azure prom docs when available
         docsLink="https://grafana.com/docs/grafana/latest/datasources/prometheus/configure-prometheus-data-source/"
       />
       <hr className={`${styles.hrTopSpace} ${styles.hrBottomSpace}`} />
@@ -40,8 +44,11 @@ export const ConfigEditor = (props: Props) => {
       <hr />
       <ConfigSection
         className={styles.advancedSettings}
-        title="Advanced settings"
-        description="Additional settings are optional settings that can be configured for more control over your data source."
+        title={t('configuration.config-editor.title-advanced-settings', 'Advanced settings')}
+        description={t(
+          'configuration.config-editor.description-advanced-settings',
+          'Additional settings are optional settings that can be configured for more control over your data source.'
+        )}
       >
         <AdvancedHttpSettings
           className={styles.advancedHTTPSettingsMargin}
@@ -64,9 +71,9 @@ export function docsTip(url?: string) {
   const docsUrl = 'https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/';
 
   return (
-    <a href={url ? url : docsUrl} target="_blank" rel="noopener noreferrer">
-      Visit docs for more details here.
-    </a>
+    <TextLink href={url ? url : docsUrl} external>
+      <Trans i18nKey="configuration.docs-tip.visit-docs-for-more-details-here">Visit docs for more details here.</Trans>
+    </TextLink>
   );
 }
 
@@ -132,7 +139,7 @@ export function overhaulStyles(theme: GrafanaTheme2) {
       font-weight: 400;
     `,
     container: css`
-      maxWidth: 578;
+      maxwidth: 578;
     `,
   };
 }

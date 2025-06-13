@@ -1,6 +1,6 @@
-
 import { AzureClientSecretCredentials, AzureCredentials } from '@grafana/azure-sdk';
 import { SelectableValue } from '@grafana/data';
+import { t, Trans } from '@grafana/i18n';
 import { Field, Select, Input, Button } from '@grafana/ui';
 import React, { ChangeEvent } from 'react';
 
@@ -58,13 +58,13 @@ export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProp
     <>
       {azureCloudOptions && (
         <Field
-          label="Azure Cloud"
+          label={t('configuration.app-registration-credentials.label-azure-cloud', 'Azure Cloud')}
           htmlFor="azure-cloud-type"
           disabled={disabled}
         >
           <Select
             inputId="azure-cloud-type"
-            aria-label="Azure Cloud"
+            aria-label={t('configuration.app-registration-credentials.aria-label-azure-cloud', 'Azure Cloud')}
             className="width-15"
             value={azureCloudOptions.find((opt) => opt.value === credentials.azureCloud)}
             options={azureCloudOptions}
@@ -73,15 +73,16 @@ export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProp
         </Field>
       )}
       <Field
-        label="Directory (tenant) ID"
+        label={t('configuration.app-registration-credentials.label-directory-tenant-id', 'Directory (tenant) ID')}
         required={credentials.authType === 'clientsecret'}
         htmlFor="tenant-id"
         invalid={credentials.authType === 'clientsecret' && !credentials.tenantId}
         error={'Tenant ID is required'}
       >
         <Input
-          aria-label="Tenant ID"
+          aria-label={t('configuration.app-registration-credentials.aria-label-tenant-id', 'Tenant ID')}
           className="width-30"
+          // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
           placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
           value={credentials.tenantId || ''}
           onChange={onTenantIdChange}
@@ -89,7 +90,7 @@ export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProp
         />
       </Field>
       <Field
-        label="Application (client) ID"
+        label={t('configuration.app-registration-credentials.label-application-client-id', 'Application (client) ID')}
         required={credentials.authType === 'clientsecret'}
         htmlFor="client-id"
         invalid={credentials.authType === 'clientsecret' && !credentials.clientId}
@@ -97,7 +98,8 @@ export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProp
       >
         <Input
           className="width-30"
-          aria-label="Client ID"
+          aria-label={t('configuration.app-registration-credentials.aria-label-client-id', 'Client ID')}
+          // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
           placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
           value={credentials.clientId || ''}
           onChange={onClientIdChange}
@@ -106,22 +108,26 @@ export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProp
       </Field>
       {!disabled &&
         (typeof credentials.clientSecret === 'symbol' ? (
-          <Field label="Client Secret" htmlFor="client-secret" required>
+          <Field
+            label={t('configuration.app-registration-credentials.label-client-secret', 'Client Secret')}
+            htmlFor="client-secret"
+            required
+          >
             <div className="width-30" style={{ display: 'flex', gap: '4px' }}>
               <Input
-                aria-label="Client Secret"
-                placeholder="configured"
+                aria-label={t('configuration.app-registration-credentials.aria-label-client-secret', 'Client Secret')}
+                placeholder={t('configuration.app-registration-credentials.placeholder-configured', 'configured')}
                 disabled={true}
                 data-testid={'client-secret'}
               />
               <Button variant="secondary" type="button" onClick={onClientSecretReset} disabled={disabled}>
-                Reset
+                <Trans i18nKey="configuration.app-registration-credentials.reset">Reset</Trans>
               </Button>
             </div>
           </Field>
         ) : (
           <Field
-            label="Client Secret"
+            label={t('configuration.app-registration-credentials.label-client-secret', 'Client Secret')}
             required
             htmlFor="client-secret"
             invalid={!credentials.clientSecret}
@@ -129,7 +135,11 @@ export const AppRegistrationCredentials = (props: AppRegistrationCredentialsProp
           >
             <Input
               className="width-30"
-              aria-label="Client Secret"
+              aria-label={t(
+                'configuration.app-registration-credentials.client-secret-aria-label-client-secret',
+                'Client Secret'
+              )}
+              // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
               placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
               value={credentials.clientSecret || ''}
               onChange={onClientSecretChange}

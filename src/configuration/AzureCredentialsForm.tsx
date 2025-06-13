@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
 import { AzureAuthType, AzureCredentials } from '@grafana/azure-sdk';
 import { SelectableValue } from '@grafana/data';
+import { t, Trans } from '@grafana/i18n';
 import { InlineFormLabel, Button, Select, Input } from '@grafana/ui';
 import React, { ChangeEvent, useMemo } from 'react';
 
@@ -33,28 +34,31 @@ export const AzureCredentialsForm = (props: Props) => {
     let opts: Array<SelectableValue<AzureAuthType>> = [
       {
         value: 'clientsecret',
-        label: 'App Registration',
+        label: t(
+          'configuration.azure-credentials-form.auth-type-options.opts.label.app-registration',
+          'App Registration'
+        ),
       },
     ];
 
     if (managedIdentityEnabled) {
       opts.push({
         value: 'msi',
-        label: 'Managed Identity',
+        label: t('configuration.azure-credentials-form.auth-type-options.label.managed-identity', 'Managed Identity'),
       });
     }
 
     if (workloadIdentityEnabled) {
       opts.push({
         value: 'workloadidentity',
-        label: 'Workload Identity',
+        label: t('configuration.azure-credentials-form.auth-type-options.label.workload-identity', 'Workload Identity'),
       });
     }
 
     if (userIdentityEnabled) {
       opts.unshift({
         value: 'currentuser',
-        label: 'Current User',
+        label: t('configuration.azure-credentials-form.auth-type-options.label.current-user', 'Current User'),
       });
     }
 
@@ -129,8 +133,14 @@ export const AzureCredentialsForm = (props: Props) => {
       {authTypeOptions.length > 1 && (
         <div className="gf-form-inline">
           <div className="gf-form">
-            <InlineFormLabel className="width-12" tooltip="Choose the type of authentication to Azure services">
-              Authentication
+            <InlineFormLabel
+              className="width-12"
+              tooltip={t(
+                'configuration.azure-credentials-form.tooltip-choose-authentication-azure-services',
+                'Choose the type of authentication to Azure services'
+              )}
+            >
+              <Trans i18nKey="configuration.azure-credentials-form.authentication">Authentication</Trans>
             </InlineFormLabel>
             <Select
               className="width-15"
@@ -147,8 +157,14 @@ export const AzureCredentialsForm = (props: Props) => {
           {azureCloudOptions && (
             <div className="gf-form-inline">
               <div className="gf-form">
-                <InlineFormLabel className="width-12" tooltip="Choose an Azure Cloud">
-                  Azure Cloud
+                <InlineFormLabel
+                  className="width-12"
+                  tooltip={t(
+                    'configuration.azure-credentials-form.tooltip-choose-an-azure-cloud',
+                    'Choose an Azure Cloud'
+                  )}
+                >
+                  <Trans i18nKey="configuration.azure-credentials-form.azure-cloud">Azure Cloud</Trans>
                 </InlineFormLabel>
                 <Select
                   className="width-15"
@@ -162,10 +178,13 @@ export const AzureCredentialsForm = (props: Props) => {
           )}
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-12">Directory (tenant) ID</InlineFormLabel>
+              <InlineFormLabel className="width-12">
+                <Trans i18nKey="configuration.azure-credentials-form.directory-tenant-id">Directory (tenant) ID</Trans>
+              </InlineFormLabel>
               <div className="width-15">
                 <Input
                   className={cx('width-20')}
+                  // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
                   placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
                   value={credentials.tenantId || ''}
                   onChange={onTenantIdChange}
@@ -176,10 +195,15 @@ export const AzureCredentialsForm = (props: Props) => {
           </div>
           <div className="gf-form-inline">
             <div className="gf-form">
-              <InlineFormLabel className="width-12">Application (client) ID</InlineFormLabel>
+              <InlineFormLabel className="width-12">
+                <Trans i18nKey="configuration.azure-credentials-form.application-client-id">
+                  Application (client) ID
+                </Trans>
+              </InlineFormLabel>
               <div className="width-15">
                 <Input
                   className={cx('width-20')}
+                  // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
                   placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
                   value={credentials.clientId || ''}
                   onChange={onClientIdChange}
@@ -192,15 +216,23 @@ export const AzureCredentialsForm = (props: Props) => {
             <div className="gf-form-inline">
               <div className="gf-form">
                 <InlineFormLabel htmlFor="azure-client-secret" className="width-12">
-                  Client Secret
+                  <Trans i18nKey="configuration.azure-credentials-form.client-secret">Client Secret</Trans>
                 </InlineFormLabel>
-                <Input id="azure-client-secret" className={cx('width-20')} placeholder="configured" disabled />
+                <Input
+                  id="azure-client-secret"
+                  className={cx('width-20')}
+                  placeholder={t(
+                    'configuration.azure-credentials-form.azure-client-secret-placeholder-configured',
+                    'configured'
+                  )}
+                  disabled
+                />
               </div>
               {!disabled && (
                 <div className="gf-form">
                   <div className={cx('max-width-20 gf-form-inline')}>
                     <Button variant="secondary" type="button" onClick={onClientSecretReset}>
-                      reset
+                      <Trans i18nKey="configuration.azure-credentials-form.reset">reset</Trans>
                     </Button>
                   </div>
                 </div>
@@ -209,10 +241,13 @@ export const AzureCredentialsForm = (props: Props) => {
           ) : (
             <div className="gf-form-inline">
               <div className="gf-form">
-                <InlineFormLabel className="width-12">Client Secret</InlineFormLabel>
+                <InlineFormLabel className="width-12">
+                  <Trans i18nKey="configuration.azure-credentials-form.client-secret">Client Secret</Trans>
+                </InlineFormLabel>
                 <div className="width-15">
                   <Input
                     className={cx('width-20')}
+                    // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
                     placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
                     value={credentials.clientSecret || ''}
                     onChange={onClientSecretChange}

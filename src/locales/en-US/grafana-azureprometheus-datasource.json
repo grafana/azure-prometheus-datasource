@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "Client ID",
+      "aria-label-client-secret": "Client Secret",
+      "aria-label-tenant-id": "Tenant ID",
+      "client-secret-aria-label-client-secret": "Client Secret",
+      "label-application-client-id": "Application (client) ID",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Client Secret",
+      "label-directory-tenant-id": "Directory (tenant) ID",
+      "placeholder-configured": "configured",
+      "reset": "Reset"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure authentication"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Application (client) ID",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Current User",
+          "managed-identity": "Managed Identity",
+          "workload-identity": "Workload Identity"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "App Registration"
+          }
+        }
+      },
+      "authentication": "Authentication",
+      "azure-client-secret-placeholder-configured": "configured",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Client Secret",
+      "directory-tenant-id": "Directory (tenant) ID",
+      "reset": "reset",
+      "tooltip-choose-an-azure-cloud": "Choose an Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Choose the type of authentication to Azure services"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Browser access mode in the Azure Monitor Managed Service for Prometheus data source is no longer available. Switch to server access mode.",
+      "description-advanced-settings": "Additional settings are optional settings that can be configured for more control over your data source.",
+      "title-advanced-settings": "Advanced settings",
+      "title-error": "Error"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Managed Identity",
+          "workload-identity": "Workload Identity"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "App Registration"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Fallback credentials have been disabled. As user-based authentication only inherently supports requests with a user in scope, features such as alerting, recorded queries, or reporting will not function as expected. Please review the <2>documentation</2> for more details.",
+      "description-choose-authentication-azure-services": "Choose the type of authentication to Azure services",
+      "description-service-credentials": "Choose if fallback service credentials are enabled or disabled for this data source",
+      "label": {
+        "disabled": "Disabled",
+        "enabled": "Enabled"
+      },
+      "label-authentication": "Authentication",
+      "label-service-credentials": "Service Credentials",
+      "restricted-alerting": "Note: Features like alerting will be restricted to the access level of the fallback credentials rather than the user. This may present confusion for users and should be clarified.",
+      "title-fallback-credentials-disabled": "Fallback Credentials Disabled",
+      "title-fallback-service-credentials": "Fallback Service Credentials",
+      "title-service-credentials": "Service Credentials",
+      "user-auth-not-support": "User-based authentication does not inherently support Grafana features that make requests to the data source without a users details available to the request. An example of this is alerting. If you wish to ensure that features that do not have a user in the context of the request still function, please provide fallback credentials below."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Authenticate with Azure"
+        },
+        "label": {
+          "azure-auth": "Azure auth"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Specify a complete HTTP URL (for example http://your_server:8080) ",
+      "tooltip-direct": "Your access method is <1>Browser</1>, this means the URL needs to be accessible from the browser.",
+      "tooltip-proxy": "Your access method is <1>Server</1>, this means the URL needs to be accessible from the grafana backend/server."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Visit docs for more details here."
+    }
+  }
+}

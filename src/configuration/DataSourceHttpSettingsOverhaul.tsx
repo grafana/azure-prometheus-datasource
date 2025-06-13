@@ -1,3 +1,4 @@
+import { t, Trans } from '@grafana/i18n';
 import { Auth, AuthMethod, ConnectionSettings, convertLegacyAuthProps } from '@grafana/plugin-ui';
 import { overhaulStyles } from '@grafana/prometheus';
 import { SecureSocksProxySettings, useTheme2 } from '@grafana/ui';
@@ -5,7 +6,6 @@ import React, { ReactElement } from 'react';
 import { useEffectOnce } from 'react-use';
 
 import { AzurePromDataSourceSettings } from './AzureCredentialsConfig';
-
 
 type Props = {
   options: AzurePromDataSourceSettings;
@@ -15,11 +15,7 @@ type Props = {
 };
 
 export const DataSourceHttpSettingsOverhaul = (props: Props) => {
-  const { options,
-    onOptionsChange,
-    azureAuthEditor,
-    secureSocksDSProxyEnabled
-  } = props;
+  const { options, onOptionsChange, azureAuthEditor, secureSocksDSProxyEnabled } = props;
 
   const newAuthProps = convertLegacyAuthProps({
     config: options,
@@ -42,19 +38,17 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
 
   const azureAuthId = 'custom-azureAuthId';
 
-
   const azureAuthOption: CustomMethod = {
     id: azureAuthId,
-    label: 'Azure auth',
-    description: 'Authenticate with Azure',
-    component: (
-      <>
-        {azureAuthEditor}
-      </>
+    label: t('configuration.data-source-http-settings-overhaul.azure-auth-option.label.azure-auth', 'Azure auth'),
+    description: t(
+      'configuration.data-source-http-settings-overhaul.azure-auth-option.description.authenticate-with-azure',
+      'Authenticate with Azure'
     ),
+    component: <>{azureAuthEditor}</>,
   };
 
-    customMethods.push(azureAuthOption);
+  customMethods.push(azureAuthOption);
 
   function returnSelectedMethod(): `custom-${string}` | AuthMethod {
     return azureAuthId;
@@ -66,21 +60,30 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
     case 'direct':
       urlTooltip = (
         <>
-          Your access method is <em>Browser</em>, this means the URL needs to be accessible from the browser.
-
+          <Trans i18nKey="configuration.data-source-http-settings-overhaul.tooltip-direct">
+            Your access method is <em>Browser</em>, this means the URL needs to be accessible from the browser.
+          </Trans>
         </>
       );
       break;
     case 'proxy':
       urlTooltip = (
         <>
-          Your access method is <em>Server</em>, this means the URL needs to be accessible from the grafana
-          backend/server.
+          <Trans i18nKey="configuration.data-source-http-settings-overhaul.tooltip-proxy">
+            Your access method is <em>Server</em>, this means the URL needs to be accessible from the grafana
+            backend/server.
+          </Trans>
         </>
       );
       break;
     default:
-      urlTooltip = <>Specify a complete HTTP URL (for example http://your_server:8080) </>;
+      urlTooltip = (
+        <>
+          <Trans i18nKey="configuration.data-source-http-settings-overhaul.specify-complete-example-httpyourserver">
+            Specify a complete HTTP URL (for example http://your_server:8080){' '}
+          </Trans>
+        </>
+      );
   }
 
   return (

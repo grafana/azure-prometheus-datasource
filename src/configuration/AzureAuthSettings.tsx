@@ -1,5 +1,6 @@
 import { AzureCredentials } from '@grafana/azure-sdk';
 import { DataSourceJsonData, DataSourceSettings } from '@grafana/data';
+import { Trans } from '@grafana/i18n';
 import { config } from '@grafana/runtime';
 import React, { useMemo } from 'react';
 import { useEffectOnce } from 'react-use';
@@ -19,7 +20,6 @@ export interface HttpSettingsBaseProps<JSONData extends DataSourceJsonData = any
 export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
   const { dataSourceConfig, onChange } = props;
 
-
   const credentials = useMemo(() => getCredentials(dataSourceConfig), [dataSourceConfig]);
 
   const onCredentialsChange = (credentials: AzureCredentials): void => {
@@ -35,7 +35,9 @@ export const AzureAuthSettings = (props: HttpSettingsBaseProps) => {
 
   return (
     <>
-      <h6>Azure authentication</h6>
+      <h6>
+        <Trans i18nKey="configuration.azure-auth-settings.azure-authentication">Azure authentication</Trans>
+      </h6>
       <AzureCredentialsForm
         managedIdentityEnabled={config.azure.managedIdentityEnabled}
         workloadIdentityEnabled={config.azure.workloadIdentityEnabled}
