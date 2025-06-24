@@ -8380,7 +8380,7 @@ react-custom-scrollbars-2@4.5.0:
     prop-types "^15.5.10"
     raf "^3.1.0"
 
-"react-data-grid@github:grafana/react-data-grid#3420f7f2a9e0d707d3313ec5b143a6be53f720b5":
+react-data-grid@grafana/react-data-grid#3420f7f2a9e0d707d3313ec5b143a6be53f720b5:
   version "7.0.0-beta.55"
   resolved "https://codeload.github.com/grafana/react-data-grid/tar.gz/3420f7f2a9e0d707d3313ec5b143a6be53f720b5"
   dependencies:
