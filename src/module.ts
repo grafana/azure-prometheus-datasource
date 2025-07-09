@@ -5,11 +5,9 @@ import { PromQueryEditorByApp, PrometheusDatasource, PromCheatSheet, loadResourc
 import { ConfigEditor } from './configuration/ConfigEditor';
 import pluginJson from './plugin.json';
 
-// top level await is fine in our bundled code, but not in our test environment (yet)
-// TODO remove this when our test environment can handle top level await
-if (process.env.NODE_ENV === 'test') {
-  initPluginTranslations(pluginJson.id, [loadPrometheusResources]);
-} else {
+// don't load plugin translations in test environments
+// we don't use them anyway, and top-level await won't work currently in jest
+if (process.env.NODE_ENV !== 'test') {
   await initPluginTranslations(pluginJson.id, [loadPrometheusResources]);
 }
 
