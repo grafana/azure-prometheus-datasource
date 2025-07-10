@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "ID Klien",
+      "aria-label-client-secret": "Data Sensitif Klien",
+      "aria-label-tenant-id": "ID Tenant",
+      "client-secret-aria-label-client-secret": "Data Sensitif Klien",
+      "label-application-client-id": "ID Aplikasi (klien)",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Data Sensitif Klien",
+      "label-directory-tenant-id": "ID Direktori (tenant)",
+      "placeholder-configured": "dikonfigurasi",
+      "reset": "Reset"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Autentikasi Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "ID Aplikasi (klien)",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Pengguna Saat Ini",
+          "managed-identity": "Identitas Terkelola",
+          "workload-identity": "Identitas Beban Kerja"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registrasi Aplikasi"
+          }
+        }
+      },
+      "authentication": "Autentikasi",
+      "azure-client-secret-placeholder-configured": "dikonfigurasi",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Data Sensitif Klien",
+      "directory-tenant-id": "ID Direktori (tenant)",
+      "reset": "reset",
+      "tooltip-choose-an-azure-cloud": "Pilih Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Pilih jenis autentikasi ke layanan Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Mode akses browser di Layanan Terkelola Azure Monitor untuk sumber data Prometheus tidak lagi tersedia. Beralih ke mode akses server.",
+      "description-advanced-settings": "Pengaturan tambahan adalah pengaturan opsional yang dapat dikonfigurasi agar Anda dapat mengendalikan sumber data dengan lebih baik.",
+      "title-advanced-settings": "Pengaturan lanjutan",
+      "title-error": "Kesalahan"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Identitas Terkelola",
+          "workload-identity": "Identitas Beban Kerja"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registrasi Aplikasi"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Kredensial fallback telah dinonaktifkan. Karena autentikasi berbasis pengguna hanya mendukung permintaan dengan pengguna dalam cakupannya, fitur seperti peringatan, kueri yang direkam, atau pelaporan tidak akan berfungsi seperti yang diharapkan. Silakan tinjau <2>dokumentasi</2> untuk detail selengkapnya.",
+      "description-choose-authentication-azure-services": "Pilih jenis autentikasi ke layanan Azure",
+      "description-service-credentials": "Pilih apakah kredensial layanan fallback diaktifkan atau dinonaktifkan untuk sumber data ini",
+      "label": {
+        "disabled": "Dinonaktifkan",
+        "enabled": "Diaktifkan"
+      },
+      "label-authentication": "Autentikasi",
+      "label-service-credentials": "Kredensial Layanan",
+      "restricted-alerting": "Catatan: Fitur seperti peringatan akan dibatasi pada tingkat akses kredensial fallback, bukan pengguna. Ini dapat menimbulkan kebingungan bagi pengguna dan harus diklarifikasi.",
+      "title-fallback-credentials-disabled": "Kredensial Fallback Dinonaktifkan",
+      "title-fallback-service-credentials": "Kredensial Layanan Fallback",
+      "title-service-credentials": "Kredensial Layanan",
+      "user-auth-not-support": "Autentikasi berbasis pengguna pada dasarnya tidak mendukung fitur Grafana yang membuat permintaan ke sumber data tanpa detail pengguna yang tersedia untuk permintaan tersebut. Contohnya adalah peringatan. Jika Anda ingin memastikan bahwa fitur yang tidak memiliki pengguna dalam konteks permintaan masih berfungsi, harap berikan kredensial fallback (cadangan) di bawah ini."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Autentikasi dengan Azure"
+        },
+        "label": {
+          "azure-auth": "Autentikasi Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Sebutkan URL HTTP lengkap (misalnya http://your_server:8080) ",
+      "tooltip-direct": "Metode akses Anda adalah <1>Browser</1>, ini berarti URL harus dapat diakses dari browser.",
+      "tooltip-proxy": "Metode akses Anda adalah <1>Server</1>, ini berarti URL harus dapat diakses dari backend/server grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Kunjungi dokumen untuk detail selengkapnya di sini."
+    }
+  }
+}

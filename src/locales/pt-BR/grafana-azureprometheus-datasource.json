@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "ID do cliente",
+      "aria-label-client-secret": "Segredo do cliente",
+      "aria-label-tenant-id": "ID do locatário",
+      "client-secret-aria-label-client-secret": "Segredo do cliente",
+      "label-application-client-id": "ID do aplicativo (cliente)",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Segredo do cliente",
+      "label-directory-tenant-id": "ID do diretório (locatário)",
+      "placeholder-configured": "configurados",
+      "reset": "Redefinir"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Autenticação do Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "ID do aplicativo (cliente)",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Usuário atual",
+          "managed-identity": "Identidade gerenciada",
+          "workload-identity": "Identidade da carga de trabalho"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registro do aplicativo"
+          }
+        }
+      },
+      "authentication": "Autenticação",
+      "azure-client-secret-placeholder-configured": "configurados",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Segredo do cliente",
+      "directory-tenant-id": "ID do diretório (locatário)",
+      "reset": "redefinir",
+      "tooltip-choose-an-azure-cloud": "Escolha um Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Escolha o tipo de autenticação para os serviços do Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "O modo de acesso via navegador na fonte de dados do serviço gerenciado do Azure Monitor para Prometheus não está mais disponível. Troque para o modo de acesso via servidor.",
+      "description-advanced-settings": "As configurações adicionais são opcionais, e você pode defini-las para ter mais controle sobre sua fonte de dados. ",
+      "title-advanced-settings": "Configurações avançadas",
+      "title-error": "Erro"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Identidade gerenciada",
+          "workload-identity": "Identidade da carga de trabalho"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registro do aplicativo"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "As credenciais de fallback foram desativadas. Como a autenticação baseada no usuário só é compatível com solicitações que apresentem um usuário no escopo, recursos como alertas, consultas gravadas ou relatórios não funcionarão como esperado. Consulte a <2>documentação</2> para saber mais.",
+      "description-choose-authentication-azure-services": "Escolha o tipo de autenticação para os serviços do Azure",
+      "description-service-credentials": "Decida se as credenciais de serviço de fallback estão ativadas ou desativadas para esta fonte de dados",
+      "label": {
+        "disabled": "Desativadas",
+        "enabled": "Ativadas"
+      },
+      "label-authentication": "Autenticação",
+      "label-service-credentials": "Credenciais de serviço",
+      "restricted-alerting": "Observação: recursos como o envio de alertas serão restritos ao nível de acesso das credenciais de fallback, em vez de serem restritos ao usuário. Isso pode confundir os usuários e deve ser esclarecido.",
+      "title-fallback-credentials-disabled": "Credenciais de fallback desativadas",
+      "title-fallback-service-credentials": "Credenciais de serviço de fallback",
+      "title-service-credentials": "Credenciais de serviço",
+      "user-auth-not-support": "A autenticação baseada no usuário não é diretamente compatível com os recursos da Grafana que fazem solicitações à fonte de dados se os detalhes do usuário não estiverem disponíveis para a solicitação. Um exemplo disso são os alertas. Se você quer assegurar que os recursos que não possuem um usuário no contexto da solicitação continuem funcionando, forneça as credenciais de fallback abaixo."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Autenticar com o Azure"
+        },
+        "label": {
+          "azure-auth": "Autenticação do Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Especifique um URL HTTP completo (por exemplo, http://seu_servidor:8080) ",
+      "tooltip-direct": "Seu método de acesso é pelo <1>Navegador</1>. Isso significa que deve ser possível acessar o URL a partir do navegador.",
+      "tooltip-proxy": "Seu método de acesso é pelo <1>Servidor</1>. Isso significa que deve ser possível acessar o URL a partir do back-end/servidor da Grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Acesse a documentação aqui para obter mais informações."
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "Klantnummer",
+      "aria-label-client-secret": "Gebruikerssleutel",
+      "aria-label-tenant-id": "Tenant-id",
+      "client-secret-aria-label-client-secret": "Gebruikerssleutel",
+      "label-application-client-id": "Client-id applicatie",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Gebruikerssleutel",
+      "label-directory-tenant-id": "Map-id (houder)",
+      "placeholder-configured": "geconfigureerd",
+      "reset": "Resetten"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure-authenticatie"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Client-id applicatie",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Huidige gebruiker",
+          "managed-identity": "Beheerde identiteit",
+          "workload-identity": "Workload-identiteit"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "App-registratie"
+          }
+        }
+      },
+      "authentication": "Authenticatie",
+      "azure-client-secret-placeholder-configured": "geconfigureerd",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Gebruikerssleutel",
+      "directory-tenant-id": "Directory-id (tenant)",
+      "reset": "opnieuw instellen",
+      "tooltip-choose-an-azure-cloud": "Kies een Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Kies het type authenticatie voor Azure-services"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Browsertoegangsmodus in de Azure Monitor Managed Service voor Prometheus-gegevensbron is niet langer beschikbaar. Schakel over naar de servertoegangsmodus.",
+      "description-advanced-settings": "Aanvullende instellingen zijn optionele instellingen die kunnen worden geconfigureerd voor meer controle over je gegevensbron. ",
+      "title-advanced-settings": "Geavanceerde instellingen",
+      "title-error": "Fout"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Beheerde identiteit",
+          "workload-identity": "Workload-identiteit"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "App-registratie"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Fallback-inloggegevens zijn uitgeschakeld. Omdat op gebruikers gebaseerde authenticatie alleen inherent verzoeken met een gebruiker in het bereik ondersteunt, werken functies zoals waarschuwingen, opgenomen query's of rapportage niet zoals verwacht. Bekijk de <2>documentatie</2> voor meer informatie.",
+      "description-choose-authentication-azure-services": "Kies het type authenticatie voor Azure-services",
+      "description-service-credentials": "Kies of fallback-service-inloggegevens zijn ingeschakeld of uitgeschakeld voor deze gegevensbron",
+      "label": {
+        "disabled": "Uitgeschakeld",
+        "enabled": "Ingeschakeld"
+      },
+      "label-authentication": "Authenticatie",
+      "label-service-credentials": "Service-inloggegevens",
+      "restricted-alerting": "Opmerking: functies zoals waarschuwingen worden beperkt tot het toegangsniveau van de fallback-inloggegevens in plaats van de gebruiker. Dit kan verwarring veroorzaken voor gebruikers en moet worden verduidelijkt.",
+      "title-fallback-credentials-disabled": "Fallback-inloggegevens uitgeschakeld",
+      "title-fallback-service-credentials": "Fallback-service-inloggegevens",
+      "title-service-credentials": "Service-inloggegevens",
+      "user-auth-not-support": "Op gebruikers gebaseerde authenticatie ondersteunt niet inherent Grafana-functies die verzoeken doen aan de gegevensbron zonder dat gebruikersgegevens beschikbaar zijn voor het verzoek. Een voorbeeld hiervan is waarschuwen. Als je ervoor wilt zorgen dat functies die geen gebruiker in de context van het verzoek hebben, nog steeds werken, geef dan hieronder fallback-inloggegevens op."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Verifiëren met Azure"
+        },
+        "label": {
+          "azure-auth": "Azure-authenticatie"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Geef een volledige HTTP-URL op (bijvoorbeeld http://your_server:8080) ",
+      "tooltip-direct": "Je toegangsmethode is <1>Browser</1>, dit betekent dat de URL toegankelijk moet zijn vanuit de browser.",
+      "tooltip-proxy": "Je toegangsmethode is <1>Server</1>, dit betekent dat de URL toegankelijk moet zijn vanuit de Grafana-backend/server."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Bezoek hier de documenten voor meer informatie."
+    }
+  }
+}

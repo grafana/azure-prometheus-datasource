@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "ID du client",
+      "aria-label-client-secret": "Clé secrète du client",
+      "aria-label-tenant-id": "ID du locataire",
+      "client-secret-aria-label-client-secret": "Clé secrète du client",
+      "label-application-client-id": "ID de l’application (client)",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Clé secrète du client",
+      "label-directory-tenant-id": "ID du répertoire (locataire)",
+      "placeholder-configured": "configuré",
+      "reset": "Réinitialiser"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Authentification Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "ID de l’application (client)",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Utilisateur actuel",
+          "managed-identity": "Identité gérée",
+          "workload-identity": "Identité de la workload"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Enregistrement de l’application"
+          }
+        }
+      },
+      "authentication": "Authentification",
+      "azure-client-secret-placeholder-configured": "configuré",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Clé secrète du client",
+      "directory-tenant-id": "ID du répertoire (locataire)",
+      "reset": "réinitialiser",
+      "tooltip-choose-an-azure-cloud": "Choisissez un Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Choisissez le type d’authentification aux services Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Le mode d’accès par navigateur dans la source de données Azure Monitor Managed Service for Prometheus n’est plus disponible. Passez au mode d’accès par serveur.",
+      "description-advanced-settings": "Les paramètres supplémentaires sont des options facultatives que vous pouvez configurer pour un meilleur contrôle de votre source de données.",
+      "title-advanced-settings": "Paramètres avancés",
+      "title-error": "Erreur"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Identité gérée",
+          "workload-identity": "Identité de la workload"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Enregistrement de l’application"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Les identifiants de secours ont été désactivés. Étant donné que l’authentification basée sur l’utilisateur ne prend en charge que les demandes avec un utilisateur dans la portée, les fonctionnalités telles que les alertes, les requêtes enregistrées ou les rapports ne fonctionneront pas comme prévu. Veuillez consulter la <2>documentation</2> pour en savoir plus.",
+      "description-choose-authentication-azure-services": "Choisissez le type d’authentification aux services Azure",
+      "description-service-credentials": "Indiquez si les identifiants de secours doivent être activés ou désactivés pour cette source de données",
+      "label": {
+        "disabled": "Désactivé",
+        "enabled": "Activé"
+      },
+      "label-authentication": "Authentification",
+      "label-service-credentials": "Identifiants de service",
+      "restricted-alerting": "Remarque : les fonctionnalités telles que les alertes seront limitées au niveau d’accès des identifiants de secours plutôt qu’à l’utilisateur. Cela peut prêter à confusion pour les utilisateurs et doit être clarifié.",
+      "title-fallback-credentials-disabled": "Identifiants de secours désactivés",
+      "title-fallback-service-credentials": "Identifiants de service de secours",
+      "title-service-credentials": "Identifiants de service",
+      "user-auth-not-support": "L’authentification basée sur l’utilisateur ne prend pas en charge nativement les fonctionnalités de Grafana qui exécutent des requêtes vers la source de données sans disposer d’informations utilisateur dans le contexte de la requête. Les alertes en sont un exemple. Si vous souhaitez garantir le bon fonctionnement de ces fonctionnalités même en l’absence de contexte utilisateur, veuillez renseigner des identifiants de secours ci-dessous."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "S’authentifier avec Azure"
+        },
+        "label": {
+          "azure-auth": "Authentification Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Indiquez une URL HTTP complète (par exemple : http://your_server:8080) ",
+      "tooltip-direct": "Votre méthode d’accès est <1>Navigateur</1>, ce qui signifie que l’URL doit être accessible depuis le navigateur.",
+      "tooltip-proxy": "Votre méthode d’accès est <1>Serveur</1>, ce qui signifie que l’URL doit être accessible depuis le backend ou le serveur de Grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Consultez les documents pour en savoir plus ici."
+    }
+  }
+}

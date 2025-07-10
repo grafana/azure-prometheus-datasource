@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "Kliensazonosító",
+      "aria-label-client-secret": "Klienstitok",
+      "aria-label-tenant-id": "Bérlőazonosító",
+      "client-secret-aria-label-client-secret": "Klienstitok",
+      "label-application-client-id": "Alkalmazás (kliens) azonosítója",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Klienstitok",
+      "label-directory-tenant-id": "Címtár (bérlő) azonosítója",
+      "placeholder-configured": "konfigurált",
+      "reset": "Visszaállítás"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure-hitelesítés"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Alkalmazás (kliens) azonosítója",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Jelenlegi felhasználó",
+          "managed-identity": "Felügyelt identitás",
+          "workload-identity": "Munkaterhelés-azonosító"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Alkalmazás regisztrációja"
+          }
+        }
+      },
+      "authentication": "Hitelesítés",
+      "azure-client-secret-placeholder-configured": "konfigurált",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Klienstitok",
+      "directory-tenant-id": "Címtár (bérlő) azonosítója",
+      "reset": "visszaállítás",
+      "tooltip-choose-an-azure-cloud": "Válasszon egy Azure Cloudot",
+      "tooltip-choose-authentication-azure-services": "Válassza ki az Azure-szolgáltatások hitelesítési típusát"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Az Azure Monitor Managed Service for Prometheus adatforrás böngészős hozzáférési módja már nem érhető el. Váltás kiszolgáló-hozzáférési módra.",
+      "description-advanced-settings": "A további beállítások olyan opcionális beállítások, amelyek konfigurálhatók az adatforrás nagyobb mértékű ellenőrzése érdekében.",
+      "title-advanced-settings": "Speciális beállítások",
+      "title-error": "Hiba"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Felügyelt identitás",
+          "workload-identity": "Munkaterhelés-azonosító"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Alkalmazás regisztrációja"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Az alapértelmezett hitelesítőadatok le lettek tiltva. Mivel a felhasználóalapú hitelesítés eredendően csak a hatókörben felhasználót tartalmazó kéréseket támogatja, az olyan funkciók, mint a riasztás, a rögzített lekérdezések vagy a jelentéskészítés, nem fognak az elvárt módon működni. További részletekért tekintse át a <2>dokumentációt</2>.",
+      "description-choose-authentication-azure-services": "Válassza ki az Azure-szolgáltatások hitelesítési típusát",
+      "description-service-credentials": "Válassza ki, hogy az alapértelmezett szolgáltatási hitelesítőadatok engedélyezettek vagy letiltottak legyenek ennél az adatforrásnál",
+      "label": {
+        "disabled": "Letiltva",
+        "enabled": "Engedélyezve"
+      },
+      "label-authentication": "Hitelesítés",
+      "label-service-credentials": "Szolgáltatási hitelesítőadatok",
+      "restricted-alerting": "Megjegyzés: Az olyan funkciók, mint a riasztás a felhasználó helyett az alapértelmezett hitelesítőadatok hozzáférési szintjére lesznek korlátozva. Ez zavart kelthet a felhasználók körében, és tisztázni kell.",
+      "title-fallback-credentials-disabled": "Alapértelmezett hitelesítőadatok letiltva",
+      "title-fallback-service-credentials": "Alapértelmezett szolgáltatási hitelesítőadatok",
+      "title-service-credentials": "Szolgáltatási hitelesítőadatok",
+      "user-auth-not-support": "A felhasználóalapú hitelesítés nem támogatja eredendően azokat a Grafana-funkciókat, amelyek anélkül küldenek kéréseket az adatforrásnak, hogy a felhasználói adatok elérhetők lennének a kéréshez. Erre példa a riasztás. Ha biztosítani szeretné, hogy a kérés kontextusában felhasználó nélküli funkciók továbbra is működjenek, adja meg az alábbi alapértelmezett hitelesítőadatokat."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Hitelesítés az Azure használatával"
+        },
+        "label": {
+          "azure-auth": "Azure-hitelesítés"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Adjon meg egy teljes HTTP URL-címet (például: http://sajat_kiszolgalo:8080) ",
+      "tooltip-direct": "Az Ön hozzáférési módja <1>Böngésző</1>. Ez azt jelenti, hogy az URL-címnek elérhetőnek kell lennie a böngészőből.",
+      "tooltip-proxy": "Az Ön hozzáférési módja <1>Kiszolgáló</1>. Ez azt jelenti, hogy az URL-címnek elérhetőnek kell lennie a Grafana-háttérrendszerből/-kiszolgálóról."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "További részletekért tekintse meg a dokumentumokat itt."
+    }
+  }
+}

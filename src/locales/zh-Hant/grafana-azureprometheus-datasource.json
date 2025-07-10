@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "客戶 ID",
+      "aria-label-client-secret": "用戶端密鑰",
+      "aria-label-tenant-id": "租用戶 ID",
+      "client-secret-aria-label-client-secret": "用戶端密鑰",
+      "label-application-client-id": "應用程式（用戶端）ID",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "用戶端密鑰",
+      "label-directory-tenant-id": "目錄（租用戶）ID",
+      "placeholder-configured": "已設定",
+      "reset": "重設"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure 驗證"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "應用程式（用戶端）ID",
+      "auth-type-options": {
+        "label": {
+          "current-user": "目前的使用者",
+          "managed-identity": "受控身分識別",
+          "workload-identity": "工作負載身分識別"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "應用程式註冊"
+          }
+        }
+      },
+      "authentication": "身分驗證",
+      "azure-client-secret-placeholder-configured": "已設定",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "用戶端密鑰",
+      "directory-tenant-id": "目錄（租用戶）ID",
+      "reset": "重設",
+      "tooltip-choose-an-azure-cloud": "選擇 Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "選擇 Azure 服務的驗證類型"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Azure Monitor Managed Service for Prometheus 資料來源中的瀏覽器存取模式無法再使用。切換至伺服器存取模式。",
+      "description-advanced-settings": "附加設定為選擇性設定，可進行設定以便更妥善掌控您的資料來源。",
+      "title-advanced-settings": "進階設定",
+      "title-error": "錯誤"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "受控身分識別",
+          "workload-identity": "工作負載身分識別"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "應用程式註冊"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "備用憑證已停用。由於使用者型驗證本質上僅支援範圍內的使用者請求，因此警報、已記錄查詢或報告等功能將無法按預期運作。請查看<2>文件</2>，了解更多詳細資訊。",
+      "description-choose-authentication-azure-services": "選擇 Azure 服務的驗證類型",
+      "description-service-credentials": "選擇是否為此資料來源啟用或停用備用服務憑證",
+      "label": {
+        "disabled": "已停用",
+        "enabled": "已啟用"
+      },
+      "label-authentication": "身分驗證",
+      "label-service-credentials": "服務憑證",
+      "restricted-alerting": "請注意：警報等功能將限制為備用憑證的存取等級，而非使用者。這可能會讓使用者感到困惑，應加以說明。",
+      "title-fallback-credentials-disabled": "備用憑證已停用",
+      "title-fallback-service-credentials": "備用服務憑證",
+      "title-service-credentials": "服務憑證",
+      "user-auth-not-support": "使用者型驗證本質上不支援 Grafana 功能，該功能會在沒有使用者詳細資訊的情況下向資料來源提出請求。警報就是一個例子。如果您想確保在請求內容中沒有使用者的功能仍然有效，請在下方提供備用憑證。"
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "使用 Azure 驗證"
+        },
+        "label": {
+          "azure-auth": "Azure 驗證"
+        }
+      },
+      "specify-complete-example-httpyourserver": "指定完整的 HTTP 網址（例如 http://your_server:8080）",
+      "tooltip-direct": "您的存取方式是<1>瀏覽器</1>，這表示需要從瀏覽器存取網址。",
+      "tooltip-proxy": "您的存取方式是<1>伺服器</1>，這表示需要從 Grafana 後端／伺服器存取網址。"
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "在此處瀏覽文件以了解更多詳細資訊。"
+    }
+  }
+}
