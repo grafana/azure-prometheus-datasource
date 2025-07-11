@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "ID klienta",
+      "aria-label-client-secret": "Tajné heslo klienta",
+      "aria-label-tenant-id": "ID tenanta",
+      "client-secret-aria-label-client-secret": "Tajné heslo klienta",
+      "label-application-client-id": "ID aplikace (klienta)",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Tajné heslo klienta",
+      "label-directory-tenant-id": "ID adresáře (tenanta)",
+      "placeholder-configured": "nastaveno",
+      "reset": "Obnovit"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Ověření Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "ID aplikace (klienta)",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Současný uživatel",
+          "managed-identity": "Spravovaná identita",
+          "workload-identity": "Identita pracovní zátěže"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registrace aplikace"
+          }
+        }
+      },
+      "authentication": "Ověření",
+      "azure-client-secret-placeholder-configured": "nastaveno",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Tajné heslo klienta",
+      "directory-tenant-id": "ID adresáře (tenanta)",
+      "reset": "obnovit",
+      "tooltip-choose-an-azure-cloud": "Vyberte Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Vyberte typ ověření pro služby Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Režim přístupu z prohlížeče ve zdroji dat spravované služby Azure Monitor pro Prometheus již není k dispozici. Přepněte na režim přístupu k serveru.",
+      "description-advanced-settings": "Další nastavení jsou volitelná nastavení, která lze nakonfigurovat pro větší kontrolu nad zdrojem dat.",
+      "title-advanced-settings": "Pokročilá nastavení",
+      "title-error": "Chyba"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Spravovaná identita",
+          "workload-identity": "Identita pracovní zátěže"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registrace aplikace"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Záložní přihlašovací údaje byly zakázány. Vzhledem k tomu, že ověření uživatele samo o sobě podporuje pouze požadavky s uživatelem v rozsahu, funkce, jako je upozorňování, zaznamenané dotazy nebo vykazování, nebudou fungovat podle očekávání. Další podrobnosti najdete v <2>dokumentaci</2>.",
+      "description-choose-authentication-azure-services": "Vyberte typ ověření pro služby Azure",
+      "description-service-credentials": "Vyberte, zda jsou pro tento zdroj dat povoleny nebo zakázány záložní přihlašovací údaje služby",
+      "label": {
+        "disabled": "Zakázáno",
+        "enabled": "Povoleno"
+      },
+      "label-authentication": "Ověření",
+      "label-service-credentials": "Přihlašovací údaje služby",
+      "restricted-alerting": "Poznámka: Funkce, jako je upozorňování, budou omezeny na úroveň přístupu záložních přihlašovacích údajů, nikoli na uživatele. To může být pro uživatele matoucí a vyžaduje objasnění.",
+      "title-fallback-credentials-disabled": "Záložní přihlašovací údaje jsou zakázány",
+      "title-fallback-service-credentials": "Záložní přihlašovací údaje služby",
+      "title-service-credentials": "Přihlašovací údaje služby",
+      "user-auth-not-support": "Ověření uživatele samo o sobě nepodporuje funkce Grafany, které odesílají požadavky na zdroj dat bez podrobností o uživatelích, které jsou k dispozici pro požadavek. Příkladem je upozorňování. Pokud chcete zajistit, aby funkce, které nemají uživatele v kontextu požadavku, stále fungovaly, uveďte záložní přihlašovací údaje níže."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Ověření pomocí Azure"
+        },
+        "label": {
+          "azure-auth": "Ověření Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Zadejte úplnou adresu URL HTTP (například http://your_server:8080) ",
+      "tooltip-direct": "Vaše metoda přístupu je <1>Prohlížeč</1>. To znamená, že adresa URL musí být přístupná z prohlížeče.",
+      "tooltip-proxy": "Vaše metoda přístupu je <1>Server</1>. To znamená, že adresa URL musí být přístupná z backendu/serveru Grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Další podrobnosti najdete v dokumentaci zde."
+    }
+  }
+}

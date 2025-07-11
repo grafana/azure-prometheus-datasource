@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "ID do cliente",
+      "aria-label-client-secret": "Segredo do cliente",
+      "aria-label-tenant-id": "ID do inquilino",
+      "client-secret-aria-label-client-secret": "Segredo do cliente",
+      "label-application-client-id": "ID (de cliente) da aplicação",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Segredo do cliente",
+      "label-directory-tenant-id": "ID (de locatário) do diretório",
+      "placeholder-configured": "configurado",
+      "reset": "Redefinir"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Autenticação do Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "ID (de cliente) da aplicação",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Utilizador atual",
+          "managed-identity": "Identidade gerida",
+          "workload-identity": "Identidade da carga de trabalho"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registo na aplicação"
+          }
+        }
+      },
+      "authentication": "Autenticação",
+      "azure-client-secret-placeholder-configured": "configurado",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Segredo do cliente",
+      "directory-tenant-id": "ID (de inquilino) do diretório",
+      "reset": "redefinir",
+      "tooltip-choose-an-azure-cloud": "Escolha uma Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Escolha o tipo de autenticação para os serviços do Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "O modo de acesso do navegador no serviço gerido do Azure Monitor para a origem de dados do Prometheus já não está disponível. Mude para o modo de acesso ao servidor.",
+      "description-advanced-settings": "As definições adicionais são definições opcionais que podem ser configuradas para obter mais controlo sobre a sua origem de dados.",
+      "title-advanced-settings": "Definições avançadas",
+      "title-error": "Erro"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Identidade gerida",
+          "workload-identity": "Identidade da carga de trabalho"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Registo na aplicação"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "As credenciais alternativas foram desativadas. Uma vez que a autenticação baseada no utilizador suporta apenas inerentemente pedidos que incluam um utilizador, funcionalidades como alertas, consultas gravadas ou relatórios não funcionarão conforme o esperado. Consulte a <2>documentação</2> para obter mais detalhes.",
+      "description-choose-authentication-azure-services": "Escolha o tipo de autenticação para os serviços do Azure",
+      "description-service-credentials": "Escolha se as credenciais de serviço alternativas estão ativadas ou desativadas para esta origem de dados",
+      "label": {
+        "disabled": "Desativado",
+        "enabled": "Ativado"
+      },
+      "label-authentication": "Autenticação",
+      "label-service-credentials": "Credenciais de serviço",
+      "restricted-alerting": "Nota: Funcionalidades como alertas serão limitadas ao nível de acesso das credenciais alternativas, em vez do utilizador. Isto pode criar confusão para os utilizadores e deve ser esclarecido.",
+      "title-fallback-credentials-disabled": "Credenciais alternativas desativadas",
+      "title-fallback-service-credentials": "Credenciais de serviço alternativas",
+      "title-service-credentials": "Credenciais de serviço",
+      "user-auth-not-support": "A autenticação baseada no utilizador não suporta inerentemente funcionalidades do Grafana que façam pedidos à origem de dados sem detalhes de um utilizador disponíveis para o pedido. Um exemplo disto são os alertas. Se deseja garantir que as funcionalidades que não tenham um utilizador no contexto do pedido ainda funcionem, forneça as credenciais alternativas abaixo."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Autenticar com o Azure"
+        },
+        "label": {
+          "azure-auth": "Autenticação do Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Especifique um URL HTTP completo (por exemplo, http://your_server:8080) ",
+      "tooltip-direct": "O seu método de acesso é <1>Navegador</1>, isto significa que o URL tem de estar acessível a partir do navegador.",
+      "tooltip-proxy": "O seu método de acesso é <1>Servidor</1>, isto significa que o URL tem de estar acessível a partir do backend/servidor da Grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Consulte os documentos aqui para obter mais informações."
+    }
+  }
+}

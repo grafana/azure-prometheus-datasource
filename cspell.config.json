@@ -23,7 +23,8 @@
     "provisioning/**",
     "src/dashboards/**",
     "src/**/*.test.tsx",
-    "yarn.lock"
+    "yarn.lock",
+    "src/locales/**"
   ],
   "ignoreRegExpList": ["import\\s*\\((.|[\r\n])*?\\)", "import\\s*.*\".*?\""],
   "words": [

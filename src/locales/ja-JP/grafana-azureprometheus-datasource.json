@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "クライアントID",
+      "aria-label-client-secret": "クライアントシークレット",
+      "aria-label-tenant-id": "テナントID",
+      "client-secret-aria-label-client-secret": "クライアントシークレット",
+      "label-application-client-id": "アプリケーション（クライアント）ID",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "クライアントシークレット",
+      "label-directory-tenant-id": "ディレクトリ（テナント）ID",
+      "placeholder-configured": "設定済み",
+      "reset": "リセット"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure認証"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "アプリケーション（クライアント）ID",
+      "auth-type-options": {
+        "label": {
+          "current-user": "現在のユーザー",
+          "managed-identity": "マネージドID",
+          "workload-identity": "ワークロードID"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "アプリ登録"
+          }
+        }
+      },
+      "authentication": "認証",
+      "azure-client-secret-placeholder-configured": "設定済み",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "クライアントシークレット",
+      "directory-tenant-id": "ディレクトリ（テナント）ID",
+      "reset": "リセット",
+      "tooltip-choose-an-azure-cloud": "Azure Cloudを選択",
+      "tooltip-choose-authentication-azure-services": "Azureサービスへの認証タイプを選択"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Azure Monitor Managed Service for Prometheusデータソースのブラウザアクセスモードは利用できなくなりました。サーバーアクセスモードに切り替えてください。",
+      "description-advanced-settings": "追加設定は、データソースをより詳細に制御するために設定できるオプション項目です。",
+      "title-advanced-settings": "詳細設定",
+      "title-error": "エラー"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "マネージドID",
+          "workload-identity": "ワークロードID"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "アプリ登録"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "フォールバック認証情報が無効になっています。ユーザーベース認証は、本質的にスコープ内のユーザーのリクエストのみをサポートするため、アラート、記録クエリ、レポートなどの機能は想定どおりに機能しません。詳細については、<2>ドキュメント</2>をご覧ください。",
+      "description-choose-authentication-azure-services": "Azureサービスへの認証タイプを選択",
+      "description-service-credentials": "このデータソースでフォールバックサービス認証情報を有効にするか、無効にするかを選択",
+      "label": {
+        "disabled": "無効",
+        "enabled": "有効"
+      },
+      "label-authentication": "認証",
+      "label-service-credentials": "サービス認証情報",
+      "restricted-alerting": "注：アラートなどの機能は、ユーザーではなくフォールバック認証情報のアクセスレベルに制限されます。これだとユーザーにとって混乱が生じる可能性があるため、明確にする必要があります。",
+      "title-fallback-credentials-disabled": "フォールバック認証情報が無効",
+      "title-fallback-service-credentials": "フォールバックサービス認証情報",
+      "title-service-credentials": "サービス認証情報",
+      "user-auth-not-support": "ユーザーベース認証は、ユーザーの詳細を指定せずにデータソースにリクエストを行うGrafana機能を本質的にサポートしていません。その一例がアラートです。リクエストのコンテキストにユーザーがいない機能が引き続き機能するようにするには、以下にフォールバック認証情報を入力してください。"
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Azureで認証"
+        },
+        "label": {
+          "azure-auth": "Azure認証"
+        }
+      },
+      "specify-complete-example-httpyourserver": "完全なHTTP URLを指定してください（例：http://your_server:8080）",
+      "tooltip-direct": "アクセス方法は<1>ブラウザ</1>です。つまり、URLにブラウザからアクセスできる必要があります。",
+      "tooltip-proxy": "アクセス方法は<1>サーバー</1>です。つまり、URLにGrafanaバックエンド/サーバーからアクセスできる必要があります。"
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "詳細についてはこちらのドキュメントをご覧ください。"
+    }
+  }
+}

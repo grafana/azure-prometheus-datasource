@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Chmura Azure",
+      "aria-label-client-id": "Identyfikator klienta",
+      "aria-label-client-secret": "Klucz tajny klienta",
+      "aria-label-tenant-id": "Identyfikator najemcy",
+      "client-secret-aria-label-client-secret": "Klucz tajny klienta",
+      "label-application-client-id": "Identyfikator aplikacji (klienta)",
+      "label-azure-cloud": "Chmura Azure",
+      "label-client-secret": "Klucz tajny klienta",
+      "label-directory-tenant-id": "Identyfikator katalogu (najemcy)",
+      "placeholder-configured": "skonfigurowano",
+      "reset": "Zresetuj"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Uwierzytelnienie Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Identyfikator aplikacji (klienta)",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Bieżący użytkownik",
+          "managed-identity": "Tożsamość zarządzana",
+          "workload-identity": "Tożsamość obciążenia pracą"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Rejestracja aplikacji"
+          }
+        }
+      },
+      "authentication": "Uwierzytelnianie",
+      "azure-client-secret-placeholder-configured": "skonfigurowano",
+      "azure-cloud": "Chmura Azure",
+      "client-secret": "Klucz tajny klienta",
+      "directory-tenant-id": "Identyfikator katalogu (najemcy)",
+      "reset": "reset",
+      "tooltip-choose-an-azure-cloud": "Wybierz chmurę Azure",
+      "tooltip-choose-authentication-azure-services": "Wybierz typ uwierzytelniania w usługach Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Tryb dostępu za pomocą przeglądarki w źródle danych Azure Monitor Managed Service dla rozwiązania Prometheus nie jest już dostępny. Przełącz się na tryb dostępu za pośrednictwem serwera.",
+      "description-advanced-settings": "Dodatkowe ustawienia to opcje, które można skonfigurować tak, aby uzyskać większą kontrolę nad źródłem danych.",
+      "title-advanced-settings": "Ustawienia zaawansowane",
+      "title-error": "Błąd"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Tożsamość zarządzana",
+          "workload-identity": "Tożsamość obciążenia pracą"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Rejestracja aplikacji"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Zastępcze dane uwierzytelniające zostały wyłączone. Ponieważ uwierzytelnianie oparte na użytkowniku z natury rzeczy obsługuje tylko żądania z użytkownikiem w zakresie, funkcje takie jak alerty, zarejestrowane zapytania lub raportowanie nie będą działać zgodnie z oczekiwaniami. Więcej szczegółów znajdziesz w <2>dokumentacji</2>.",
+      "description-choose-authentication-azure-services": "Wybierz typ uwierzytelniania w usługach Azure",
+      "description-service-credentials": "Wybierz, czy zastępcze dane uwierzytelniające usługi dla tego źródła danych mają być włączone czy wyłączone",
+      "label": {
+        "disabled": "Wyłączone",
+        "enabled": "Włączone"
+      },
+      "label-authentication": "Uwierzytelnianie",
+      "label-service-credentials": "Dane uwierzytelniające usługi",
+      "restricted-alerting": "Uwaga: poziom dostępu do funkcji takich jak alerty będzie ograniczony do poziomu uprawnień zastępczych danych uwierzytelniających, a nie uprawnień użytkownika. Może to być mylące dla użytkowników i warto im to wyjaśnić.",
+      "title-fallback-credentials-disabled": "Zastępcze dane uwierzytelniające są wyłączone",
+      "title-fallback-service-credentials": "Zastępcze dane uwierzytelniające usługi",
+      "title-service-credentials": "Dane uwierzytelniające usługi",
+      "user-auth-not-support": "Uwierzytelnianie oparte na użytkowniku nie obsługuje funkcji Grafany, które wysyłają żądania do źródła danych bez dostępnych danych użytkownika. Przykładem tego są alerty. Jeśli chcesz mieć pewność, że funkcje bez użytkownika w kontekście żądania będą nadal działać, podaj poniżej zastępcze dane uwierzytelniające."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Uwierzytelnianie za pomocą Azure"
+        },
+        "label": {
+          "azure-auth": "Uwierzytelnianie Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Podaj pełny adres URL HTTP (na przykład http://twój_serwer:8080) ",
+      "tooltip-direct": "Twoja metoda dostępu to <1>Przeglądarka</1>, co oznacza, że adres URL musi być dostępny z przeglądarki.",
+      "tooltip-proxy": "Twoja metoda dostępu to <1>Serwer</1>, co oznacza, że adres URL musi być dostępny z backendu/serwera usługi Grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Więcej informacji znajdziesz w dokumentacji tutaj."
+    }
+  }
+}

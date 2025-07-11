@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "Kund-ID",
+      "aria-label-client-secret": "Kundhemlighet",
+      "aria-label-tenant-id": "Hyresgäst-ID",
+      "client-secret-aria-label-client-secret": "Kundhemlighet",
+      "label-application-client-id": "Program-(kund-)ID",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Kundhemlighet",
+      "label-directory-tenant-id": "Katalog- (klientorganisations-) ID",
+      "placeholder-configured": "konfigurerad",
+      "reset": "Återställ"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure-autentisering"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Program-(kund-)ID",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Nuvarande användare",
+          "managed-identity": "Hanterad identitet",
+          "workload-identity": "Arbetsbelastningsidentitet"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Appregistrering"
+          }
+        }
+      },
+      "authentication": "Autentisering",
+      "azure-client-secret-placeholder-configured": "konfigurerad",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Kundhemlighet",
+      "directory-tenant-id": "Katalog-(hyresgäst-)ID",
+      "reset": "återställ",
+      "tooltip-choose-an-azure-cloud": "Välj ett Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Välj typ av autentisering till Azure-tjänster"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Webbläsaråtkomstläge i Azure Monitor Managed Service för Prometheus-datakällan är inte längre tillgängligt. Byt till serveråtkomstläge.",
+      "description-advanced-settings": "Ytterligare inställningar är valfria inställningar som kan konfigureras för ökad kontroll över din datakälla.",
+      "title-advanced-settings": "Avancerade inställningar",
+      "title-error": "Fel"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Hanterad identitet",
+          "workload-identity": "Arbetsbelastningsidentitet"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Appregistrering"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Reservautentiseringsuppgifter har inaktiverats. Eftersom användarbaserad autentisering i grunden endast stöder förfrågningar som är kopplade till en enskild användare kommer funktioner som aviseringar, registrerade frågor eller rapportering inte att fungera som förväntat. Läs <2>dokumentationen</2> för mer information.",
+      "description-choose-authentication-azure-services": "Välj typ av autentisering till Azure-tjänster",
+      "description-service-credentials": "Välj om reservuppgifter ska vara aktiverade eller inaktiverade för denna datakälla",
+      "label": {
+        "disabled": "Inaktiverad",
+        "enabled": "Aktiverad"
+      },
+      "label-authentication": "Autentisering",
+      "label-service-credentials": "Tjänsteautentiseringsuppgifter",
+      "restricted-alerting": "Obs! Funktioner som till exempel aviseringar kommer att begränsas till reservuppgifternas åtkomstnivå snarare än användarens. Det kan skapa förvirring för användarna och bör förtydligas.",
+      "title-fallback-credentials-disabled": "Reservautentiseringsuppgifter inaktiverade",
+      "title-fallback-service-credentials": "Reservautentiseringsuppgifter för tjänster",
+      "title-service-credentials": "Tjänsteautentiseringsuppgifter",
+      "user-auth-not-support": "Användarbaserad autentisering stöder inte i grunden Grafana-funktioner som gör förfrågningar till datakällan utan att en användares uppgifter finns tillgängliga för förfrågan. Ett exempel på detta är larm. Om du vill säkerställa att funktioner som saknar en användare i begärans kontext ändå fungerar ska du ange reservuppgifter nedan."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Autentisera med Azure"
+        },
+        "label": {
+          "azure-auth": "Azure-autentisering"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Ange en fullständig HTTP-URL (till exempel http://your_server:8080) ",
+      "tooltip-direct": "Din åtkomstmetod är <1>Webbläsare</1>, vilket innebär att webbadressen måste vara tillgänglig från webbläsaren.",
+      "tooltip-proxy": "Din åtkomstmetod är <1>Server</1>, vilket innebär att webbadressen måste vara tillgänglig från Grafana-gränssnittet/servern."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Besök dokumentationen för mer information här."
+    }
+  }
+}
