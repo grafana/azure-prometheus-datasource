@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "Идентификатор клиента",
+      "aria-label-client-secret": "Секрет клиента",
+      "aria-label-tenant-id": "Идентификатор клиента",
+      "client-secret-aria-label-client-secret": "Секрет клиента",
+      "label-application-client-id": "Идентификатор приложения (клиента)",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "Секрет клиента",
+      "label-directory-tenant-id": "Идентификатор каталога (клиента)",
+      "placeholder-configured": "установлены",
+      "reset": "Сброс"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Аутентификация Azure"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Идентификатор приложения (клиента)",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Текущий пользователь",
+          "managed-identity": "Управляемое удостоверение",
+          "workload-identity": "Удостоверение рабочей нагрузки"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Регистрация приложения"
+          }
+        }
+      },
+      "authentication": "Аутентификация",
+      "azure-client-secret-placeholder-configured": "установлен",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "Секрет клиента",
+      "directory-tenant-id": "Идентификатор каталога (клиента)",
+      "reset": "сброс",
+      "tooltip-choose-an-azure-cloud": "Выберите Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "Выберите тип аутентификации для служб Azure"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Режим доступа через браузер в источнике данных «Управляемая служба Azure Monitor для Prometheus» больше не доступен. Переключитесь в режим доступа к серверу.",
+      "description-advanced-settings": "Дополнительные параметры — это необязательные параметры, которые можно настроить для получения большего контроля над источником данных.",
+      "title-advanced-settings": "Дополнительные параметры",
+      "title-error": "Ошибка"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Управляемое удостоверение",
+          "workload-identity": "Удостоверение рабочей нагрузки"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Регистрация приложения"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Резервные учетные данные отключены. Поскольку аутентификация на основе пользователей по своей сути поддерживает только запросы, в область действия которых входит пользователь, то такие функции, как оповещение, записанные запросы или создание отчетов, не будут работать должным образом. Подробнее см. в <2>документации</2>.",
+      "description-choose-authentication-azure-services": "Выберите тип аутентификации для служб Azure",
+      "description-service-credentials": "Выберите, следует ли включить или отключить резервные учетные данные службы для этого источника данных",
+      "label": {
+        "disabled": "Отключены",
+        "enabled": "Включены"
+      },
+      "label-authentication": "Аутентификация",
+      "label-service-credentials": "Учетные данные службы",
+      "restricted-alerting": "Примечание. Такие функции, как оповещение, будут ограничены уровнем доступа резервных учетных данных, а не пользователя. Это может сбить пользователей с толку и требует пояснения.",
+      "title-fallback-credentials-disabled": "Резервные учетные данные отключены",
+      "title-fallback-service-credentials": "Резервные учетные данные службы",
+      "title-service-credentials": "Учетные данные службы",
+      "user-auth-not-support": "Аутентификация на основе пользователей по своей сути не поддерживает функции Grafana, которые отправляют запросы в источник данных без предоставления сведений о пользователях. Примером является оповещение. Чтобы функции, которые не имеют пользователя в контексте запроса, продолжали работать, укажите резервные учетные данные ниже."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Аутентификация через Azure"
+        },
+        "label": {
+          "azure-auth": "Аутентификация Azure"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Укажите полный URL-адрес HTTP (например, http://your_server:8080) ",
+      "tooltip-direct": "Вашим методом доступа является <1>браузер</1>, то есть URL-адрес должен быть доступен из браузера.",
+      "tooltip-proxy": "Вашим методом доступа является <1>сервер</1>, то есть URL-адрес должен быть доступен из серверной части/сервера Grafana."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Подробнее см. в документации."
+    }
+  }
+}

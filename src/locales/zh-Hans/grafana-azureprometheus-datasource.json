@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "客户端 ID",
+      "aria-label-client-secret": "客户端密码",
+      "aria-label-tenant-id": "租户 ID",
+      "client-secret-aria-label-client-secret": "客户端密码",
+      "label-application-client-id": "应用程序（客户端）ID",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "客户端密码",
+      "label-directory-tenant-id": "目录（租户）ID",
+      "placeholder-configured": "已配置",
+      "reset": "重置"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure 身份验证"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "应用程序（客户端）ID",
+      "auth-type-options": {
+        "label": {
+          "current-user": "当前用户",
+          "managed-identity": "托管身份",
+          "workload-identity": "工作负载身份"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "应用注册"
+          }
+        }
+      },
+      "authentication": "认证",
+      "azure-client-secret-placeholder-configured": "已配置",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "客户端密码",
+      "directory-tenant-id": "目录（租户）ID",
+      "reset": "重置",
+      "tooltip-choose-an-azure-cloud": "选择 Azure Cloud",
+      "tooltip-choose-authentication-azure-services": "选择 Azure 服务的身份验证类型"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Azure Monitor Managed Service for Prometheus 数据源中的浏览器访问模式不再可用。切换到服务器访问模式。",
+      "description-advanced-settings": "附加设置是可选设置，通过配置，可对数据源进行更精细的控制。",
+      "title-advanced-settings": "高级设置",
+      "title-error": "错误"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "托管身份",
+          "workload-identity": "工作负载身份"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "应用注册"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "后备凭证已禁用。由于基于用户的身份验证本质上只支持用户范围内的请求，因此提醒、记录查询或报告等功能将无法按预期运行。请查看<2>文档</2>，了解更多详情。",
+      "description-choose-authentication-azure-services": "选择 Azure 服务的身份验证类型",
+      "description-service-credentials": "选择是否为该数据源启用或禁用后备服务凭证",
+      "label": {
+        "disabled": "已禁用",
+        "enabled": "已启用"
+      },
+      "label-authentication": "认证",
+      "label-service-credentials": "服务凭证",
+      "restricted-alerting": "注意：提醒等功能将仅限于后备凭证的访问级别，而不是用户。这可能会给用户带来困惑，应予以澄清。",
+      "title-fallback-credentials-disabled": "已禁用后备凭证",
+      "title-fallback-service-credentials": "后备服务凭证",
+      "title-service-credentials": "服务凭证",
+      "user-auth-not-support": "基于用户的身份验证本质上不支持 Grafana 功能，这些功能会在请求中不提供用户详情的情况下向数据源发出请求。提醒就是一个例子。如果您希望确保在请求上下文中没有用户的功能仍能正常运行，请在下面提供后备凭证。"
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "使用 Azure 进行身份验证"
+        },
+        "label": {
+          "azure-auth": "Azure 身份验证"
+        }
+      },
+      "specify-complete-example-httpyourserver": "指定完整的 HTTP URL（例如 http://your_server:8080）",
+      "tooltip-direct": "您的访问方式是<1>浏览器</1>，这意味着需要从浏览器访问 URL。",
+      "tooltip-proxy": "您的访问方式是<1>服务器</1>，这意味着需要从 grafana 后端/服务器访问 URL。"
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "请访问此处的文档了解更多信息。"
+    }
+  }
+}

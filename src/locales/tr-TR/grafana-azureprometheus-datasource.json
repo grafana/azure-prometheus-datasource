@@ -1,0 +1,92 @@
+{
+  "configuration": {
+    "app-registration-credentials": {
+      "aria-label-azure-cloud": "Azure Cloud",
+      "aria-label-client-id": "İstemci kimliği",
+      "aria-label-client-secret": "İstemci gizli anahtarı",
+      "aria-label-tenant-id": "Kiracı kimliği",
+      "client-secret-aria-label-client-secret": "İstemci gizli anahtarı",
+      "label-application-client-id": "Uygulama (istemci) kimliği",
+      "label-azure-cloud": "Azure Cloud",
+      "label-client-secret": "İstemci gizli anahtarı",
+      "label-directory-tenant-id": "Dizin (kiracı) kimliği",
+      "placeholder-configured": "yapılandırılmış",
+      "reset": "Sıfırla"
+    },
+    "azure-auth-settings": {
+      "azure-authentication": "Azure kimlik doğrulaması"
+    },
+    "azure-credentials-form": {
+      "application-client-id": "Uygulama (istemci) kimliği",
+      "auth-type-options": {
+        "label": {
+          "current-user": "Geçerli Kullanıcı",
+          "managed-identity": "Yönetilen Kimlik",
+          "workload-identity": "İş Yükü Kimliği"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Uygulama Kaydı"
+          }
+        }
+      },
+      "authentication": "Kimlik doğrulama",
+      "azure-client-secret-placeholder-configured": "yapılandırılmış",
+      "azure-cloud": "Azure Cloud",
+      "client-secret": "İstemci gizli anahtarı",
+      "directory-tenant-id": "Dizin (kiracı) kimliği",
+      "reset": "sıfırla",
+      "tooltip-choose-an-azure-cloud": "Bir Azure Cloud seçin",
+      "tooltip-choose-authentication-azure-services": "Azure hizmetleri için kimlik doğrulama türünü seçin"
+    },
+    "config-editor": {
+      "browser-access-mode-error": "Prometheus için Azure İzleyici Yönetilen Hizmeti veri kaynağında tarayıcı erişim modu artık kullanılamamaktadır. Sunucu erişim moduna geçin.",
+      "description-advanced-settings": "Ek ayarlar, veri kaynağınız üzerinde daha fazla kontrol sağlamak için yapılandırılabilen isteğe bağlı ayarlardır.",
+      "title-advanced-settings": "Gelişmiş ayarlar",
+      "title-error": "Hata"
+    },
+    "current-user-fallback-credentials": {
+      "auth-type-options": {
+        "label": {
+          "managed-identity": "Yönetilen Kimlik",
+          "workload-identity": "İş Yükü Kimliği"
+        },
+        "opts": {
+          "label": {
+            "app-registration": "Uygulama Kaydı"
+          }
+        }
+      },
+      "body-fallback-credentials-disabled": "Yedek kimlik bilgileri devre dışı bırakıldı. Kullanıcı tabanlı kimlik doğrulama doğası gereği yalnızca bir kullanıcının dâhil olduğu istekleri desteklediğinden uyarı, kayıtlı sorgular veya raporlama gibi özellikler beklendiği gibi çalışmayabilir. Daha fazla ayrıntı için lütfen <2>belgeleri</2> inceleyin.",
+      "description-choose-authentication-azure-services": "Azure hizmetleri için kimlik doğrulama türünü seçin",
+      "description-service-credentials": "Bu veri kaynağı için yedek hizmet kimlik bilgilerinin etkinleştirilip etkinleştirilmeyeceğini seçin",
+      "label": {
+        "disabled": "Devre dışı",
+        "enabled": "Etkin"
+      },
+      "label-authentication": "Kimlik doğrulama",
+      "label-service-credentials": "Hizmet Kimlik Bilgileri",
+      "restricted-alerting": "Not: Uyarı gibi özellikler, kullanıcı yerine yedek kimlik bilgilerinin erişim düzeyiyle sınırlı olacaktır. Bu durum, kullanıcılar arasında kafa karışıklığına yol açabilir ve netleştirilmesi gerekir.",
+      "title-fallback-credentials-disabled": "Yedek Kimlik Bilgileri Devre Dışı",
+      "title-fallback-service-credentials": "Yedek Hizmet Kimlik Bilgileri",
+      "title-service-credentials": "Hizmet Kimlik Bilgileri",
+      "user-auth-not-support": "Kullanıcı tabanlı kimlik doğrulama, yapısı gereği istek için kullanılabilir bir kullanıcı bilgisi olmadan veri kaynağına istek gönderen Grafana özelliklerini desteklemez. Uyarılar bu duruma örnek olarak verilebilir. İstek anında bir kullanıcı bağlamı olmayan özelliklerin çalışmaya devam etmesini sağlamak istiyorsanız lütfen aşağıya yedek kimlik bilgilerini girin."
+    },
+    "data-source-http-settings-overhaul": {
+      "azure-auth-option": {
+        "description": {
+          "authenticate-with-azure": "Azure ile kimlik doğrulama"
+        },
+        "label": {
+          "azure-auth": "Azure kimlik doğrulaması"
+        }
+      },
+      "specify-complete-example-httpyourserver": "Tam bir HTTP URL'si belirtin (örneğin http://sunucunuz:8080) ",
+      "tooltip-direct": "Erişim yönteminizin <1>Browser</1> olması, URL'nin tarayıcıdan erişilebilir olması gerektiği anlamına gelir.",
+      "tooltip-proxy": "Erişim yönteminizin <1>Server</1> olması, URL'nin Grafana arka uç/sunucusundan erişilebilir olması gerektiği anlamına gelir."
+    },
+    "docs-tip": {
+      "visit-docs-for-more-details-here": "Daha fazla ayrıntı için belgelere göz atın."
+    }
+  }
+}
