@@ -3,8 +3,8 @@
   "version": "0.0.4-preview",
   "description": "A plugin for Azure Monitor Managed Service for Prometheus",
   "scripts": {
-    "build": "webpack -c ./webpack.config.ts --env production",
-    "dev": "webpack -w -c ./webpack.config.ts --env development",
+    "build": "webpack -c ./.config/webpack/webpack.config.ts --env production",
+    "dev": "webpack -w -c ./.config/webpack/webpack.config.ts --env development",
     "test": "jest --watch --onlyChanged",
     "e2e": "playwright test",
     "e2e:ui": "yarn playwright test --ui",
@@ -112,6 +112,5 @@
   },
   "engines": {
     "node": ">=20"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  }
 }
