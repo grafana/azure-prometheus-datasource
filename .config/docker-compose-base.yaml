@@ -19,9 +19,9 @@ services:
     cap_add:
       - SYS_PTRACE
     volumes:
-      - ../dist:/var/lib/grafana/plugins/grafana-azureprometheus-datasource
+      - ../dist:/var/lib/grafana/plugins/azure-prometheus-datasource
       - ../provisioning:/etc/grafana/provisioning
-      - ..:/root/grafana-azureprometheus-datasource
+      - ..:/root/azure-prometheus-datasource
 
     environment:
       NODE_ENV: development
