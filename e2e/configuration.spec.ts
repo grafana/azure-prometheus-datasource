@@ -108,8 +108,6 @@ test.describe('Configuration tests', () => {
       fileName: 'datasources.yml',
     });
     const configPage = await gotoDataSourceConfigPage(ds.uid);
-    await page.getByLabel('Edit Access Key ID').click();
-    await page.getByLabel('Access Key ID').fill('');
     await expect(configPage.saveAndTest()).not.toBeOK();
     await expect(configPage).toHaveAlert('error', {
       hasText: /.*there was an error returned querying the prometheus api/i,
