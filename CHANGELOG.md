@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0
+
+- Public release
+- Dependency updates
+
 ## 0.0.4-preview
 
 - Change logo to include Azure
