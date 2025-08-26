@@ -3,6 +3,7 @@
 ## 1.0.0
 
 - Public release
+- Dependency updates
 
 ## 0.0.4-preview
 
