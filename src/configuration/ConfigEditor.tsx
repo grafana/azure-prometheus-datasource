@@ -6,8 +6,10 @@ import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/pr
 import { config } from '@grafana/runtime';
 import { Alert, FieldValidationMessage, TextLink, useTheme2 } from '@grafana/ui';
 import React, { JSX } from 'react';
+import { useEffectOnce } from 'react-use';
 
 import { AzureAuthSettings } from './AzureAuthSettings';
+import { setDefaultCredentials } from './AzureCredentialsConfig';
 import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
 
 export const PROM_CONFIG_LABEL_WIDTH = 30;
@@ -18,6 +20,10 @@ export const ConfigEditor = (props: Props) => {
   const { options, onOptionsChange } = props;
   const theme = useTheme2();
   const styles = overhaulStyles(theme);
+
+  useEffectOnce(() => {
+    onOptionsChange(setDefaultCredentials(options));
+  });
 
   return (
     <>

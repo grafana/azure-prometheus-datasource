@@ -45,8 +45,9 @@ export function updateCredentials(
   return updateDatasourceCredentials(options, credentials);
 }
 
-export function setDefaultCredentials(options: AzurePromDataSourceSettings): Partial<AzurePromDataSourceSettings> {
+export function setDefaultCredentials(options: AzurePromDataSourceSettings): AzurePromDataSourceSettings {
   return {
+    ...options,
     jsonData: {
       ...options.jsonData,
       azureCredentials: getDefaultCredentials(),
