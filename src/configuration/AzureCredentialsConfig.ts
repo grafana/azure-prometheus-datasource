@@ -22,11 +22,10 @@ export function getAzureCloudOptions(): Array<SelectableValue<string>> {
 }
 
 export function getDefaultCredentials(): AzureCredentials {
-  if (config.azure.userIdentityEnabled) {
+  if (config.azure?.userIdentityEnabled) {
     return { authType: 'currentuser' };
-  } else {
-    return { authType: 'clientsecret', azureCloud: getDefaultAzureCloud() };
   }
+  return { authType: 'clientsecret', azureCloud: getDefaultAzureCloud() };
 }
 
 export function getCredentials(options: AzureDataSourceSettings): AzureCredentials {
