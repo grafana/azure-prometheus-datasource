@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- Fix: correctly set default authentication type
+- Dependency updates
+
 ## 1.0.0
 
 - Public release
