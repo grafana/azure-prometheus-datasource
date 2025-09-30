@@ -2,7 +2,7 @@
 
 ## 1.0.1
 
-- Fix: When user auth is the default auth method, you no longer need to select user auth to have user auth work
+- Fix: correctly set default authentication type
 - Dependency updates
 
 ## 1.0.0
