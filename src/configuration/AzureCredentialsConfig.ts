@@ -22,11 +22,10 @@ export function getAzureCloudOptions(): Array<SelectableValue<string>> {
 }
 
 export function getDefaultCredentials(): AzureCredentials {
-  if (config.azure.userIdentityEnabled) {
+  if (config.azure?.userIdentityEnabled) {
     return { authType: 'currentuser' };
-  } else {
-    return { authType: 'clientsecret', azureCloud: getDefaultAzureCloud() };
   }
+  return { authType: 'clientsecret', azureCloud: getDefaultAzureCloud() };
 }
 
 export function getCredentials(options: AzureDataSourceSettings): AzureCredentials {
@@ -45,8 +44,9 @@ export function updateCredentials(
   return updateDatasourceCredentials(options, credentials);
 }
 
-export function setDefaultCredentials(options: AzurePromDataSourceSettings): Partial<AzurePromDataSourceSettings> {
+export function setDefaultCredentials(options: AzurePromDataSourceSettings): AzurePromDataSourceSettings {
   return {
+    ...options,
     jsonData: {
       ...options.jsonData,
       azureCredentials: getDefaultCredentials(),

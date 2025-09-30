@@ -1,13 +1,16 @@
 import { css } from '@emotion/css';
+import { AzureCredentials, updateDatasourceCredentials } from '@grafana/azure-sdk';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
 import { Trans, t } from '@grafana/i18n';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
 import { AlertingSettingsOverhaul, PromOptions, PromSettings } from '@grafana/prometheus';
 import { config } from '@grafana/runtime';
 import { Alert, FieldValidationMessage, TextLink, useTheme2 } from '@grafana/ui';
-import React, { JSX } from 'react';
+import React, { JSX, useMemo } from 'react';
+import { useEffectOnce } from 'react-use';
 
 import { AzureAuthSettings } from './AzureAuthSettings';
+import { getCredentials } from './AzureCredentialsConfig';
 import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
 
 export const PROM_CONFIG_LABEL_WIDTH = 30;
@@ -18,6 +21,20 @@ export const ConfigEditor = (props: Props) => {
   const { options, onOptionsChange } = props;
   const theme = useTheme2();
   const styles = overhaulStyles(theme);
+
+ 
+  const credentials = useMemo(() => getCredentials(options), [options]);
+
+  const onCredentialsChange = (credentials: AzureCredentials): void => {
+    onOptionsChange(updateDatasourceCredentials(options, credentials));
+  };
+
+    // The auth type needs to be set on the first load of the data source
+  useEffectOnce(() => {
+    if (!options.jsonData.authType) {
+      onCredentialsChange(credentials);
+    }
+  });
 
   return (
     <>
@@ -38,7 +55,7 @@ export const ConfigEditor = (props: Props) => {
       <DataSourceHttpSettingsOverhaul
         options={options}
         onOptionsChange={onOptionsChange}
-        azureAuthEditor={<AzureAuthSettings dataSourceConfig={options} onChange={onOptionsChange}></AzureAuthSettings>}
+        azureAuthEditor={<AzureAuthSettings credentials={credentials} onCredentialsChange={onCredentialsChange} disabled={options.readOnly}></AzureAuthSettings>}
         secureSocksDSProxyEnabled={config.secureSocksDSProxyEnabled}
       />
       <hr />
