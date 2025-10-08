@@ -1,8 +1,8 @@
 import { t, Trans } from '@grafana/i18n';
 import { Auth, AuthMethod, ConnectionSettings, convertLegacyAuthProps } from '@grafana/plugin-ui';
 import { overhaulStyles } from '@grafana/prometheus';
-import { SecureSocksProxySettings, useTheme2 } from '@grafana/ui';
-import React, { ReactElement } from 'react';
+import { Alert, SecureSocksProxySettings, TextLink, useTheme2 } from '@grafana/ui';
+import React, { ReactElement, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 
 import { AzurePromDataSourceSettings } from './AzureCredentialsConfig';
@@ -33,6 +33,8 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
 
   const theme = useTheme2();
   const styles = overhaulStyles(theme);
+
+  const [hasPromTypeMig] = useState<boolean>(options.jsonData['prometheus-type-migration'] || false);
 
   let customMethods: CustomMethod[] = [];
 
@@ -96,6 +98,23 @@ export const DataSourceHttpSettingsOverhaul = (props: Props) => {
         urlTooltip={urlTooltip}
       />
       <hr className={`${styles.hrTopSpace} ${styles.hrBottomSpace}`} />
+      {hasPromTypeMig && (
+        <Alert
+          severity="warning"
+          title={t('components.logs-query-builder.title-prometheus-migration-occurred', 'Data source migrated')}
+        >
+          <Trans i18nKey="components.logs-query-builder.prometheus-migration-occurred">
+            This data source has been migrated from Prometheus to Azure Monitor Managed Service for Prometheus. Refer to{' '}
+            <TextLink
+              href="https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/configure/azure-authentication/"
+              external
+            >
+              Connect to Azure Monitor Managed Service for Prometheus
+            </TextLink>{' '}
+            for more information.
+          </Trans>
+        </Alert>
+      )}
       <Auth
         {...newAuthProps}
         customMethods={customMethods}
