@@ -1,4 +1,10 @@
 {
+  "components": {
+    "logs-query-builder": {
+      "prometheus-migration-occurred": "This data source has been migrated from Prometheus to Azure Monitor Managed Service for Prometheus. Refer to <2>Connect to Azure Monitor Managed Service for Prometheus</2> for more information.",
+      "title-prometheus-migration-occurred": "Data source migrated"
+    }
+  },
   "configuration": {
     "app-registration-credentials": {
       "aria-label-azure-cloud": "Azure Cloud",
