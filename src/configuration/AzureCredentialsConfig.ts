@@ -66,6 +66,7 @@ export function resetCredentials(options: AzurePromDataSourceSettings): Partial<
 
 export interface AzurePromDataSourceOptions extends PromOptions, AzureDataSourceJsonData {
   azureEndpointResourceId?: string;
+  'prometheus-type-migration'?: boolean;
 }
 
 export type AzurePromDataSourceSettings = DataSourceSettings<AzurePromDataSourceOptions, AzureDataSourceSecureJsonData>;
