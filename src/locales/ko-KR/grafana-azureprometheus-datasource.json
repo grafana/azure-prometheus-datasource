@@ -1,4 +1,10 @@
 {
+  "components": {
+    "logs-query-builder": {
+      "prometheus-migration-occurred": "",
+      "title-prometheus-migration-occurred": ""
+    }
+  },
   "configuration": {
     "app-registration-credentials": {
       "aria-label-azure-cloud": "Azure 클라우드",
