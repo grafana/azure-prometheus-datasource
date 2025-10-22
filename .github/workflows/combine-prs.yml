@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: combine-prs
         id: combine-prs
-        uses: github/combine-prs@2909f404763c3177a456e052bdb7f2e85d3a7cb3
+        uses: github/combine-prs@65dd00210b5d0e84ee68f4fe4bf33cca37c56055
         with:
           labels: combined-pr
           pr_title: "Dependabot updates"
