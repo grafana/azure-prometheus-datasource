@@ -24,4 +24,4 @@ azure_auth_enabled = true
 If you are using Azure authentication settings do not enable `Forward OAuth identity`. Both use the same HTTP authorization headers. Azure settings will get overwritten by the OAuth token.
 {{% /admonition %}}
 
-Read more about connecting to Prometheus using Azure authenitication here: [Connect to Azure Monitor Managed Service for Prometheus](https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/azure-authentication/).
+Read more about connecting to Prometheus using Azure authentication here: [Connect to Azure Monitor Managed Service for Prometheus](https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/azure-authentication/).
