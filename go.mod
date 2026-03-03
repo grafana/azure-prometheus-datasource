@@ -1,6 +1,6 @@
 module github.com/grafana/azure-prometheus-datasource
 
-go 1.24.6
+go 1.26.0
 
 require (
 	github.com/grafana/grafana-plugin-sdk-go v0.281.0
