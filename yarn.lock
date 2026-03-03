@@ -2175,6 +2175,11 @@
   resolved "https://registry.yarnpkg.com/@openfeature/react-sdk/-/react-sdk-1.2.1.tgz#76691248eaee4e8660282852571591e47e5c1313"
   integrity sha512-W4vRe76HVB/PkCJQGycllIcHCT4q3C++8wFXxL3XZC3VWm7NEnFAzmboXfsMg/6N9KNWh0KRJYQAj0XTWAiyww==
 
+"@openfeature/web-sdk@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@openfeature/web-sdk/-/web-sdk-1.7.3.tgz#e7e4b5735621cb1441ab18c00b6d506f749cc399"
+  integrity sha512-WrerPh3KwtpyNGHtWfWgbBnIv3iyOimnsljXJnx2UMcFzQNmj3xgsUZRvE/gAb+BTgz22+kvks1EXA/DJRmhpg==
+
 "@opentelemetry/api-logs@0.201.1":
   version "0.201.1"
   resolved "https://registry.yarnpkg.com/@opentelemetry/api-logs/-/api-logs-0.201.1.tgz#deb39d5c7e6bf08b1e8ede3d9be14629c9cc6314"
