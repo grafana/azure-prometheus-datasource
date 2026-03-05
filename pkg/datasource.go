@@ -12,7 +12,7 @@ import (
 	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
 
 	"github.com/grafana/azure-prometheus-datasource/pkg/azureauth"
-	"github.com/grafana/grafana/pkg/promlib"
+	"github.com/grafana/grafana-prometheus-datasource/pkg/promlib"
 )
 
 func NewDatasource(ctx context.Context, dsInstanceSettings backend.DataSourceInstanceSettings) (instancemgmt.Instance, error) {
