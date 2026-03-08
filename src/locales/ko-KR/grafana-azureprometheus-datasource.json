@@ -1,8 +1,8 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "이 데이터 소스는 Prometheus에서 Prometheus용 Azure Monitor 관리 서비스로 마이그레이션되었습니다. 자세한 내용은 <2>Prometheus용 Azure Monitor 관리 서비스에 연결</2>을 참고하세요.",
+      "title-prometheus-migration-occurred": "데이터 소스 마이그레이션됨"
     }
   },
   "configuration": {

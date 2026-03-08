@@ -1,8 +1,8 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "Esta origem de dados foi migrada do Prometheus para o serviço gerido do Azure Monitor para Prometheus. Consulte <2>Ligar ao serviço gerido do Azure Monitor para Prometheus</2> para obter mais informações.",
+      "title-prometheus-migration-occurred": "Origem de dados migrada"
     }
   },
   "configuration": {

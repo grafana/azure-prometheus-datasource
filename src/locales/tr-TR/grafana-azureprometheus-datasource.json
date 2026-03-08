@@ -1,8 +1,8 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "Bu veri kaynağı Prometheus'tan Prometheus için Azure İzleyici Yönetilen Hizmeti'ne taşınmıştır. Daha fazla bilgi için <2>Prometheus için Azure İzleyici Yönetilen Hizmeti</2> bölümüne bakın.",
+      "title-prometheus-migration-occurred": "Veri kaynağı taşındı"
     }
   },
   "configuration": {

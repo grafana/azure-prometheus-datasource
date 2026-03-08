@@ -1,8 +1,8 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "Ezt az adatforrást a Prometheusból az Azure Monitor Managed Service for Prometheus szolgáltatásba helyezték át. További információk: <2>Kapcsolódás az Azure Monitor Managed Service for Prometheus szolgáltatáshoz</2>.",
+      "title-prometheus-migration-occurred": "Adatforrás áthelyezve"
     }
   },
   "configuration": {
