@@ -111,7 +111,7 @@
   },
   "resolutions": {
     "string-width": "4.2.3",
-    "wrap-ansi": "7.0.0"
+    "wrap-ansi": "10.0.0"
   },
   "engines": {
     "node": ">=20"
