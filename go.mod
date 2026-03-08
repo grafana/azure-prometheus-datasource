@@ -45,6 +45,7 @@ require (
 	golang.org/x/telemetry v0.0.0-20260209163413-e7419c687ee4 // indirect
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v6 v6.3.2 // indirect
+	software.sslmate.com/src/go-pkcs12 v0.7.0 // indirect
 )
 
 require (
@@ -74,7 +75,7 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/grafana/dskit v0.0.0-20260108123158-1a1acfb6ef2e // indirect
-	github.com/grafana/grafana-azure-sdk-go/v2 v2.2.0
+	github.com/grafana/grafana-azure-sdk-go/v2 v2.4.0
 	github.com/grafana/otel-profiling-go v0.5.1 // indirect
 	github.com/grafana/pyroscope-go/godeltaprof v0.1.9 // indirect
 	github.com/grafana/regexp v0.0.0-20240518133315-a468a5bfb3bc // indirect
