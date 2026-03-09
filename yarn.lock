@@ -1230,14 +1230,14 @@
   dependencies:
     react-dom "18.3.1"
 
-"@grafana/data@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/data/-/data-12.4.0.tgz#c43a63c7f5f3832a7830c42f2bbc89ab6c07990a"
-  integrity sha512-clIlKlEHq3Ieho4ji5Yb4a5XMPheUzTNuNBwNHoHvtulzXQOtYmmKxjJ1sOwJWsMuqNwV+YdEhQqWKWsWaRd0g==
+"@grafana/data@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/data/-/data-12.4.1.tgz#bd5b082e330c2b2f8729d2356ebbf2311e31b0a9"
+  integrity sha512-nhQ4zu70PosQrkZzRtFp8EL9NR+S/T9dF/rqiBHtf/GbGgHIhqEDpW/BtytwfAtpClxS2CXd6dkHFyzClji+tw==
   dependencies:
     "@braintree/sanitize-url" "7.0.1"
-    "@grafana/i18n" "12.4.0"
-    "@grafana/schema" "12.4.0"
+    "@grafana/i18n" "12.4.1"
+    "@grafana/schema" "12.4.1"
     "@leeoniya/ufuzzy" "1.0.19"
     "@types/d3-interpolate" "^3.0.0"
     "@types/string-hash" "1.1.3"
@@ -1265,10 +1265,10 @@
     xss "^1.0.14"
     zod "^4.3.0"
 
-"@grafana/e2e-selectors@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/e2e-selectors/-/e2e-selectors-12.4.0.tgz#99e10c5274269cdf74004af0a8d6c80eeb07112d"
-  integrity sha512-GPFmqIJJD8yom7ld4NxAFW2kFTqiOta/8KlsqDoasiNIWjwPp2fn3ILTuZ97a+W0D7Z1LJ9QKznFXOAhKpFRJQ==
+"@grafana/e2e-selectors@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/e2e-selectors/-/e2e-selectors-12.4.1.tgz#63b1a6946261093aa6511f7337d775577956ce87"
+  integrity sha512-Joyr95YS/8H0IRfBJcyZl/nj4Ku0hBkxJzFXICwOpNv+T/5zdXw4v3n7rhsz3MVjzdwV02lAGazaIaNLX+6CUw==
   dependencies:
     semver "^7.7.0"
     tslib "2.8.1"
@@ -1305,10 +1305,10 @@
     ua-parser-js "^1.0.32"
     web-vitals "^4.0.1"
 
-"@grafana/i18n@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/i18n/-/i18n-12.4.0.tgz#d376a2f3eeb15fbe023160a88b25e673d6f2856b"
-  integrity sha512-q+FqI+KjF2/jzzTv5gwDaJMmNmONjjT2SsX+SNOJby0b3Lx10B/6TSyPTEsOeeAEr59ClpQmNmSo4e1C2/v5MA==
+"@grafana/i18n@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/i18n/-/i18n-12.4.1.tgz#8cacb543934a5bb678a3397528d72cdee1e537fe"
+  integrity sha512-29PjuN2COtSDDN1TPmSCVMDEKwUANvqs2DAxXPk/sayjxCVdLG09M1/9LP+Y6EhfwmKo0Gv910+lBJLn8G4KkA==
   dependencies:
     "@formatjs/intl-durationformat" "^0.7.0"
     "@typescript-eslint/utils" "^8.33.1"
@@ -1366,20 +1366,20 @@
     sql-formatter-plus "^1.3.6"
     uuid "^11.0.0"
 
-"@grafana/prometheus@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/prometheus/-/prometheus-12.4.0.tgz#92bb5d399aa59e7b77e94fe1f04ab23ccf1a9435"
-  integrity sha512-dPaK8a7albL8LeCm5mNMDIbZDh/R0bW+ISvWVymuX2dgP3Y3sIpbo9feD4ljkrr9fet7mp2K4AtpNi/xBivmQQ==
+"@grafana/prometheus@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/prometheus/-/prometheus-12.4.1.tgz#3cc4a6587f95400610c168706af29fb853f00440"
+  integrity sha512-rKrJDzQx2EzY4UcJ9flK3Drew/BlGr5Od1Uiz8szwkUk1c3fn3flxesnZjzk4G6m6iP097CmRv/jKOn4iACe+Q==
   dependencies:
     "@emotion/css" "11.13.5"
     "@floating-ui/react" "0.27.16"
-    "@grafana/data" "12.4.0"
-    "@grafana/e2e-selectors" "12.4.0"
-    "@grafana/i18n" "12.4.0"
+    "@grafana/data" "12.4.1"
+    "@grafana/e2e-selectors" "12.4.1"
+    "@grafana/i18n" "12.4.1"
     "@grafana/plugin-ui" "^0.12.1"
-    "@grafana/runtime" "12.4.0"
-    "@grafana/schema" "12.4.0"
-    "@grafana/ui" "12.4.0"
+    "@grafana/runtime" "12.4.1"
+    "@grafana/schema" "12.4.1"
+    "@grafana/ui" "12.4.1"
     "@hello-pangea/dnd" "18.0.1"
     "@leeoniya/ufuzzy" "1.0.19"
     "@lezer/common" "1.3.0"
@@ -1410,16 +1410,16 @@
     semver "7.7.3"
     uuid "11.1.0"
 
-"@grafana/runtime@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/runtime/-/runtime-12.4.0.tgz#7c33246c679eb83b165284a55d7d9414e77c0bdf"
-  integrity sha512-e03r1dsy671sEe+bEbMyBQFx0ijBJZIIyZPTEVeEJ+1XeAAkPafov0uV+w3nr+11/WqMU40ZQgjNxvgnNUGkBw==
+"@grafana/runtime@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/runtime/-/runtime-12.4.1.tgz#143f3e07c00e99435620ebbabcebb7e1d13fd43b"
+  integrity sha512-ONBoAtvocr+hujylo4CV7lNXxhitWmVrsFjWSaPc7NN/Y7vXPmFuIJQ2E9MZM3Y26Na8jpkfqI09juJXwQ7K7g==
   dependencies:
-    "@grafana/data" "12.4.0"
-    "@grafana/e2e-selectors" "12.4.0"
+    "@grafana/data" "12.4.1"
+    "@grafana/e2e-selectors" "12.4.1"
     "@grafana/faro-web-sdk" "^1.13.2"
-    "@grafana/schema" "12.4.0"
-    "@grafana/ui" "12.4.0"
+    "@grafana/schema" "12.4.1"
+    "@grafana/ui" "12.4.1"
     "@openfeature/core" "^1.9.0"
     "@openfeature/ofrep-web-provider" "^0.3.3"
     "@openfeature/react-sdk" "^1.2.0"
@@ -1431,10 +1431,10 @@
     rxjs "7.8.2"
     tslib "2.8.1"
 
-"@grafana/schema@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/schema/-/schema-12.4.0.tgz#736603b077760b63c10191c7d9a43ef38c036093"
-  integrity sha512-UEcsY6anwBuBdDt7C9Ke00p374iiBtPYiw+m+QnnXESCPW9x+nPZCF5utDs6irao6moIJmFU2Mm7F6I81BmKlA==
+"@grafana/schema@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/schema/-/schema-12.4.1.tgz#e812930396863dc3e2c5adb09a8f4ec30e681c50"
+  integrity sha512-f/m7hEVK+sy37VG2AgXxOA3tRYjWpyYCuw4SYZO+1/YMYI0RBaHTmY3ebjZXAxnoqshbNh4wlEnFjwv3B7TBfA==
   dependencies:
     tslib "2.8.1"
 
@@ -1443,20 +1443,20 @@
   resolved "https://registry.yarnpkg.com/@grafana/tsconfig/-/tsconfig-2.0.0.tgz#277aba907ddbe0301dc37248923e6bd2b68f5151"
   integrity sha512-cxC3Htv/GidI5FeVGAzj/lYZTMMz/Cfsc8VOQFO3Ichjx3hUjyjeoBUIpVSVMnIjKUdA5ycdxtMYPHIuIrk8+A==
 
-"@grafana/ui@12.4.0":
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/@grafana/ui/-/ui-12.4.0.tgz#15e7b25269801a70717062a82bea5e3d50a435b9"
-  integrity sha512-ikB/qMmwd2OWsPA3i1tjuvMb+ZWw/FEwi6PgWTiUaATnNA5hqkBXPowjvw4VTsX9h5vq2TILxrQnHjv9kiBn7A==
+"@grafana/ui@12.4.1":
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/@grafana/ui/-/ui-12.4.1.tgz#e0747b37be29dc27c601eb9b244e2e056edd6807"
+  integrity sha512-/cV1vrL5uho0wFpIb9hXfIfCVHgT3N0tZ+2Z2YEwcW/XPRBaGeQSGPMk4KW2X4+KXMZqHhvXtUtxNPaqk6J0qA==
   dependencies:
     "@emotion/css" "11.13.5"
     "@emotion/react" "11.14.0"
     "@emotion/serialize" "1.3.3"
     "@floating-ui/react" "0.27.16"
-    "@grafana/data" "12.4.0"
-    "@grafana/e2e-selectors" "12.4.0"
+    "@grafana/data" "12.4.1"
+    "@grafana/e2e-selectors" "12.4.1"
     "@grafana/faro-web-sdk" "^1.13.2"
-    "@grafana/i18n" "12.4.0"
-    "@grafana/schema" "12.4.0"
+    "@grafana/i18n" "12.4.1"
+    "@grafana/schema" "12.4.1"
     "@hello-pangea/dnd" "18.0.1"
     "@monaco-editor/react" "4.7.0"
     "@popperjs/core" "2.11.8"
@@ -1494,7 +1494,7 @@
     react-calendar "^6.0.0"
     react-colorful "5.6.1"
     react-custom-scrollbars-2 "4.5.0"
-    react-data-grid grafana/react-data-grid#a922856b5ede21d55db3fdffb6d38dc76bdc7c58
+    react-data-grid "github:grafana/react-data-grid#a10c748f40edc538425b458af4e471a8262ec4ed"
     react-dropzone "14.3.8"
     react-highlight-words "0.21.0"
     react-hook-form "^7.49.2"
@@ -8544,9 +8544,10 @@ react-custom-scrollbars-2@4.5.0:
     prop-types "^15.5.10"
     raf "^3.1.0"
 
-react-data-grid@grafana/react-data-grid#a922856b5ede21d55db3fdffb6d38dc76bdc7c58:
+"react-data-grid@github:grafana/react-data-grid#a10c748f40edc538425b458af4e471a8262ec4ed":
   version "7.0.0-beta.56"
-  resolved "https://codeload.github.com/grafana/react-data-grid/tar.gz/a922856b5ede21d55db3fdffb6d38dc76bdc7c58"
+  uid a10c748f40edc538425b458af4e471a8262ec4ed
+  resolved "https://codeload.github.com/grafana/react-data-grid/tar.gz/a10c748f40edc538425b458af4e471a8262ec4ed"
   dependencies:
     clsx "^2.0.0"
 
