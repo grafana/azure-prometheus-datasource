@@ -12,7 +12,14 @@ const { includeIgnoreFile } = require('@eslint/compat');
  */
 module.exports = [
   includeIgnoreFile(path.resolve(__dirname, '.gitignore')),
-  grafanaConfig,
+  ...grafanaConfig,
+  {
+    settings: {
+      react: {
+        version: '18.3',
+      },
+    },
+  },
   {
     plugins: {
       'import': importPlugin,
