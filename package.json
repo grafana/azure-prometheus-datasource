@@ -7,12 +7,12 @@
     "dev": "webpack -w -c ./.config/webpack/webpack.config.ts --env development",
     "test": "jest --watch --onlyChanged",
     "e2e": "playwright test",
-    "e2e:ui": "yarn playwright test --ui",
+    "e2e:ui": "npx playwright test --ui",
     "i18n-extract": "i18next --config src/locales/i18next-parser.config.cjs",
     "test:ci": "jest --passWithNoTests --maxWorkers 4",
     "typecheck": "tsc --noEmit",
     "lint": "eslint --cache .",
-    "lint:fix": "yarn run lint --fix && prettier --write --list-different .",
+    "lint:fix": "npm run lint -- --fix && prettier --write --list-different .",
     "server:configured": "GRAFANA_VERSION=11.5.0 GRAFANA_IMAGE=grafana-enterprise docker compose up -d",
     "sign": "npx --yes @grafana/sign-plugin@latest",
     "spellcheck": "cspell -c cspell.config.json \"**/*.{ts,tsx,js,go,md,mdx,yml,yaml,json,scss,css}\"",
@@ -22,6 +22,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.1",
+    "ajv": "^8.17.1",
     "@babel/core": "7.27.1",
     "@emotion/eslint-plugin": "11.12.0",
     "@eslint/compat": "2.0.2",
@@ -109,11 +110,11 @@
     "tslib": "2.8.1",
     "webpack-merge": "^6.0.1"
   },
-  "resolutions": {
+  "overrides": {
     "string-width": "4.2.3",
     "wrap-ansi": "7.0.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }
