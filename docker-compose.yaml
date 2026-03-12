@@ -4,16 +4,13 @@ services:
   prometheus:
     image: prom/prometheus:v3.10.0@sha256:4a61322ac1103a0e3aea2a61ef1718422a48fa046441f299d71e660a3bc71ae9
     ports:
-      - "9090:9090"
+      - '9090:9090'
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     command: >
-      --config.file=/etc/prometheus/prometheus.yml
-      --storage.tsdb.path=/prometheus
+      --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus
 
   grafana:
-    user: root
-    container_name: 'grafana-azureprometheus-datasource'
     platform: linux/amd64
 
     depends_on:
@@ -21,19 +18,11 @@ services:
         condition: service_started
 
     build:
-      context: ./.config
       args:
-        grafana_image: ${GRAFANA_IMAGE:-grafana-enterprise}
         grafana_version: ${GRAFANA_VERSION:-11.5.1}
-    ports:
-      - 3000:3000/tcp
-      - 2345:2345/tcp # delve
-    security_opt:
-      - 'apparmor:unconfined'
-      - 'seccomp:unconfined'
-    cap_add:
-      - SYS_PTRACE
     volumes:
       - ./dist:/var/lib/grafana/plugins/azure-prometheus-datasource
-      - ./provisioning:/etc/grafana/provisioning
       - .:/root/azure-prometheus-datasource
+    extends:
+      file: .config/docker-compose-base.yaml
+      service: grafana
