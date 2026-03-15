@@ -1,8 +1,8 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "To źródło danych zostało przeniesione z rozwiązania Prometheus do Azure Monitor Managed Service dla tego rozwiązania. Więcej informacji można znaleźć w sekcji <2>Połącz z usługą Azure Monitor Managed Service dla rozwiązania Prometheus</2>.",
+      "title-prometheus-migration-occurred": "Przeniesiono źródło danych"
     }
   },
   "configuration": {
