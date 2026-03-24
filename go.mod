@@ -3,7 +3,7 @@ module github.com/grafana/azure-prometheus-datasource
 go 1.26.0
 
 require (
-	github.com/grafana/grafana-plugin-sdk-go v0.290.0
+	github.com/grafana/grafana-plugin-sdk-go v0.290.1
 	github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.10
 	github.com/stretchr/testify v1.11.1
 )
