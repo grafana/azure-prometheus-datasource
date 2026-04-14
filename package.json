@@ -30,7 +30,7 @@
     "@grafana/plugin-e2e": "^3.4.1",
     "@grafana/tsconfig": "^2.0.0",
     "@lezer/highlight": "^1.2.1",
-    "@playwright/test": "1.58.2",
+    "@playwright/test": "1.59.1",
     "@stylistic/eslint-plugin-ts": "4.4.1",
     "@swc/core": "1.15.21",
     "@swc/helpers": "0.5.20",
