@@ -1,20 +1,20 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "Sumber data ini telah dimigrasikan dari Prometheus ke Layanan Terkelola Azure Monitor untuk Prometheus. Lihat <2>Menghubungkan ke Layanan Terkelola Azure Monitor untuk Prometheus</2> untuk informasi selengkapnya.",
+      "title-prometheus-migration-occurred": "Sumber data sudah dimigrasikan"
     }
   },
   "configuration": {
     "app-registration-credentials": {
       "aria-label-azure-cloud": "Azure Cloud",
       "aria-label-client-id": "ID Klien",
-      "aria-label-client-secret": "Data Sensitif Klien",
+      "aria-label-client-secret": "Client Secret",
       "aria-label-tenant-id": "ID Tenant",
-      "client-secret-aria-label-client-secret": "Data Sensitif Klien",
-      "label-application-client-id": "ID Aplikasi (klien)",
+      "client-secret-aria-label-client-secret": "Client Secret",
+      "label-application-client-id": "ID Aplikasi (client)",
       "label-azure-cloud": "Azure Cloud",
-      "label-client-secret": "Data Sensitif Klien",
+      "label-client-secret": "Client Secret",
       "label-directory-tenant-id": "ID Direktori (tenant)",
       "placeholder-configured": "dikonfigurasi",
       "reset": "Reset"
@@ -23,7 +23,7 @@
       "azure-authentication": "Autentikasi Azure"
     },
     "azure-credentials-form": {
-      "application-client-id": "ID Aplikasi (klien)",
+      "application-client-id": "ID Aplikasi (client)",
       "auth-type-options": {
         "label": {
           "current-user": "Pengguna Saat Ini",
@@ -39,7 +39,7 @@
       "authentication": "Autentikasi",
       "azure-client-secret-placeholder-configured": "dikonfigurasi",
       "azure-cloud": "Azure Cloud",
-      "client-secret": "Data Sensitif Klien",
+      "client-secret": "Client Secret",
       "directory-tenant-id": "ID Direktori (tenant)",
       "reset": "reset",
       "tooltip-choose-an-azure-cloud": "Pilih Azure Cloud",

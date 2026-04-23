@@ -1,8 +1,8 @@
 {
   "components": {
     "logs-query-builder": {
-      "prometheus-migration-occurred": "",
-      "title-prometheus-migration-occurred": ""
+      "prometheus-migration-occurred": "此数据源已从 Prometheus 迁移到 Azure Monitor Managed Service for Prometheus。有关更多信息，请参阅<2>连接到 Azure Monitor Managed Service for Prometheus</2>。",
+      "title-prometheus-migration-occurred": "数据源已迁移"
     }
   },
   "configuration": {
