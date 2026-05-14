@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Actions
-        uses: actions/checkout@v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:
           repository: 'grafana/grafana-github-actions'
           path: ./actions
@@ -21,7 +21,7 @@ jobs:
         run: npm install --production --prefix ./actions
       - name: Get secrets from vault
         id: get-secrets
-        uses: grafana/shared-workflows/actions/get-vault-secrets@main
+        uses: grafana/shared-workflows/actions/get-vault-secrets@3adde9659883b3cd0c65d6acaa356b78a5f8f7f4 # main
         with:
           repo_secrets: |
             AWS_DS_TOKEN_CREATOR_ID=aws-ds-token-creator:app_id

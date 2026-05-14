@@ -8,11 +8,11 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:
           persist-credentials: false
       - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '24'
           cache: 'npm'
@@ -28,7 +28,7 @@ jobs:
 
           echo "modulets=${MODULETS}" >> $GITHUB_OUTPUT
       - name: Compatibility check
-        uses: grafana/plugin-actions/is-compatible@main
+        uses: grafana/plugin-actions/is-compatible@d03819869ff83790bb6549d1b917cff7bb7278ae # main
         with:
           module: ${{ steps.find-module-ts.outputs.modulets }}
           comment-pr: no
