@@ -5,7 +5,7 @@ jobs:
     permissions:
       pull-requests: write
       contents: write
-    uses: grafana/security-github-actions/.github/workflows/dependabot-automerge.yaml@73f4e8cf63fe15bc68de25bd769c4874b82a8d4d # main
+    uses: grafana/security-github-actions/.github/workflows/dependabot-automerge.yaml@796b732982506cdbe7c80de335bde851c42fbf55 # main
     with:
       packages-minor-autoupdate: '["@emotion/css","@grafana/grafana-azure-sdk-react", "grafana/grafana-azure-sdk-go", "@grafana/data","@grafana/plugin-ui","@grafana/prometheus","@grafana/runtime","@grafana/schema","@grafana/ui","lodash","semver","tslib","github.com/grafana/grafana-azure-sdk-go", "github.com/grafana/grafana-azure-sdk-react", "github.com/grafana/grafana-plugin-sdk-go","github.com/grafana/grafana-prometheus-datasource/pkg/promlib","github.com/stretchr/testify"]'
       repository-merge-method: 'squash'
