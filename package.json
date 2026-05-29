@@ -14,7 +14,7 @@
     "lint": "eslint --cache .",
     "lint:fix": "npm run lint -- --fix && prettier --write --list-different .",
     "server:configured": "GRAFANA_VERSION=11.5.0 GRAFANA_IMAGE=grafana-enterprise docker compose up -d",
-    "sign": "npx --yes @grafana/sign-plugin@latest",
+    "sign": "sign-plugin",
     "spellcheck": "cspell -c cspell.config.json \"**/*.{ts,tsx,js,go,md,mdx,yml,yaml,json,scss,css}\"",
     "server": "docker compose up --build"
   },
@@ -26,6 +26,7 @@
     "@grafana/e2e-selectors": "12.4.2",
     "@grafana/eslint-config": "9.0.0",
     "@grafana/plugin-e2e": "3.4.1",
+    "@grafana/sign-plugin": "^3.2.2",
     "@grafana/tsconfig": "2.0.0",
     "@playwright/test": "1.59.1",
     "@stylistic/eslint-plugin-ts": "4.4.1",
