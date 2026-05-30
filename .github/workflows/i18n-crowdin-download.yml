@@ -23,7 +23,7 @@ jobs:
           github_app: grafana-pr-automation
       - name: 'Get vault secrets'
         id: vault-secrets
-        uses: grafana/shared-workflows/actions/get-vault-secrets@638f24848a49edb0bd14f771b6dd37b4455f1591 # main
+        uses: grafana/shared-workflows/actions/get-vault-secrets@9387d4eb456a593ae9147c7de344f65e8f47aedc # main
         with:
             # Vault secret paths:
             # - ci/repo/grafana/azure-prometheus-datasource/grafana-frontend-crowdin-token
