@@ -49,7 +49,7 @@ require (
 	golang.org/x/crypto v0.51.0 // indirect
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v6 v6.3.2 // indirect
-	software.sslmate.com/src/go-pkcs12 v0.7.0 // indirect
+	software.sslmate.com/src/go-pkcs12 v0.7.2 // indirect
 )
 
 require (
