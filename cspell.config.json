@@ -24,7 +24,8 @@
     "src/dashboards/**",
     "src/**/*.test.tsx",
     "yarn.lock",
-    "src/locales/**"
+    "src/locales/**",
+    "jest.config.js"
   ],
   "ignoreRegExpList": ["import\\s*\\((.|[\r\n])*?\\)", "import\\s*.*\".*?\""],
   "words": [
