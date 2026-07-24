@@ -77,7 +77,8 @@
     "webpack-cli": "7.0.2",
     "webpack-livereload-plugin": "3.0.2",
     "webpack-subresource-integrity": "5.1.0",
-    "webpack-virtual-modules": "0.6.2"
+    "webpack-virtual-modules": "0.6.2",
+    "@testing-library/dom": "10.4.0"
   },
   "dependencies": {
     "@emotion/css": "11.13.5",
@@ -102,7 +103,7 @@
     "wrap-ansi": "7.0.0",
     "dompurify": "3.4.9",
     "immutable@5": "5.1.5",
-    "js-cookie": "3.0.7",
+    "js-cookie": "3.0.8",
     "uuid": "11.1.1"
   },
   "engines": {
