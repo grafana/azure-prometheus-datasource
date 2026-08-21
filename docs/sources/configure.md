@@ -106,7 +106,7 @@ azure_auth_enabled = true
 If you've customized `forward_settings_to_plugins` under `[azure]`, include `grafana-azureprometheus-datasource`. Grafana includes this plugin ID by default. A missing entry causes `401 Unauthorized` errors even when the data source credentials look correct.
 
 {{< admonition type="note" >}}
-If you use Azure authentication, don't enable **Forward OAuth identity**. Both methods use the same HTTP authorization headers, and the OAuth token overwrites your Azure credentials.
+If you use Azure authentication, don't enable **Forward OAuth identity**. Both methods use the same HTTP authorization headers, and the OAuth token overwrites your Azure credentials. The data source UI restricts authentication to Azure methods, but you can still enable **Forward OAuth identity** through provisioning or the API by setting `oauthPassThru` in `jsonData`, so make sure it's disabled there too.
 {{< /admonition >}}
 
 {{< admonition type="note" >}}

@@ -127,7 +127,7 @@ For environments without internet access:
 1. Extract the ZIP to the plugins directory:
 
    ```bash
-   unzip grafana-azureprometheus-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
+   unzip grafana-azureprometheus-datasource-<VERSION>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 
 1. Confirm the extracted folder is named `grafana-azureprometheus-datasource` and includes `MANIFEST.txt`. Official downloads from the [Grafana website](https://grafana.com/) are signed.
@@ -174,14 +174,14 @@ To upgrade a self-managed installation:
 To install a specific version:
 
 ```bash
-grafana cli plugins install grafana-azureprometheus-datasource <version>
+grafana cli plugins install grafana-azureprometheus-datasource <VERSION>
 ```
 
 For Docker or Kubernetes, append the version to the plugin name:
 
 ```yaml
 environment:
-  - GF_INSTALL_PLUGINS=grafana-azureprometheus-datasource <version>
+  - GF_INSTALL_PLUGINS=grafana-azureprometheus-datasource <VERSION>
 ```
 
 ### Roll back to a previous version
