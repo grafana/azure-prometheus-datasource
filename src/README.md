@@ -1,6 +1,6 @@
 ## Compatibility
 
-Azure Monitor Managed Service for Prometheus requires Grafana `>=11.6.11 <12`, `>=12.0.10 <12.1`, `>=12.1.7 <12.2`, or `>=12.2.5`. If you run Grafana 11.4.x or earlier, use the core Prometheus data source instead.
+Azure Monitor Managed Service for Prometheus requires Grafana `>=11.6.11 <12`, `>=12.0.10 <12.1`, `>=12.1.7 <12.2`, or `>=12.2.5`. If your Grafana version isn't in this list, use the core Prometheus data source instead.
 
 # Azure Monitor Managed Service for Prometheus Data Source
 
