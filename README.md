@@ -4,7 +4,9 @@ This data source plugin is for the Azure Monitor Managed Service for Prometheus.
 
 Azure Monitor Managed Service for Prometheus is a Prometheus-compatible service that monitors and provides alerts on containerized applications and infrastructure at scale.
 
-Read more about it here: [Azure Monitor and Prometheus](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview)
+Access data source plugin documentation [here](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/).
+
+Read more about the Azure service: [Azure Monitor managed service for Prometheus](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview)
 
 ## Getting started
 
@@ -28,6 +30,7 @@ Read more about it here: [Azure Monitor and Prometheus](https://learn.microsoft.
    ```bash
    mage -l
    ```
+
 ### Frontend
 
 1. Install dependencies
@@ -67,7 +70,7 @@ Read more about it here: [Azure Monitor and Prometheus](https://learn.microsoft.
 6. Run the E2E tests (using Playwright and @grafana/plugin-e2e)
 
    ```bash
-   # Spins up a Grafana docker instance (v11.0.0) (port 3000) with an actual Prometheus instance (port 9090)
+   # Spins up a Grafana docker instance (v11.5.0) (port 3000) with an actual Prometheus instance (port 9090)
    yarn run server:configured
 
    # Starts the e2e tests
