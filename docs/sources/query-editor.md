@@ -23,7 +23,9 @@ review_date: 2026-08-20
 
 # Azure Monitor Managed Service for Prometheus query editor
 
-This document explains how to use the Azure Monitor Managed Service for Prometheus query editor. The query editor is the same as the core Grafana Prometheus query editor and uses PromQL to query your Azure Monitor workspace.
+The Azure Monitor Managed Service for Prometheus query editor lets you write PromQL queries against your Azure Monitor workspace. It's the same editor as the core Grafana Prometheus data source, with a visual query builder, a code editor with autocomplete and syntax highlighting, and configurable output formats for different visualizations.
+
+You can access the query editor from the [Explore page](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/explore/) or from any dashboard panel by clicking the panel title and selecting **Edit**. For more information about PromQL, refer to [Querying Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 ## Before you begin
 
@@ -41,43 +43,55 @@ If you're new to Prometheus, these terms are used throughout this document:
 | **PromQL** | The Prometheus Query Language, used to select and aggregate time series data. |
 | **Instant query** | Returns a single value per series at the end of the time range. |
 | **Range query** | Returns a series of values over the dashboard time range. |
-| **Metrics browser** | A tool in the query editor that helps you search metrics, select labels, and build a selector. |
+| **Metrics explorer** | A Builder mode tool that lists all metrics with their type and description. |
+| **Metrics browser** | A Code mode tool that helps you search metrics, select labels, and build a selector. |
 
 ## Query editor modes
 
-The query editor has two modes that you switch between with the toggle in the upper-right of the editor.
+The query editor has two modes that you switch between with the toggle in the upper-right of the editor. Grafana synchronizes both modes, so you can switch between them, and it warns you if it detects an issue with the query during the switch.
 
 ### Builder mode
 
-Builder mode is a visual, guided way to build queries without writing PromQL by hand. Use builder mode to:
+Builder mode is a visual, guided way to build queries without writing PromQL by hand. It's best if you have limited experience with PromQL.
 
-- Select a metric from the **Metric** drop-down or open the metrics browser.
-- Add label filters to narrow the result set.
-- Add operations such as `rate`, `sum`, or `histogram_quantile`.
+Builder mode includes the following components:
 
-Click **Explain** to display a step-by-step, plain-language description of what the query does.
+- **Kick start your query:** Choose from predefined operation patterns, grouped into rate, histogram, and binary query starters. Grafana inserts the pattern so you can adapt it to your metrics.
+- **Explain:** Toggle on to display a step-by-step, plain-language description of every query component and operation.
+- **Metric:** Select a metric from the drop-down, which is populated from the selected time range. Type to search and filter, or click the book icon to open the **Metrics explorer**.
+- **Label filters:** Use the `+` and `x` buttons to add and remove label filters that narrow the result set.
+- **+ Operations:** Add operations such as `rate`, `sum`, or `histogram_quantile`. The editor groups operations into aggregations, range functions, functions, binary operations, trigonometric functions, and time functions.
 
 ### Code mode
 
 Code mode lets you write raw PromQL with autocomplete, syntax highlighting, and the metrics browser. Use code mode for complex queries or when you already know PromQL.
 
-To open the metrics browser in code mode, focus the query field and click **Metrics browser**. From there you can search metrics, select labels and label values, validate a selector, and insert it into your query.
+To open the **Metrics browser**, click the arrow next to **Metrics browser** in the query field. From there you can:
 
-## Kickstart your query
-
-Click **Kickstart your query** to choose from a list of query patterns, such as rate or histogram patterns. Grafana inserts the pattern into the editor so you can adapt it to your metrics.
+1. Select a metric to narrow the available labels.
+1. Select one or more labels.
+1. Select values for each label to tighten the query scope.
+1. Choose an action:
+   - **Use query:** Insert the selector into the editor.
+   - **Use as rate query:** Insert the selector wrapped in `rate(...[$__rate_interval])`.
+   - **Validate selector:** Verify the selector and show the number of matching series.
+   - **Clear:** Reset your selections.
 
 ## Query options
 
-Expand **Options** in the query editor to configure how Grafana runs and displays the query.
+Expand **Options** in the query editor to configure how Grafana runs and displays the query. These options are available in both modes.
 
 | Option | Description |
 |--------|-------------|
-| **Legend** | Controls the time series name in the legend. Use **Auto**, **Verbose**, or a **Custom** template such as `{{label_name}}`. |
-| **Format** | Sets the result format: **Time series**, **Table**, or **Heatmap**. |
-| **Type** | Sets the query type: **Range**, **Instant**, or **Both**. |
+| **Legend** | Controls the time series name in the legend. Use **Auto** to show only labels unique to each series, **Verbose** to show all labels, or **Custom** to define a template such as `{{label_name}}`. |
+| **Format** | Sets the result format: **Time series** (default), **Table**, or **Heatmap**. |
+| **Type** | Sets the query type: **Both** (default), **Range**, or **Instant**. |
 | **Min step** | The lower bound for the query step and `$__interval`. Match this to your scrape interval. |
 | **Exemplars** | Toggles whether to show exemplars alongside the query results. |
+
+{{< admonition type="note" >}}
+Exemplars aren't available with the **Instant** query type.
+{{< /admonition >}}
 
 ## Macros
 
@@ -142,6 +156,8 @@ sum(rate(http_requests_total[$__rate_interval]))
 * 100
 ```
 
+For this query, set **Legend** to a custom value such as `Error rate %` and **Type** to **Range**.
+
 ### Latency percentiles
 
 Use `histogram_quantile` with a `_bucket` metric to chart latency percentiles.
@@ -151,6 +167,8 @@ Calculate the 95th percentile request latency:
 ```promql
 histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[$__rate_interval])))
 ```
+
+In Builder mode, select `http_request_duration_seconds_bucket`, add **Range functions > Rate**, add **Aggregations > Sum** with the `by` label set to `le`, then add **Functions > Histogram quantile** with the value `0.95`.
 
 ### Resource utilization
 
@@ -168,6 +186,30 @@ Show which targets are currently down:
 up == 0
 ```
 
+### Multi-query expressions
+
+Use multiple queries and a math expression to calculate derived values without a single complex PromQL statement. For example, to calculate the percentage of available memory, add two queries and one expression.
+
+Query A, total memory:
+
+```promql
+node_memory_MemTotal_bytes
+```
+
+Query B, available memory:
+
+```promql
+node_memory_MemAvailable_bytes
+```
+
+Expression C, percentage available. Click **+ Expression**, select **Math**, and enter:
+
+```text
+$B / $A * 100
+```
+
+Set queries A and B to **Type: Instant**, hide them from the visualization with the eye icon, and display only expression C.
+
 ### Use a template variable in a query
 
 Reference a [template variable](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/) to make a query interactive. For example, filter by a selected `instance` value:
@@ -175,6 +217,27 @@ Reference a [template variable](https://grafana.com/docs/plugins/grafana-azurepr
 ```promql
 rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
 ```
+
+{{< admonition type="note" >}}
+Alert queries don't support template variables such as `$instance`. Use fixed label values when you write queries intended for [alert rules](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/).
+{{< /admonition >}}
+
+## Query high-cardinality data
+
+Azure Monitor workspaces can hold metrics with many unique label combinations. High-cardinality queries over long time ranges can time out or exceed limits. To query them effectively:
+
+- **Aggregate first, then filter.** Use `sum()`, `avg()`, or `count()` to reduce the number of series before other operations. For example, `sum(rate(metric[$__rate_interval])) by (job)` is far cheaper than querying every individual series.
+- **Scope with template variables.** Select a specific `namespace`, `cluster`, or `job` rather than querying all labels at once.
+- **Increase Min step for overview panels.** For panels that show trends over days or weeks, set a higher **Min step**, such as `5m` or `15m`, to reduce the number of data points requested.
+- **Use recording rules for repeated queries.** Pre-compute expensive expressions that a panel runs on every load.
+
+## Use the query inspector
+
+The query inspector helps you debug queries that return unexpected results or no data. Click **Query inspector** below the query editor, then review:
+
+- **Query:** The exact request sent to the workspace, including the evaluated PromQL, time range, and step. Use this to confirm that template variables resolved correctly.
+- **Data:** The raw response. If it's empty, the query matched no series.
+- **Stats:** Request timing and response size.
 
 ## Use cases
 
