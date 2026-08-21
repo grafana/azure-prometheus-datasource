@@ -52,6 +52,7 @@
     "plog",
     "promlib",
     "promql",
+    "pushgateway",
     "sdkhttpclient",
     "testid",
     "topk",

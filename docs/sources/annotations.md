@@ -9,6 +9,7 @@ keywords:
   - azure
   - azure monitor
   - annotations
+  - events
   - promql
 labels:
   products:
@@ -23,66 +24,157 @@ review_date: 2026-08-20
 
 # Azure Monitor Managed Service for Prometheus annotations
 
-Annotations overlay event markers on dashboard graphs so you can correlate metrics with events such as deployments or incidents. The Azure Monitor Managed Service for Prometheus data source supports annotations driven by PromQL queries, the same as the core Grafana Prometheus data source.
+Annotations overlay event markers on dashboard graphs so you can correlate metrics with events such as deployments, alerts, or threshold crossings. The Azure Monitor Managed Service for Prometheus data source supports annotations driven by PromQL queries, the same as the core Grafana Prometheus data source.
+
+For general information about annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
 Before you add annotations, ensure you have:
 
 - [Configured the Azure Monitor Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
-- A metric in your workspace that marks the events you want to annotate, such as `ALERTS` or a custom event metric.
+- A metric in your workspace that represents the events you want to annotate, such as the built-in `ALERTS` metric or a custom event metric.
 
-## Add an annotation query
+## Create an annotation query
 
 To add an annotation query to a dashboard:
 
-1. Navigate to **Dashboard settings** > **Annotations**.
-1. Click **Add annotation query**.
-1. Enter a name for the annotation.
-1. Select the Azure Monitor Managed Service for Prometheus data source.
-1. Enter a PromQL query in the code query field. Any series the query returns becomes an annotation marker.
-1. Configure the field mappings, then click **Apply**.
+1. Navigate to the dashboard you want to update and click **Edit**.
+1. Click the **Add new element** icon and select **Annotation query**.
+1. Enter a name for the annotation query.
+1. If you don't want to use the annotation query right away, clear the **Enabled** checkbox.
+1. Select a color for the annotation event markers.
+1. Click **Open query editor** to open the **Annotation Query** dialog box.
+1. Select the Azure Monitor Managed Service for Prometheus data source from the **Data source** drop-down list.
+1. Enter a PromQL expression in the query field.
+1. Set the **Min step** to control annotation density. A larger step produces fewer annotations.
+1. Configure the field mappings to control what appears in the annotation tooltip.
+1. Optional: Click **Test annotation query** to confirm the query works.
+1. Click **Close**, then save the dashboard.
 
-## Map query results to annotation fields
+## How annotations work
 
-Use the following options to control how Grafana builds each annotation from the query results.
+Prometheus annotations work differently from table-based annotations. Instead of querying a table of events, you write a PromQL expression that returns time series data, and Grafana converts the results into annotation events using these rules:
 
-| Field | Description |
-|-------|-------------|
-| **Min step** | The lower bound for the query step, which controls how often Grafana samples the series. |
-| **Title** | A template for the annotation title. Reference labels with the `{{label_name}}` syntax. |
-| **Tags** | A template for the annotation tags, populated from series labels. |
-| **Text** | A template for the annotation description. Reference labels with the `{{label_name}}` syntax. |
-| **Series value as timestamp** | When enabled, Grafana interprets the series value as a Unix timestamp in seconds and places the annotation at that time instead of at the data point's own time. |
+- Grafana runs the PromQL query as a range query over the dashboard's time window.
+- **Every data point returned creates an annotation.** Grafana doesn't automatically filter zero values. To annotate only specific moments, your PromQL expression must filter the results, for example with a comparison operator such as `> 0` or by querying the `ALERTS` metric.
+- Grafana uses the field mapping configuration to determine the title, text, and tags for each annotation.
+- If the query returns multiple series, each series produces its own set of annotations.
+
+{{< admonition type="note" >}}
+Because every returned data point creates an annotation, a query that returns continuous data such as `node_cpu_seconds_total` produces an annotation at every step interval and floods the dashboard. Always use an expression that returns data only at the moments you want to annotate.
+{{< /admonition >}}
+
+## Field mappings
+
+After you enter a PromQL expression, use the field mapping drop-downs to control how query results appear as annotations. Select a returned field from each drop-down, or enter a fixed text value.
+
+| Field | Description | Default behavior |
+|-------|-------------|------------------|
+| **Time** | The timestamp for the annotation. | Uses the first time-type field, which is always present. |
+| **TimeEnd** | An end timestamp for range annotations, which display as a shaded region instead of a vertical line. | Not set, which produces point annotations. |
+| **Title** | Short label displayed on the annotation marker. | Not set. |
+| **Text** | The annotation description displayed when you hover over the marker. | Uses the first string-type field, or the metric or label display name if configured. |
+| **Tags** | Comma-separated tags for the annotation. Use tags to categorize and filter annotations. | Not set. |
 
 ## Annotation query examples
 
-The following examples show common annotation queries. After you enter a query, use the **Title**, **Text**, and **Tags** fields to format each marker from the series labels.
+The following examples show common annotation patterns. Replace the metric and label names with the ones in your workspace.
 
-To create an annotation each time a Prometheus alert fires, query the built-in `ALERTS` metric:
+### Alert-based annotations
+
+The most reliable way to create annotations is the built-in `ALERTS` metric, which Prometheus generates for all configured alerting rules:
 
 ```promql
 ALERTS{alertstate="firing"}
 ```
 
-Set the **Title** to `{{alertname}}` and the **Text** to `{{alertstate}}` so each marker shows the alert name and state.
+This creates an annotation at every step interval where an alert is firing. The `ALERTS` metric includes labels such as `alertname`, `alertstate` (either `firing` or `pending`), and any labels defined on the alerting rule.
 
-To mark when a monitored target goes down, query for targets that report as down:
-
-```promql
-up == 0
-```
-
-Set the **Title** to `{{job}} down` and add `{{instance}}` to the **Tags** field.
-
-To mark host reboots, query for changes in the node boot time within each step:
+To limit annotations to specific alerts or severity levels:
 
 ```promql
-changes(node_boot_time_seconds[$__interval]) > 0
+ALERTS{alertname="HighErrorRate", severity="critical"}
 ```
 
-To place annotations from a metric that stores an event time as its value, such as a deployment timestamp, enable **Series value as timestamp**:
+Configure the field mappings:
+
+- **Text:** `alertname` to display the alert name on hover.
+- **Tags:** `severity` to allow filtering by severity.
+
+### Service restart annotations
+
+Annotate when a process restarts. The `changes()` function detects when a value changes, and `> 0` ensures annotations appear only at the moment of change:
 
 ```promql
-deployment_timestamp_seconds
+changes(process_start_time_seconds{job="checkout"}[5m]) > 0
 ```
+
+### Deployment annotations
+
+If you track deployments by pushing a timestamp metric through a `Pushgateway` or a recording rule, annotate when the value changes:
+
+```promql
+changes(deployment_timestamp_seconds{environment="production"}[10m]) > 0
+```
+
+Configure the field mappings:
+
+- **Text:** `environment` to show which environment was deployed.
+- **Tags:** `environment`.
+
+### Threshold crossing annotations
+
+Annotate when available node memory drops below 10 percent:
+
+```promql
+node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.1
+```
+
+{{< admonition type="note" >}}
+Comparison operators in PromQL act as filters. They return only the data points where the condition is true, so the expression above returns data only when memory is below 10 percent. You don't need to add an outer `> 0` wrapper.
+{{< /admonition >}}
+
+### Scaling event annotations
+
+Annotate when the number of running pods changes:
+
+```promql
+changes(kube_deployment_status_replicas{deployment="my-app"}[5m]) > 0
+```
+
+### Error spike annotations
+
+Annotate when the HTTP 5xx error ratio exceeds five percent:
+
+```promql
+sum by (job) (rate(http_requests_total{status=~"5.."}[5m]))
+/
+sum by (job) (rate(http_requests_total[5m]))
+> 0.05
+```
+
+## Control annotation density
+
+The **Min step** setting controls how many data points the query returns, which directly affects how many annotations appear. A larger step produces fewer annotations:
+
+- **Min step `1m`:** Up to one annotation per minute, good for short time ranges.
+- **Min step `5m`:** Up to one annotation per five minutes, good for day-range dashboards.
+- **Min step `1h`:** Up to one annotation per hour, good for week-range dashboards.
+
+If a dashboard shows too many annotation markers, increase the **Min step** or add more specific filters to the query.
+
+## Use template variables in annotations
+
+You can use [template variables](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/) in annotation queries to filter annotations based on dashboard variable selections:
+
+```promql
+ALERTS{alertstate="firing", instance=~"$instance"}
+```
+
+Grafana resolves template variables in annotations at query time using the current dashboard variable values.
+
+## Next steps
+
+- If annotations don't appear or you encounter errors, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/).
+- [Query editor](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
