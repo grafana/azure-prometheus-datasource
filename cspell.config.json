@@ -57,6 +57,7 @@
     "testid",
     "topk",
     "tsdb",
+    "varname",
     "workloadidentity"
   ]
 }

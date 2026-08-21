@@ -23,7 +23,7 @@ review_date: 2026-08-20
 
 # Azure Monitor Managed Service for Prometheus template variables
 
-Use template variables to create dynamic, reusable dashboards that let you change displayed data without editing queries. The Azure Monitor Managed Service for Prometheus data source supports the same template variable features as the core Grafana Prometheus data source.
+Template variables let you create dynamic, reusable dashboards by replacing hard-coded values, such as instance names, namespaces, or job labels, with selectable variables. Grafana displays these variables as drop-down menus at the top of the dashboard, so viewers can change the displayed data without editing queries. The Azure Monitor Managed Service for Prometheus data source supports the same template variable features as the core Grafana Prometheus data source.
 
 ## Before you begin
 
@@ -44,7 +44,7 @@ The data source supports the following template variable types.
 | Constant | Yes |
 | Data source | Yes |
 | Interval | Yes |
-| Ad-hoc filters | Yes |
+| Filters | Yes |
 
 ## Create a query variable
 
@@ -57,51 +57,67 @@ Query variables get their values from your workspace. To create a query variable
 1. Select a query type and enter the query details.
 1. Click **Apply** to save the variable.
 
-## Query variable functions
+## Query variable types
 
-When you select **Query** as the variable type, the variable editor provides a query type selector with options such as **Label names**, **Label values**, **Metrics**, **Query result**, and **Series query**. Each option maps to one of the following Prometheus functions, which you can also enter directly.
+When you select **Query** as the variable type, choose a query type that determines how Grafana populates the drop-down values.
 
-| Function | Description |
-|----------|-------------|
-| `label_names()` | Returns a list of all label names in the workspace. |
-| `label_values(label)` | Returns a list of values for the specified label across all metrics. |
-| `label_values(metric, label)` | Returns a list of values for the specified label on the specified metric. |
-| `metrics(regex)` | Returns a list of metrics whose names match the regular expression. |
-| `query_result(query)` | Returns the result of a PromQL query, useful for filtering on computed values. |
+| Query type | Required inputs | Description |
+|------------|-----------------|-------------|
+| **Label names** | Metric (optional) | Returns all label names, optionally filtered to a metric. |
+| **Label values** | Label (required), Metric (optional) | Returns values for a label, optionally filtered to a metric. |
+| **Metrics** | Metric (optional) | Returns metric names that match a regular expression. |
+| **Query result** | Query (required) | Runs a PromQL query and returns the results as variable values. |
+| **Series query** | Metric, Label, or both | Returns time series that match the specified metric or label selectors. |
+| **Classic query** | Query string | _Deprecated._ Legacy syntax using functions such as `label_values(metric, label)`. |
 
-### Query variable examples
+{{< admonition type="note" >}}
+The **Classic query** type supports functions such as `label_names()`, `label_values(label)`, `label_values(metric, label)`, and `metrics(regex)`. For new variables, use the dedicated query types instead, because the classic syntax is deprecated.
+{{< /admonition >}}
 
-The following examples show how to use each function in a query variable.
+### Query type examples
 
-Return every label name in the workspace:
+Populate a drop-down with all `job` label values. Set **Query type** to **Label values**, set **Label** to `job`, and leave **Metric** empty:
 
-```promql
-label_names()
-```
+- **Query type:** Label values
+- **Label:** `job`
 
-Return all values of the `job` label:
+Show only the instances that report CPU metrics. Set **Query type** to **Label values**, **Label** to `instance`, and **Metric** to `node_cpu_seconds_total`:
 
-```promql
-label_values(job)
-```
+- **Query type:** Label values
+- **Label:** `instance`
+- **Metric:** `node_cpu_seconds_total`
 
-Return the `instance` values that exist on the `node_cpu_seconds_total` metric:
+Populate a drop-down with all metrics whose names contain `node`. Set **Query type** to **Metrics** and enter a regular expression in the **Metric** field:
 
-```promql
-label_values(node_cpu_seconds_total, instance)
-```
+- **Query type:** Metrics
+- **Metric:** `node_.*`
 
-Return all metrics whose names contain `node`:
-
-```promql
-metrics(node)
-```
-
-Use `query_result` to list the instances with high memory usage:
+List the top five instances by request rate. Set **Query type** to **Query result** and enter a PromQL query:
 
 ```promql
-query_result(topk(5, sum by (instance) (node_memory_MemTotal_bytes)))
+query_result(topk(5, sum by (instance) (rate(http_requests_total[$__range]))))
 ```
+
+Because **Query result** returns full series strings, set **Regex** to `/instance="([^"]+)"/` to extract the instance values, and set **Refresh** to **On time range change** so the results update with the dashboard time range.
+
+### Query options
+
+The query variable editor provides the following options.
+
+| Option | Description |
+|--------|-------------|
+| **Regex** | Optional regular expression that extracts part of each returned value. Use a capture group, such as `/instance="([^"]+)"/`. |
+| **Sort** | Sort order for the drop-down values, such as alphabetical or numerical, ascending or descending. |
+| **Refresh** | When Grafana updates the values: **On dashboard load** or **On time range change**. Use **On time range change** for variables that depend on `$__range`. |
+
+### Selection options
+
+- **Multi-value:** Lets viewers select multiple values at once. Grafana joins the selected values with a pipe (`|`) for regular expression matching.
+- **Include All option:** Adds an **All** option that selects every value. Combined with multi-value, this produces a regular expression such as `value1|value2|value3`.
+
+{{< admonition type="note" >}}
+When **Multi-value** or **Include All option** is enabled, use the `=~` regular expression match operator instead of `=` in your label matchers, because the variable value becomes a regular expression pattern.
+{{< /admonition >}}
 
 ### Chain variables
 
@@ -115,16 +131,61 @@ When you change the `job` variable, Grafana refreshes the `instance` variable to
 
 ## Use variables in queries
 
-Reference a variable in a query with the `$variable_name` or `${variable_name}` syntax. For example, if you have a variable named `instance`, filter a query by the selected instance:
+Reference a variable in a query with one of the following syntaxes.
 
-```promql
-rate(node_cpu_seconds_total{instance="$instance"}[$__rate_interval])
-```
+| Syntax | Example | Use case |
+|--------|---------|----------|
+| `$varname` | `rate(node_cpu_seconds_total{instance="$instance"}[$__rate_interval])` | Simple and readable. Can't be used mid-word. |
+| `${varname}` | `rate(node_cpu_seconds_total{instance="${instance}"}[$__rate_interval])` | Use when the variable is adjacent to other text, such as `${env}-cluster`. |
+| `[[varname]]` | `rate(node_cpu_seconds_total{instance="[[instance]]"}[$__rate_interval])` | Legacy syntax, supported for backward compatibility. |
 
-When a variable allows multiple values, use the regular expression match operator so the query matches any selected value:
+When a variable allows multiple values, use the `=~` regular expression match operator so the query matches any selected value:
 
 ```promql
 rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
 ```
 
-To use multi-value variables, set the **Multi-value** option on the variable and use the `=~` operator. Grafana formats the selected values as a regular expression alternation, such as `value1|value2`.
+## Use the rate interval variable
+
+`$__rate_interval` is a Grafana-specific variable designed for use with `rate()` and `increase()`. It guarantees a range window large enough to capture at least four scrape samples, which prevents gaps or inaccuracies. Always use `$__rate_interval` instead of a fixed interval or `$__interval`:
+
+```promql
+rate(http_requests_total[$__rate_interval])
+```
+
+Grafana calculates `$__rate_interval` as `max($__interval + scrape_interval, 4 * scrape_interval)`, where `scrape_interval` is:
+
+1. The per-query **Min step** setting, if set.
+1. Otherwise, the data source **Scrape interval** setting under **Interval behavior** on the [configuration page](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+
+To get reliable results, set the data source **Scrape interval** to match the scrape interval of the workspace. If your data uses a longer interval than the default and you leave the setting too low, `$__rate_interval` calculates too small a window and `rate()` can return no data.
+
+{{< admonition type="note" >}}
+Don't use `$__rate_interval` in workspace recording rules. The interval depends on the evaluation context, so use a fixed interval such as `[5m]` in recording rules instead.
+{{< /admonition >}}
+
+## Filters variable
+
+<!-- vale Grafana.Spelling = NO -->
+
+The **Filters** variable, formerly called ad hoc filters, lets dashboard viewers add label filters without editing queries.
+
+<!-- vale Grafana.Spelling = YES -->
+ Grafana applies the filters to every Azure Monitor Managed Service for Prometheus query on the dashboard.
+
+To set up a Filters variable:
+
+1. Create a new variable with **Type: Filters**.
+1. Select the Azure Monitor Managed Service for Prometheus data source.
+1. Save the dashboard.
+
+A filter bar appears at the top of the dashboard. Viewers add filters by selecting a label, an operator (`=`, `!=`, `=~`, or `!~`), and a value. For example, when a viewer adds the filter `namespace = production`, all queries on the dashboard include `{namespace="production"}` without any query changes.
+
+{{< admonition type="note" >}}
+Grafana applies Filters to all queries that use the selected data source. You can't apply them to specific panels only.
+{{< /admonition >}}
+
+## Next steps
+
+- [Query editor](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
+- [Add annotations](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)
