@@ -51,7 +51,7 @@ Before you use the Azure Monitor Managed Service for Prometheus data source, ens
 
 ## Get started
 
-The following topics help you get started with the data source:
+The following documents help you get started with the data source:
 
 - [Install the Azure Monitor Managed Service for Prometheus plugin](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/install/)
 - [Configure the Azure Monitor Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/)
