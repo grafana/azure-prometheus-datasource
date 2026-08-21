@@ -90,6 +90,8 @@ The data source supports four authentication methods. Choose based on where Graf
 Certificate-based App Registration authentication isn't supported for this data source. Use a client secret, Managed Identity, Workload Identity, or Current User.
 {{< /admonition >}}
 
+The **Authentication** drop-down lists **Managed Identity**, **Workload Identity**, and **Current User** only when the corresponding method is enabled on the Grafana server. If none of those methods are enabled, **App Registration** is the only option, and its fields appear directly without a drop-down.
+
 **Current User** authentication doesn't support background operations such as alerting, reporting, and recorded queries unless you configure **fallback service credentials**. Alerts then run under the fallback credential's permissions.
 
 ### Grafana server prerequisites
@@ -384,6 +386,51 @@ resource "grafana_data_source" "azureprometheus" {
     azureCredentials = {
       authType = "msi"
     }
+  })
+}
+```
+
+To use Workload Identity:
+
+```hcl
+resource "grafana_data_source" "azureprometheus" {
+  type = "grafana-azureprometheus-datasource"
+  name = "Azure Monitor Managed Service for Prometheus"
+  url  = "https://${var.workspace}.${var.region}.prometheus.monitor.azure.com"
+
+  json_data_encoded = jsonencode({
+    httpMethod = "POST"
+    azureCredentials = {
+      authType = "workloadidentity"
+    }
+  })
+}
+```
+
+To use Current User authentication with App Registration fallback credentials:
+
+```hcl
+resource "grafana_data_source" "azureprometheus" {
+  type = "grafana-azureprometheus-datasource"
+  name = "Azure Monitor Managed Service for Prometheus"
+  url  = "https://${var.workspace}.${var.region}.prometheus.monitor.azure.com"
+
+  json_data_encoded = jsonencode({
+    httpMethod = "POST"
+    azureCredentials = {
+      authType                  = "currentuser"
+      serviceCredentialsEnabled = true
+      serviceCredentials = {
+        authType   = "clientsecret"
+        azureCloud = "AzureCloud"
+        clientId   = var.client_id
+        tenantId   = var.tenant_id
+      }
+    }
+  })
+
+  secure_json_data_encoded = jsonencode({
+    azureClientSecret = var.client_secret
   })
 }
 ```

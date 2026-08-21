@@ -186,13 +186,13 @@ environment:
 
 ### Roll back to a previous version
 
-If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
+If an upgrade causes issues on a self-managed instance, pin an earlier plugin version. Replace the version with the last one that worked for you:
 
 ```bash
-grafana cli plugins install grafana-azureprometheus-datasource 1.0.3
+grafana cli plugins install grafana-azureprometheus-datasource 1.0.2
 ```
 
-Restart Grafana after the rollback.
+Restart Grafana after the rollback. For the list of released versions, refer to the [Grafana plugin catalog](https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/).
 
 {{< admonition type="note" >}}
 Rollback isn't available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](https://grafana.com/help/).
@@ -233,3 +233,7 @@ This error means Grafana can't verify the plugin signature. Official downloads f
 1. Extract the full plugin directory, including `MANIFEST.txt`.
 1. Confirm the folder name is `grafana-azureprometheus-datasource` and that the ZIP matches your Grafana architecture.
 1. Restart Grafana.
+
+{{< admonition type="warning" >}}
+Don't resolve signature errors by adding this plugin to `allow_loading_unsigned_plugins` in `grafana.ini`. Loading the plugin unsigned disables signature verification and is a security risk. Always install the official signed plugin from the [Grafana plugin catalog](https://grafana.com/grafana/plugins/grafana-azureprometheus-datasource/).
+{{< /admonition >}}
