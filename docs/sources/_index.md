@@ -45,7 +45,7 @@ The following table lists the features that the Azure Monitor Managed Service fo
 
 Before you use the Azure Monitor Managed Service for Prometheus data source, ensure you have the following:
 
-- A supported version of Grafana. This plugin requires Grafana `>=11.6.11 <12`, `>=12.0.10 <12.1`, `>=12.1.7 <12.2`, or `>=12.2.5`. If you run Grafana 11.4.x or earlier, use the core Prometheus data source instead.
+- A supported version of Grafana. This plugin requires Grafana `>=11.6.11 <12`, `>=12.0.10 <12.1`, `>=12.1.7 <12.2`, or `>=12.2.5`. If your Grafana version isn't in this list, use the core Prometheus data source instead.
 - An Azure Monitor workspace and its Prometheus query endpoint URL.
 - Microsoft Entra ID credentials or an Azure identity with permission to query the workspace.
 

@@ -59,34 +59,40 @@ These errors occur when Azure credentials are invalid, missing, or don't have th
 
 ### Azure authentication isn't applied
 
-The plugin backend attaches Azure tokens only when Azure authentication is enabled on the Grafana server.
+The plugin backend attaches Azure tokens only when Azure authentication is enabled on the Grafana server. This is the most common cause of `401 Unauthorized` errors, because the workspace rejects the request before it checks your credentials.
 
 **Symptoms:**
 
 - **Save & test** returns `401 Unauthorized`.
-- Queries fail even though the App Registration fields look correct.
-- Grafana Cloud instances may not have Azure authentication enabled yet.
+- Queries fail even though the App Registration fields look correct, and the same credentials work in the Azure portal or a local Grafana instance.
+- The error is a generic `401 Unauthorized` that doesn't identify the missing server setting as the cause.
+
+{{< admonition type="note" >}}
+On Grafana Cloud, Azure authentication isn't enabled by default, and you can't enable it yourself. If your credentials are valid but **Save & test** returns `401 Unauthorized`, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication for your instance.
+{{< /admonition >}}
 
 **Solutions:**
 
 1. On self-managed Grafana, set `azure_auth_enabled = true` under `[auth]` in the Grafana configuration file and restart Grafana.
 1. If you've customized `forward_settings_to_plugins` under `[azure]`, include `grafana-azureprometheus-datasource`.
-1. On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication for your instance.
+1. On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication for your instance. This isn't a self-service setting.
 
 ### "401 Unauthorized" after migration
 
-Migrated data sources can fail authentication if Grafana doesn't forward Azure settings to the plugin.
+Migrating a data source doesn't enable or carry over the server-side Azure authentication setting. If the setting wasn't already enabled for the original data source, the migrated data source returns `401 Unauthorized` even though its credentials are unchanged.
 
 **Symptoms:**
 
 - The data source was migrated from core Prometheus Azure AD authentication.
-- **Save & test** or queries return `401 Unauthorized`.
+- The credentials are unchanged from the working core Prometheus data source, but **Save & test** or queries return `401 Unauthorized`.
 
 **Solutions:**
 
-1. On self-managed Grafana, verify that `grafana-azureprometheus-datasource` is included in `forward_settings_to_plugins` under `[azure]`.
+1. On self-managed Grafana, verify that `grafana-azureprometheus-datasource` is included in `forward_settings_to_plugins` under `[azure]`. Grafana includes this plugin ID by default.
 1. Verify `[auth] azure_auth_enabled = true`.
-1. On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/).
+1. On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication, because it isn't a self-service setting.
+
+If these steps don't resolve the error, refer to [Azure authentication isn't applied](#azure-authentication-isnt-applied), which covers the same setting in more detail.
 
 For migration status and rollback, refer to [Migrate from Prometheus Azure AD to Azure Monitor Managed Service for Prometheus](https://grafana.com/docs/grafana/<GRAFANA_VERSION>/datasources/prometheus/configure/azure-authentication/).
 
@@ -106,10 +112,28 @@ These errors indicate that the identity Grafana uses can't query the workspace.
 |-------|----------|
 | Missing permissions | Assign **Monitoring Data Reader** on the Azure Monitor workspace to the identity. Refer to the [Azure Monitor Prometheus Grafana documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-grafana). |
 | Invalid credentials | Verify the tenant ID, client ID, and client secret in the Azure portal. Regenerate the secret if necessary. |
-| Expired client secret | Create a new client secret and update the data source configuration. |
+| Expired client secret | Create a new client secret and update the data source configuration. For a data source that previously worked, refer to [Data source stops working after previously working](#data-source-stops-working-after-previously-working). |
 | Wrong Azure Cloud | Verify **Azure Cloud** matches the cloud that hosts the workspace, such as public, US Government, or China. |
 | Managed Identity not enabled | Set `managed_identity_enabled = true` under `[azure]` and restart Grafana. |
 | Workload Identity not enabled | Set `workload_identity_enabled = true` under `[azure]` and restart Grafana. |
+
+### Data source stops working after previously working
+
+A data source that worked and then suddenly fails usually points to an expired or rotated Azure client secret. Microsoft Entra ID client secrets have an expiration date, and rotating or regenerating the secret in Azure without updating Grafana breaks authentication.
+
+**Symptoms:**
+
+- The data source worked previously and now fails without any configuration change in Grafana.
+- **Save & test** or queries return authentication errors, and panels may show **No data**.
+- The Grafana server logs show a Microsoft Entra ID error that indicates an invalid client secret.
+
+**Solutions:**
+
+1. In the Azure portal, check the app registration's client secret expiration under **Certificates & secrets**.
+1. Create a new client secret if the current one is expired or was rotated.
+1. On the data source configuration page, select **App Registration**. If a secret is already saved, click **reset** next to **Client Secret**, enter the new secret, and click **Save & test**.
+1. For provisioned data sources, update `secureJsonData.azureClientSecret` and provision the data source again.
+1. To avoid secret rotation entirely, use **Managed Identity** or **Workload Identity** when Grafana runs in Azure, because neither method stores a client secret.
 
 ### OAuth token overwrites Azure credentials
 
@@ -212,6 +236,26 @@ Large or unbounded queries can exceed the query timeout.
 1. Add label filters to reduce the number of series.
 1. Increase the **Query timeout** on the data source configuration page.
 1. Use recording rules to pre-compute expensive expressions.
+
+### Metric values don't match the Azure portal
+
+PromQL results in Grafana can differ from the values in Azure Monitor metrics explorer because the two tools sample and aggregate data differently. This is expected behavior rather than a data error.
+
+**Common causes:**
+
+| Cause | Explanation |
+|-------|-------------|
+| Step and interval | Grafana samples at a calculated step through `$__interval`, while the portal uses its own time grain. A larger step smooths the values. |
+| Rate window | `rate()` and `increase()` depend on the range window, such as `$__rate_interval`. A different window changes the result. |
+| Aggregation and alignment | Grafana aligns the query range to the step, and your PromQL aggregation, such as `sum`, `avg`, or `max`, might differ from the portal's aggregation. |
+| Filtering | Label filters in your query might select a different set of series than the portal view. |
+
+**Solutions:**
+
+1. Match the dashboard time range to the portal, and set a fixed **Min step** that matches the portal's time grain.
+1. Use the same aggregation and rate window in both tools.
+1. Use the [query inspector](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/#use-the-query-inspector) to confirm the evaluated query, step, and time range.
+1. Compare a single series with explicit label filters instead of an aggregate.
 
 ## Template variable errors
 

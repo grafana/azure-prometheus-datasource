@@ -109,7 +109,9 @@ If you've customized `forward_settings_to_plugins` under `[azure]`, include `gra
 If you use Azure authentication, don't enable **Forward OAuth identity**. Both methods use the same HTTP authorization headers, and the OAuth token overwrites your Azure credentials.
 {{< /admonition >}}
 
-On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) if Azure authentication isn't available or **Save & test** returns `401 Unauthorized`.
+{{< admonition type="note" >}}
+On Grafana Cloud, Azure authentication isn't enabled by default and isn't a self-service setting. You must contact [Grafana Support](https://grafana.com/help/) to enable it for your instance. Until it's enabled, **Save & test** returns a generic `401 Unauthorized` even when your credentials are valid.
+{{< /admonition >}}
 
 ### App Registration
 
