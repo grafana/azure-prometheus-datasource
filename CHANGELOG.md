@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.4
+
+- Security: clear CVEs due in the current SLO window across frontend and backend dependencies
+- Docs: complete documentation set for Azure Managed Prometheus
+- Chore: standardize npm supply-chain settings
+- Dependency updates
+
 ## 1.0.3
 
 - Dependency updates
