@@ -3,8 +3,8 @@
   "version": "1.0.5",
   "description": "A plugin for Azure Monitor Managed Service for Prometheus",
   "scripts": {
-    "build": "webpack -c ./.config/webpack/webpack.config.ts --env production",
-    "dev": "webpack -w -c ./.config/webpack/webpack.config.ts --env development",
+    "build": "webpack -c ./webpack.config.ts --env production",
+    "dev": "webpack -w -c ./webpack.config.ts --env development",
     "test": "jest --watch --onlyChanged",
     "e2e": "playwright test",
     "e2e:ui": "npx playwright test --ui",
