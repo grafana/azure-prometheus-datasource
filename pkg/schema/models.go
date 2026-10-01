@@ -16,6 +16,5 @@ type AzurePromOptions struct {
 	models.PromOptions
 
 	AzureCredentials        json.RawMessage `json:"azureCredentials"`
-	AzureEndpointResourceID string          `json:"azureEndpointResourceId"`
 	PrometheusTypeMigration bool            `json:"prometheus-type-migration"`
 }

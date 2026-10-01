@@ -15,10 +15,6 @@
           "azureCredentials": {
             "description": "Choose the type of authentication to Azure services"
           },
-          "azureEndpointResourceId": {
-            "description": "Optional override of the Azure resource ID (audience) used to build the OAuth scope for Prometheus queries. Not rendered by the config editor — provisioning-only. If unset, the backend derives the scope from the resolved Azure cloud's `prometheusResourceId` property (`pkg/azureauth/azure.go:58-63`).",
-            "type": "string"
-          },
           "cacheLevel": {
             "description": "Sets the browser caching level for editor queries. Higher cache settings are recommended for high cardinality data sources.",
             "type": "string",

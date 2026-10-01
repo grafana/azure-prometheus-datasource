@@ -63,17 +63,6 @@
       ]
     },
     {
-      "id": "jsonData_azureEndpointResourceId",
-      "key": "azureEndpointResourceId",
-      "description": "Optional override of the Azure resource ID (audience) used to build the OAuth scope for Prometheus queries. Not rendered by the config editor \u2014 provisioning-only. If unset, the backend derives the scope from the resolved Azure cloud's `prometheusResourceId` property (`pkg/azureauth/azure.go:58-63`).",
-      "valueType": "string",
-      "target": "jsonData",
-      "tags": [
-        "azure",
-        "backend-only"
-      ]
-    },
-    {
       "id": "jsonData_prometheusTypeMigration",
       "key": "prometheus-type-migration",
       "description": "Sentinel flag set by the migration path when a vanilla Prometheus data source is migrated to Azure Monitor Managed Service for Prometheus. When true, `DataSourceHttpSettingsOverhaul.tsx` renders the 'Data source migrated' warning banner. Storage key uses a hyphen \u2014 the field ID is camelCased. Never rendered as an input; provisioning may set it to suppress or trigger the banner.",
@@ -692,8 +681,7 @@
       "fieldRefs": [
         "jsonData_azureCredentials",
         "secureJsonData_azureClientSecret",
-        "secureJsonData_clientSecret",
-        "jsonData_azureEndpointResourceId"
+        "secureJsonData_clientSecret"
       ]
     },
     {
