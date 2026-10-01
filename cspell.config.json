@@ -59,6 +59,7 @@
     "tsdb",
     "varname",
     "workloadidentity",
-    "dsconfig"
+    "dsconfig",
+    "struct"
   ]
 }
