@@ -58,6 +58,7 @@
     "topk",
     "tsdb",
     "varname",
-    "workloadidentity"
+    "workloadidentity",
+    "dsconfig"
   ]
 }
