@@ -20,13 +20,23 @@ func NewDatasource(ctx context.Context, dsInstanceSettings backend.DataSourceIns
 	plog := backend.NewLoggerWith("logger", "tsdb.azure-prometheus")
 	plog.Debug("Initializing")
 
+	service, err := promlib.NewDatasourceService(ctx, dsInstanceSettings, sdkhttpclient.NewProvider(), plog, extendClientOpts)
+	if err != nil {
+		return nil, err
+	}
 	return &Datasource{
-		Service: promlib.NewService(sdkhttpclient.NewProvider(), plog, extendClientOpts),
+		Service: service,
 	}, nil
 }
 
 type Datasource struct {
 	Service *promlib.Service
+}
+
+var _ instancemgmt.InstanceDisposer = (*Datasource)(nil)
+
+func (d *Datasource) Dispose() {
+	d.Service.Dispose()
 }
 
 func (d *Datasource) QueryData(ctx context.Context, req *backend.QueryDataRequest) (*backend.QueryDataResponse, error) {
