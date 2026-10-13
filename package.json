@@ -1,6 +1,6 @@
 {
   "name": "grafana-azureprometheus-datasource",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A plugin for Azure Monitor Managed Service for Prometheus",
   "scripts": {
     "build": "webpack -c ./webpack.config.ts --env production",
@@ -105,7 +105,8 @@
     "dompurify": "3.4.14",
     "immutable@5": "5.1.9",
     "js-cookie": "3.0.8",
-    "uuid": "11.1.1"
+    "uuid": "11.1.1",
+    "basic-ftp": "6.2.2"
   },
   "engines": {
     "node": ">=24",
