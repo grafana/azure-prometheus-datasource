@@ -31,6 +31,15 @@ Read more about the Azure service: [Azure Monitor managed service for Prometheus
    mage -l
    ```
 
+4. If you added, removed or changed a data source setting, regenerate the
+   [configuration schema](CONTRIBUTING.md#data-source-configuration-schema) artifacts and
+   run its tests:
+
+   ```bash
+   go generate ./pkg/schema/...
+   go test ./pkg/schema/...
+   ```
+
 ### Frontend
 
 1. Install dependencies

@@ -1,0 +1,163 @@
+{
+  "examples": {
+    "": {
+      "summary": "App Registration (default)",
+      "description": "The most common setup: an Azure AD App Registration with a client secret. Only spec.url and the tenant/client IDs need filling in.",
+      "value": {
+        "secure": {
+          "azureClientSecret": {
+            "create": "REPLACE_WITH_CLIENT_SECRET"
+          }
+        },
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "clientsecret",
+              "azureCloud": "AzureCloud",
+              "clientId": "00000000-0000-0000-0000-000000000000",
+              "tenantId": "00000000-0000-0000-0000-000000000000"
+            },
+            "httpMethod": "POST"
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    },
+    "currentUserWithFallback": {
+      "summary": "Current User with App Registration fallback",
+      "description": "Forward the signed-in Grafana user's Azure identity to Prometheus. serviceCredentials provides a fallback App Registration used for alerting, recorded queries and reporting, which run without a signed-in user. Only available when the Grafana instance has azure.userIdentityEnabled.",
+      "value": {
+        "secure": {
+          "azureClientSecret": {
+            "create": "REPLACE_WITH_CLIENT_SECRET"
+          }
+        },
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "currentuser",
+              "serviceCredentials": {
+                "authType": "clientsecret",
+                "azureCloud": "AzureCloud",
+                "clientId": "00000000-0000-0000-0000-000000000000",
+                "tenantId": "00000000-0000-0000-0000-000000000000"
+              },
+              "serviceCredentialsEnabled": true
+            },
+            "httpMethod": "POST"
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    },
+    "legacyClientSecret": {
+      "summary": "Legacy client secret key",
+      "description": "A datasource provisioned before the credential migration to azureClientSecret. The backend still reads secureJsonData.clientSecret as a fallback when azureClientSecret is absent.",
+      "value": {
+        "secure": {
+          "clientSecret": {
+            "create": "REPLACE_WITH_CLIENT_SECRET"
+          }
+        },
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "clientsecret",
+              "azureCloud": "AzureCloud",
+              "clientId": "00000000-0000-0000-0000-000000000000",
+              "tenantId": "00000000-0000-0000-0000-000000000000"
+            },
+            "httpMethod": "POST"
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    },
+    "managedIdentity": {
+      "summary": "Managed Identity",
+      "description": "Authenticate with the managed identity assigned to the Grafana instance. Only available when the Grafana instance has azure.managedIdentityEnabled. No secrets required.",
+      "value": {
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "msi"
+            },
+            "httpMethod": "POST"
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    },
+    "migratedFromPrometheus": {
+      "summary": "Migrated from vanilla Prometheus",
+      "description": "A data source migrated from the vanilla Prometheus plugin. prometheus-type-migration=true makes the editor render a 'Data source migrated' warning banner until an operator dismisses or replaces it.",
+      "value": {
+        "secure": {
+          "azureClientSecret": {
+            "create": "REPLACE_WITH_CLIENT_SECRET"
+          }
+        },
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "clientsecret",
+              "azureCloud": "AzureCloud",
+              "clientId": "00000000-0000-0000-0000-000000000000",
+              "tenantId": "00000000-0000-0000-0000-000000000000"
+            },
+            "httpMethod": "POST",
+            "prometheus-type-migration": true,
+            "prometheusType": "Prometheus"
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    },
+    "tlsMutualAuth": {
+      "summary": "App Registration with mTLS",
+      "description": "Azure AD auth combined with TLS client authentication in front of the Prometheus endpoint. TLS is independent of the Azure auth method and can be layered on top of any authType.",
+      "value": {
+        "secure": {
+          "azureClientSecret": {
+            "create": "REPLACE_WITH_CLIENT_SECRET"
+          },
+          "tlsClientCert": {
+            "create": "-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----"
+          },
+          "tlsClientKey": {
+            "create": "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----"
+          }
+        },
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "clientsecret",
+              "azureCloud": "AzureCloud",
+              "clientId": "00000000-0000-0000-0000-000000000000",
+              "tenantId": "00000000-0000-0000-0000-000000000000"
+            },
+            "httpMethod": "POST",
+            "serverName": "myworkspace-abcd.eastus.prometheus.monitor.azure.com",
+            "tlsAuth": true
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    },
+    "workloadIdentity": {
+      "summary": "Workload Identity",
+      "description": "Authenticate with Azure AD Workload Identity federation. Only available when the Grafana instance has azure.workloadIdentityEnabled. No secrets required.",
+      "value": {
+        "spec": {
+          "jsonData": {
+            "azureCredentials": {
+              "authType": "workloadidentity"
+            },
+            "httpMethod": "POST"
+          },
+          "url": "https://myworkspace-abcd.eastus.prometheus.monitor.azure.com"
+        }
+      }
+    }
+  }
+}
