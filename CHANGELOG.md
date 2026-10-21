@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8
+
+- Security: update Go to 1.27.3
+- Dependency updates
+
 ## 1.0.7
 
 - Security: fix security vulnerabilities (CVE-2026-102278, CVE-2026-102276, CVE-2026-102990)
