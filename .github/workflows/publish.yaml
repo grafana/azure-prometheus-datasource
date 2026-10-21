@@ -32,6 +32,7 @@ jobs:
       attestations: write
       pull-requests: read
     with:
+      golangci-lint-version: '2.15.0'
       branch: ${{ github.event.inputs.branch }}
       # A single `prod` call fans out to all waves (dev + ops + prod) via the
       # `prod-targets-all` default. Do not reintroduce a per-environment matrix:
