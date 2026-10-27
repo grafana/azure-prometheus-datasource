@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.9
+
+- Dependency updates
+
 ## 1.0.8
 
 - Security: update Go to 1.27.3
