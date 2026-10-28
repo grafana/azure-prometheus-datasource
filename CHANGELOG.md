@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.10
+
+- Security: fix security vulnerabilities (GHSA-cg2g-xh64-v4q7, GHSA-mrv2-3pqr-j5jr, CVE-2026-93749, CVE-2026-78669, CVE-2026-78660, CVE-2026-78659, CVE-2023-54404, CVE-2026-109869)
+
 ## 1.0.9
 
 - Dependency updates
