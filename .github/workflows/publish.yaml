@@ -38,7 +38,8 @@ jobs:
       # `prod-targets-all` default. Do not reintroduce a per-environment matrix:
       # the reusable workflow keys concurrency on the run ID, so parallel matrix
       # legs share one group and cancel each other.
-      environment: prod
+      environment: dev # TEMPORARY (do not merge): publish this branch to the dev catalog only, without deploying via Argo
+      trigger-argo: false
       docs-only: ${{ fromJSON(github.event.inputs.docs-only) }}
       scopes: ${{ github.event.inputs.environment == 'cloud (recommended)' && 'grafana_cloud' || github.event.inputs.environment == 'on-prem (for emergencies fix to On Prem customers)' && 'universal' }}
       github-draft-release: false
