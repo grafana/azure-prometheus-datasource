@@ -5,8 +5,13 @@ import { t, Trans } from '@grafana/i18n';
 import { InlineFormLabel, Button, Select, Input } from '@grafana/ui';
 import React, { ChangeEvent, useMemo } from 'react';
 
-import { getAzureCloudOptions } from './AzureCredentialsConfig';
+import {
+  AzureWorkloadIdentityCredentialsWithIds,
+  getAzureCloudOptions,
+  getWorkloadIdentityInMemoryEnabled,
+} from './AzureCredentialsConfig';
 import CurrentUserFallbackCredentials from './CurrentUserFallbackCredentials';
+import { WorkloadIdentityCredentials } from './WorkloadIdentityCredentials';
 
 export interface Props {
   managedIdentityEnabled: boolean;
@@ -258,6 +263,13 @@ export const AzureCredentialsForm = (props: Props) => {
             </div>
           )}
         </>
+      )}
+      {credentials.authType === 'workloadidentity' && getWorkloadIdentityInMemoryEnabled() && (
+        <WorkloadIdentityCredentials
+          credentials={credentials as AzureWorkloadIdentityCredentialsWithIds}
+          onCredentialsChange={onCredentialsChange}
+          disabled={disabled}
+        />
       )}
       {credentials.authType === 'currentuser' && (
         <CurrentUserFallbackCredentials

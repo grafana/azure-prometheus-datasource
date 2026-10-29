@@ -182,8 +182,8 @@ github.com/grafana/dsconfig/schema v0.0.13 h1:XSmm5nP9NkMx0J/W87myvzfOaK1VaEPExQ
 github.com/grafana/dsconfig/schema v0.0.13/go.mod h1:N/x7ChhNHeopMP3gsLYRt3bgTRzbnOGX2ATlLGFqPTk=
 github.com/grafana/dskit v0.0.0-20260928073014-b6a53f6bee29 h1:hTUx1kh6QgzSCbkSc5SyKaXFcFI0S/B2JIS5islwSt8=
 github.com/grafana/dskit v0.0.0-20260928073014-b6a53f6bee29/go.mod h1:JRfSXoPMy/K8sJ08PdQ9qStOIM18gr8Ayh7Wyi/3YQA=
-github.com/grafana/grafana-azure-sdk-go/v2 v2.4.1 h1:moFDZEb2kTIrUo5u3Bekg1weABQQjy1EK1biP4I6L+0=
-github.com/grafana/grafana-azure-sdk-go/v2 v2.4.1/go.mod h1:+a3TOFSDsfsBLkpywutcYLqPNMqqO42VZnWw8YvAgmY=
+github.com/grafana/grafana-azure-sdk-go/v2 v2.5.2-0.20261021000355-5a0b0b41e61f h1:lwgS0AEcJ1qqi7/4xgays7QDV6O8NAriPijARttFtEU=
+github.com/grafana/grafana-azure-sdk-go/v2 v2.5.2-0.20261021000355-5a0b0b41e61f/go.mod h1:RHmDfN8D/atOMRq5LZnfo1xzAxirEXKa6xPuoaMPVE8=
 github.com/grafana/grafana-plugin-sdk-go v0.296.4 h1:3+sYR2lmdb+sIk3m/eA9/lY8sztbhFyGf+6he8nwKuM=
 github.com/grafana/grafana-plugin-sdk-go v0.296.4/go.mod h1:Dza5QLa5L5/0zH6Ce2CZhfTUd6+3FFDhmEHjT0BEBuM=
 github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.21 h1:hwGhjOkzBHuhOqkZbyDYYvrEL87o2+xWlr2ziDUz68I=
@@ -476,5 +476,5 @@ sigs.k8s.io/structured-merge-diff/v6 v6.4.2 h1:qdOxHwrl2Kaag1aQEarlYcOA9vSyGCp3C
 sigs.k8s.io/structured-merge-diff/v6 v6.4.2/go.mod h1:M3W8sfWvn2HhQDIbGWj3S099YozAsymCo/wrT5ohRUE=
 sigs.k8s.io/yaml v1.6.0 h1:G8fkbMSAFqgEFgh4b1wmtzDnioxFCUgTZhlbj5P9QYs=
 sigs.k8s.io/yaml v1.6.0/go.mod h1:796bPqUfzR/0jLAl6XjHl3Ck7MiyVv8dbTdyT3/pMf4=
-software.sslmate.com/src/go-pkcs12 v0.7.2 h1:Rh9FoMaI5k7Oo6EOS+2/BnoZ+JFIS+XHjM0VGkSPXLM=
-software.sslmate.com/src/go-pkcs12 v0.7.2/go.mod h1:Qiz0EyvDRJjjxGyUQa2cCNZn/wMyzrRJ/qcDXOQazLI=
+software.sslmate.com/src/go-pkcs12 v0.7.3 h1:JBQD3FDqYjTeyDAeZQklj2ar88ykBLtALloPJHyAauU=
+software.sslmate.com/src/go-pkcs12 v0.7.3/go.mod h1:Qiz0EyvDRJjjxGyUQa2cCNZn/wMyzrRJ/qcDXOQazLI=

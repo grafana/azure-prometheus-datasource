@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/grafana/dsconfig/schema v0.0.13
-	github.com/grafana/grafana-azure-sdk-go/v2 v2.4.1
+	github.com/grafana/grafana-azure-sdk-go/v2 v2.5.2-0.20261021000355-5a0b0b41e61f
 	github.com/grafana/grafana-plugin-sdk-go v0.296.4
 	github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.21
 	github.com/stretchr/testify v1.12.1
@@ -137,5 +137,5 @@ require (
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v6 v6.4.2 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
-	software.sslmate.com/src/go-pkcs12 v0.7.2 // indirect
+	software.sslmate.com/src/go-pkcs12 v0.7.3 // indirect
 )
