@@ -4,7 +4,7 @@ go 1.27.3
 
 require (
 	github.com/grafana/dsconfig/schema v0.0.13
-	github.com/grafana/grafana-azure-sdk-go/v2 v2.5.2-0.20261021000355-5a0b0b41e61f
+	github.com/grafana/grafana-azure-sdk-go/v2 v2.5.2-0.20261105014131-3f9c56a999d2
 	github.com/grafana/grafana-plugin-sdk-go v0.296.4
 	github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.21
 	github.com/stretchr/testify v1.12.1
