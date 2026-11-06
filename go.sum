@@ -173,8 +173,8 @@ github.com/grafana/dsconfig/schema v0.0.13 h1:XSmm5nP9NkMx0J/W87myvzfOaK1VaEPExQ
 github.com/grafana/dsconfig/schema v0.0.13/go.mod h1:N/x7ChhNHeopMP3gsLYRt3bgTRzbnOGX2ATlLGFqPTk=
 github.com/grafana/dskit v0.0.0-20260928073014-b6a53f6bee29 h1:hTUx1kh6QgzSCbkSc5SyKaXFcFI0S/B2JIS5islwSt8=
 github.com/grafana/dskit v0.0.0-20260928073014-b6a53f6bee29/go.mod h1:JRfSXoPMy/K8sJ08PdQ9qStOIM18gr8Ayh7Wyi/3YQA=
-github.com/grafana/grafana-azure-sdk-go/v2 v2.5.1 h1:kihcabzOx3YO5TNQJ8wU091xcxN7zi1hmJylkq1Bf1I=
-github.com/grafana/grafana-azure-sdk-go/v2 v2.5.1/go.mod h1:RHmDfN8D/atOMRq5LZnfo1xzAxirEXKa6xPuoaMPVE8=
+github.com/grafana/grafana-azure-sdk-go/v2 v2.6.0 h1:ngdecLEtskynKlvuK+RWleOEQ6EHbahtZyTc8db7HqQ=
+github.com/grafana/grafana-azure-sdk-go/v2 v2.6.0/go.mod h1:RHmDfN8D/atOMRq5LZnfo1xzAxirEXKa6xPuoaMPVE8=
 github.com/grafana/grafana-plugin-sdk-go v0.298.0 h1:Pv1QPfBYSykOO9SJmoNm2bQ3uFbtIaKgb74KlpP6OPA=
 github.com/grafana/grafana-plugin-sdk-go v0.298.0/go.mod h1:eOXMD6Vm+bNj2LxwgDLQ5r4ys9XVYnTIW9iBgTVIoH0=
 github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.25 h1:flWXrkvNVL91u2oW/jZ2T0wMPYbBTOGzBZX/7ldz+EA=
