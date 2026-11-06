@@ -25,11 +25,12 @@ export const WorkloadIdentityCredentials = ({ credentials, onCredentialsChange, 
     <>
       <div className="gf-form-inline">
         <div className="gf-form">
-          <InlineFormLabel className="width-12">
+          <InlineFormLabel className="width-12" htmlFor="workload-identity-tenant-id">
             <Trans i18nKey="configuration.azure-credentials-form.directory-tenant-id">Directory (tenant) ID</Trans>
           </InlineFormLabel>
           <div className="width-15">
             <Input
+              id="workload-identity-tenant-id"
               className={cx('width-20')}
               // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
               placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
@@ -42,11 +43,12 @@ export const WorkloadIdentityCredentials = ({ credentials, onCredentialsChange, 
       </div>
       <div className="gf-form-inline">
         <div className="gf-form">
-          <InlineFormLabel className="width-12">
+          <InlineFormLabel className="width-12" htmlFor="workload-identity-client-id">
             <Trans i18nKey="configuration.azure-credentials-form.application-client-id">Application (client) ID</Trans>
           </InlineFormLabel>
           <div className="width-15">
             <Input
+              id="workload-identity-client-id"
               className={cx('width-20')}
               // eslint-disable-next-line @grafana/i18n/no-untranslated-strings
               placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
