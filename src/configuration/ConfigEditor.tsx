@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { AzureCredentials, updateDatasourceCredentials } from '@grafana/azure-sdk';
+import { AzureCredentials } from '@grafana/azure-sdk';
 import { DataSourcePluginOptionsEditorProps, GrafanaTheme2 } from '@grafana/data';
 import { Trans, t } from '@grafana/i18n';
 import { AdvancedHttpSettings, ConfigSection, DataSourceDescription } from '@grafana/plugin-ui';
@@ -10,7 +10,7 @@ import React, { JSX, useMemo } from 'react';
 import { useEffectOnce } from 'react-use';
 
 import { AzureAuthSettings } from './AzureAuthSettings';
-import { getCredentials } from './AzureCredentialsConfig';
+import { AzurePromDataSourceSettings, getCredentials, updateCredentials } from './AzureCredentialsConfig';
 import { DataSourceHttpSettingsOverhaul } from './DataSourceHttpSettingsOverhaul';
 
 export const PROM_CONFIG_LABEL_WIDTH = 30;
@@ -26,7 +26,7 @@ export const ConfigEditor = (props: Props) => {
   const credentials = useMemo(() => getCredentials(options), [options]);
 
   const onCredentialsChange = (credentials: AzureCredentials): void => {
-    onOptionsChange(updateDatasourceCredentials(options, credentials));
+    onOptionsChange(updateCredentials(options as AzurePromDataSourceSettings, credentials));
   };
 
     // The auth type needs to be set on the first load of the data source
