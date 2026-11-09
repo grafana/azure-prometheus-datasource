@@ -4,11 +4,11 @@ go 1.27.3
 
 require (
 	github.com/grafana/dsconfig/schema v0.0.13
-	github.com/grafana/grafana-azure-sdk-go/v2 v2.5.1
+	github.com/grafana/grafana-azure-sdk-go/v2 v2.6.0
 	github.com/grafana/grafana-plugin-sdk-go v0.298.0
 	github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.25
 	github.com/stretchr/testify v1.12.1
-	k8s.io/kube-openapi v0.0.0-20260929181212-2cfbdf149b9a
+	k8s.io/kube-openapi v0.0.0-20261104182252-5bee61fc5225
 )
 
 require (
@@ -27,7 +27,6 @@ require (
 	github.com/clipperhouse/uax29/v2 v2.7.0 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.7 // indirect
 	github.com/dennwc/varint v1.0.0 // indirect
-	github.com/emicklei/go-restful/v3 v3.14.0 // indirect
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.6 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
