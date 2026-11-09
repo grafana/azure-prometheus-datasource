@@ -73,6 +73,7 @@ func extendClientOpts(ctx context.Context, settings backend.DataSourceInstanceSe
 	if err != nil {
 		return fmt.Errorf("failed to read Azure settings from Grafana: %v", err)
 	}
+	applyAssertionService(azureSettings, processEnv)
 
 	// Set Azure authentication
 	if azureSettings.AzureAuthEnabled {
