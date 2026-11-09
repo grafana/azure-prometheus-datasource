@@ -24,20 +24,21 @@ permissions: {}
 
 jobs:
   cd:
-    strategy:
-      fail-fast: false
-      matrix:
-        environment: [dev, ops, prod]
     name: CD
-    uses: grafana/plugin-ci-workflows/.github/workflows/cd.yml@ci-cd-workflows/v10.1.0
+    uses: grafana/plugin-ci-workflows/.github/workflows/cd.yml@ci-cd-workflows/v11.3.0
     permissions:
       contents: write
       id-token: write
       attestations: write
       pull-requests: read
     with:
+      golangci-lint-version: '2.15.0'
       branch: ${{ github.event.inputs.branch }}
-      environment: ${{ matrix.environment }}
+      # A single `prod` call fans out to all waves (dev + ops + prod) via the
+      # `prod-targets-all` default. Do not reintroduce a per-environment matrix:
+      # the reusable workflow keys concurrency on the run ID, so parallel matrix
+      # legs share one group and cancel each other.
+      environment: prod
       docs-only: ${{ fromJSON(github.event.inputs.docs-only) }}
       scopes: ${{ github.event.inputs.environment == 'cloud (recommended)' && 'grafana_cloud' || github.event.inputs.environment == 'on-prem (for emergencies fix to On Prem customers)' && 'universal' }}
       github-draft-release: false
