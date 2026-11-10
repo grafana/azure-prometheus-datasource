@@ -61,6 +61,7 @@
     "varname",
     "workloadidentity",
     "dsconfig",
-    "struct"
+    "struct",
+    "tokensvc"
   ]
 }
