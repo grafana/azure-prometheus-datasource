@@ -6,7 +6,7 @@ require (
 	github.com/grafana/dsconfig/schema v0.0.13
 	github.com/grafana/grafana-azure-sdk-go/v2 v2.6.0
 	github.com/grafana/grafana-plugin-sdk-go v0.298.0
-	github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.25
+	github.com/grafana/grafana-prometheus-datasource/pkg/promlib v0.0.26
 	github.com/stretchr/testify v1.12.1
 	k8s.io/kube-openapi v0.0.0-20261104182252-5bee61fc5225
 )
