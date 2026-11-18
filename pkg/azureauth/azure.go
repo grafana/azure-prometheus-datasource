@@ -27,15 +27,29 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 	}
 
 	if credentials != nil {
-		var scopes []string
-
-		if scopes, err = getPrometheusScopes(azureSettings, credentials); err != nil {
+		resourceId, err := getPrometheusResourceId(azureSettings, credentials)
+		if err != nil {
 			return err
+		}
+
+		scopes, err := audienceToScopes(resourceId)
+		if err != nil {
+			return err
+		}
+
+		endpoints, err := getTrustedEndpoints(credentials, resourceId)
+		if err != nil {
+			return fmt.Errorf("invalid trusted endpoints configuration: %w", err)
 		}
 
 		authOpts := azhttpclient.NewAuthOptions(azureSettings)
 		authOpts.AllowUserIdentity()
 		authOpts.Scopes(scopes)
+		if endpoints != nil {
+			if err = authOpts.AllowedEndpoints(endpoints); err != nil {
+				return fmt.Errorf("invalid trusted endpoints configuration: %w", err)
+			}
+		}
 		azhttpclient.AddAzureAuthentication(clientOpts, authOpts, credentials)
 	}
 
@@ -43,24 +57,31 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 }
 
 func getPrometheusScopes(settings *azsettings.AzureSettings, credentials azcredentials.AzureCredentials) ([]string, error) {
+	resourceId, err := getPrometheusResourceId(settings, credentials)
+	if err != nil {
+		return nil, err
+	}
+	return audienceToScopes(resourceId)
+}
+
+func getPrometheusResourceId(settings *azsettings.AzureSettings, credentials azcredentials.AzureCredentials) (string, error) {
 	// Extract cloud from credentials
 	azureCloud, err := azcredentials.GetAzureCloud(settings, credentials)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
 	cloudSettings, err := settings.GetCloud(azureCloud)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	// Get scopes for the given cloud
-	resourceIdS, ok := cloudSettings.Properties["prometheusResourceId"]
+	// Get the Prometheus resource ID for the given cloud
+	resourceId, ok := cloudSettings.Properties["prometheusResourceId"]
 	if !ok {
-		err := fmt.Errorf("the Azure cloud '%s' doesn't have configuration for Prometheus", azureCloud)
-		return nil, err
+		return "", fmt.Errorf("the Azure cloud '%s' doesn't have configuration for Prometheus", azureCloud)
 	}
-	return audienceToScopes(resourceIdS)
+	return resourceId, nil
 }
 
 func audienceToScopes(audience string) ([]string, error) {

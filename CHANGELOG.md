@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add trusted endpoints, the same control as the Azure Data Explorer data source. Current User and On-Behalf-Of authentication only send credentials to the Azure Monitor workspace endpoints of the configured cloud. Set `enforce_trusted_endpoints` to apply this to all authentication methods, and `allow_user_trusted_endpoints` with `user_trusted_endpoints` to allow more endpoints.
+
 ## 1.0.12
 
 - Security: fix security vulnerability (CVE-2026-17495)
