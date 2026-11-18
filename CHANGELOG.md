@@ -4,6 +4,7 @@
 
 - Fix a connection freeze between Grafana and the plugin under heavy query load by updating google.golang.org/grpc to v1.85.0 ([grpc/grpc-go#9330](https://github.com/grpc/grpc-go/issues/9330))
 - Add support for workload identity credentials (tenant and client ID), and backend assertion support when workload in memory is enabled
+- Add trusted endpoints, the same control as the Azure Data Explorer data source. Current User and On-Behalf-Of authentication only send credentials to the Azure Monitor workspace endpoints of the configured cloud. Set `enforce_trusted_endpoints` to apply this to all authentication methods, and `allow_user_trusted_endpoints` with `user_trusted_endpoints` to allow more endpoints.
 
 ## 1.0.10
 
