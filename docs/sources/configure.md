@@ -199,6 +199,27 @@ Current User authentication doesn't support backend features such as alerting, r
 
 Query caching is disabled by default for data sources that use Current User authentication.
 
+### Trusted endpoints
+
+Like the Azure Data Explorer data source, this data source can limit the endpoints that receive Azure credentials. By default, the allowed endpoints are the Azure Monitor workspace endpoints of the configured Azure cloud, for example `https://*.prometheus.monitor.azure.com` in Azure Public cloud.
+
+The limit always applies to Current User and On-Behalf-Of authentication. To apply it to all authentication methods, and to allow more endpoints, set these options in the Grafana server configuration:
+
+```ini
+[plugin.grafana-azureprometheus-datasource]
+enforce_trusted_endpoints = true
+allow_user_trusted_endpoints = true
+user_trusted_endpoints = https://*.example.com,https://prometheus.example.org:8443
+```
+
+| Option | Default | Description |
+| ------ | ------- | ----------- |
+| `enforce_trusted_endpoints` | `false` | Apply the limit to all authentication methods, not only Current User and On-Behalf-Of. |
+| `allow_user_trusted_endpoints` | `false` | Allow the endpoints in `user_trusted_endpoints` as well. |
+| `user_trusted_endpoints` | | Comma-separated list of more allowed endpoints. A leading `*.` matches any subdomain. |
+
+A query to an endpoint that isn't allowed fails with the error `request to endpoint '...' is not allowed by the datasource`.
+
 ## Private data source connect
 
 The data source supports [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query an Azure Monitor workspace that isn't exposed to the public internet.
