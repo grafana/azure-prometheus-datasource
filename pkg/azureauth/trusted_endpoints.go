@@ -6,31 +6,30 @@ import (
 	"os"
 	"strconv"
 	"strings"
-
-	"github.com/grafana/grafana-azure-sdk-go/v2/azcredentials"
 )
 
-// These are the same settings as the Azure Data Explorer plugin. Grafana passes the keys of the
-// [plugin.grafana-azureprometheus-datasource] section in grafana.ini to this plugin only, as
-// GF_PLUGIN_<KEY>, so the names do not clash with other plugins.
+// These settings have the same names, defaults and behavior as in the Azure Data Explorer data
+// source. Grafana passes the keys of the [plugin.grafana-azureprometheus-datasource] section in
+// grafana.ini to this plugin only, as GF_PLUGIN_<KEY>, so the names do not clash with other plugins.
 const (
 	enforceTrustedEndpointsEnv   = "GF_PLUGIN_ENFORCE_TRUSTED_ENDPOINTS"
 	allowUserTrustedEndpointsEnv = "GF_PLUGIN_ALLOW_USER_TRUSTED_ENDPOINTS"
 	userTrustedEndpointsEnv      = "GF_PLUGIN_USER_TRUSTED_ENDPOINTS"
 )
 
-// getTrustedEndpoints returns the endpoints the data source may send Azure credentials to, the
-// same control the Azure Data Explorer data source has. A nil result means no restriction.
+// getTrustedEndpoints returns the endpoints the data source may send Azure credentials to.
+// A nil result means enforcement is disabled and any endpoint is allowed.
 //
-// The list is always on for user identity (Current User and On-Behalf-Of). For other
-// credentials it is on when enforce_trusted_endpoints is set.
-func getTrustedEndpoints(credentials azcredentials.AzureCredentials, prometheusResourceId string) ([]string, error) {
-	enforce, err := envBoolOrDefault(enforceTrustedEndpointsEnv, false)
+// Enforcement is on by default for all authentication methods. Setting enforce_trusted_endpoints
+// to false disables it. The endpoints in user_trusted_endpoints are added only when both
+// enforce_trusted_endpoints and allow_user_trusted_endpoints are true.
+func getTrustedEndpoints(prometheusResourceId string) ([]string, error) {
+	enforce, err := envBoolOrDefault(enforceTrustedEndpointsEnv, true)
 	if err != nil {
 		return nil, err
 	}
 
-	if !enforce && !isUserIdentity(credentials) {
+	if !enforce {
 		return nil, nil
 	}
 
@@ -54,15 +53,6 @@ func getTrustedEndpoints(credentials azcredentials.AzureCredentials, prometheusR
 	}
 
 	return endpoints, nil
-}
-
-func isUserIdentity(credentials azcredentials.AzureCredentials) bool {
-	switch credentials.AzureAuthType() {
-	case azcredentials.AzureAuthCurrentUserIdentity, azcredentials.AzureAuthClientSecretObo:
-		return true
-	default:
-		return false
-	}
 }
 
 // trustedEndpointFromResourceId turns the Prometheus resource ID of a cloud into the endpoint of

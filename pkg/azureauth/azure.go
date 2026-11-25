@@ -37,7 +37,7 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 			return err
 		}
 
-		endpoints, err := getTrustedEndpoints(credentials, resourceId)
+		endpoints, err := getTrustedEndpoints(resourceId)
 		if err != nil {
 			return fmt.Errorf("invalid trusted endpoints configuration: %w", err)
 		}

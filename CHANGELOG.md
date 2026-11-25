@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Add trusted endpoints, the same control as the Azure Data Explorer data source. Current User and On-Behalf-Of authentication only send credentials to the Azure Monitor workspace endpoints of the configured cloud. Set `enforce_trusted_endpoints` to apply this to all authentication methods, and `allow_user_trusted_endpoints` with `user_trusted_endpoints` to allow more endpoints.
+- **Breaking change:** Enforce trusted endpoints by default, the same control as the Azure Data Explorer data source. The data source only sends Azure credentials to the Azure Monitor workspace endpoints of the configured cloud, for example `https://*.prometheus.monitor.azure.com`. After upgrading, data sources that use a custom URL with Azure authentication are blocked. To keep them working, set `allow_user_trusted_endpoints` and `user_trusted_endpoints`, or set `enforce_trusted_endpoints = false`. Refer to [Enforce trusted endpoints](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/#enforce-trusted-endpoints).
 
 ## 1.0.12
 
