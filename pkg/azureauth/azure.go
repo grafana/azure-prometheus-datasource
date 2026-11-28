@@ -1,6 +1,7 @@
 package azureauth
 
 import (
+	"context"
 	"fmt"
 	"net/url"
 	"path"
@@ -15,7 +16,7 @@ import (
 	"github.com/grafana/grafana-prometheus-datasource/pkg/promlib/utils"
 )
 
-func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, azureSettings *azsettings.AzureSettings, clientOpts *sdkhttpclient.Options, log log.Logger) error {
+func ConfigureAzureAuthentication(ctx context.Context, settings backend.DataSourceInstanceSettings, azureSettings *azsettings.AzureSettings, clientOpts *sdkhttpclient.Options, log log.Logger) error {
 	jsonData, err := utils.GetJsonData(settings)
 	if err != nil {
 		return fmt.Errorf("failed to get jsonData: %w", err)
@@ -37,7 +38,7 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 			return err
 		}
 
-		endpoints, err := getTrustedEndpoints(resourceId)
+		endpoints, err := getTrustedEndpoints(ctx, resourceId)
 		if err != nil {
 			return fmt.Errorf("invalid trusted endpoints configuration: %w", err)
 		}
@@ -54,14 +55,6 @@ func ConfigureAzureAuthentication(settings backend.DataSourceInstanceSettings, a
 	}
 
 	return nil
-}
-
-func getPrometheusScopes(settings *azsettings.AzureSettings, credentials azcredentials.AzureCredentials) ([]string, error) {
-	resourceId, err := getPrometheusResourceId(settings, credentials)
-	if err != nil {
-		return nil, err
-	}
-	return audienceToScopes(resourceId)
 }
 
 func getPrometheusResourceId(settings *azsettings.AzureSettings, credentials azcredentials.AzureCredentials) (string, error) {
