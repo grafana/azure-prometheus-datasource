@@ -1,6 +1,7 @@
 package azureauth
 
 import (
+	"context"
 	"testing"
 
 	"github.com/grafana/grafana-azure-sdk-go/v2/azcredentials"
@@ -28,7 +29,7 @@ func TestConfigureAzureAuthentication(t *testing.T) {
 
 		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
 
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, testLogger)
+		err := ConfigureAzureAuthentication(context.Background(), settings, azureSettings, opts, testLogger)
 		require.NoError(t, err)
 
 		require.NotNil(t, opts.Middlewares)
@@ -42,7 +43,7 @@ func TestConfigureAzureAuthentication(t *testing.T) {
 
 		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
 
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, testLogger)
+		err := ConfigureAzureAuthentication(context.Background(), settings, azureSettings, opts, testLogger)
 		require.NoError(t, err)
 
 		assert.NotContains(t, opts.CustomOptions, "_azureCredentials")
@@ -57,7 +58,7 @@ func TestConfigureAzureAuthentication(t *testing.T) {
 		}
 
 		var opts = &sdkhttpclient.Options{CustomOptions: map[string]any{}}
-		err := ConfigureAzureAuthentication(settings, azureSettings, opts, testLogger)
+		err := ConfigureAzureAuthentication(context.Background(), settings, azureSettings, opts, testLogger)
 		assert.Error(t, err)
 	})
 }
@@ -67,9 +68,17 @@ func TestGetPrometheusScopes(t *testing.T) {
 		Cloud: azsettings.AzureUSGovernment,
 	}
 
+	getScopes := func(credentials azcredentials.AzureCredentials) ([]string, error) {
+		resourceId, err := getPrometheusResourceId(azureSettings, credentials)
+		if err != nil {
+			return nil, err
+		}
+		return audienceToScopes(resourceId)
+	}
+
 	t.Run("should return scopes for cloud from settings with MSI credentials", func(t *testing.T) {
 		credentials := &azcredentials.AzureManagedIdentityCredentials{}
-		scopes, err := getPrometheusScopes(azureSettings, credentials)
+		scopes, err := getScopes(credentials)
 		require.NoError(t, err)
 
 		assert.NotNil(t, scopes)
@@ -79,7 +88,7 @@ func TestGetPrometheusScopes(t *testing.T) {
 
 	t.Run("should return scopes for cloud from client secret credentials", func(t *testing.T) {
 		credentials := &azcredentials.AzureClientSecretCredentials{AzureCloud: azsettings.AzureChina}
-		scopes, err := getPrometheusScopes(azureSettings, credentials)
+		scopes, err := getScopes(credentials)
 		require.NoError(t, err)
 
 		assert.NotNil(t, scopes)

@@ -199,6 +199,50 @@ Current User authentication doesn't support backend features such as alerting, r
 
 Query caching is disabled by default for data sources that use Current User authentication.
 
+## Enforce trusted endpoints
+
+For additional security, the plugin enforces a list of trusted endpoints against which the data source URL is verified, the same as the Azure Data Explorer data source. This prevents Azure credentials from being sent to a third-party endpoint. Enforcement applies to all authentication methods.
+
+The trusted endpoints are the Azure Monitor workspace endpoints of the configured Azure cloud, for example `https://*.prometheus.monitor.azure.com` in Azure Public cloud and `https://*.prometheus.monitor.azure.us` in Azure US Government. A request to an endpoint that isn't trusted fails with the error `request to endpoint '...' is not allowed by the datasource`.
+
+{{< admonition type="caution" >}}
+Trusted endpoint enforcement is **enabled by default**. Earlier versions didn't verify the data source URL. After upgrading, data sources that point to custom or non-default endpoints are blocked unless you allow those endpoints or disable enforcement. Refer to [Allow user-specified trusted endpoints](#allow-user-specified-trusted-endpoints) to keep using custom endpoints.
+{{< /admonition >}}
+
+To disable enforcement, set `enforce_trusted_endpoints` to `false` in the `[plugin.grafana-azureprometheus-datasource]` section of your Grafana configuration file:
+
+```ini
+[plugin.grafana-azureprometheus-datasource]
+enforce_trusted_endpoints = false
+```
+
+### Allow user-specified trusted endpoints
+
+When an Azure Monitor workspace is behind a proxy or load balancer, you might need to specify a trusted endpoint that isn't in the default allow list.
+
+To enable this, set `allow_user_trusted_endpoints` to `true` and specify the required endpoints as a comma-separated list with the `user_trusted_endpoints` key in the `[plugin.grafana-azureprometheus-datasource]` section:
+
+```ini
+[plugin.grafana-azureprometheus-datasource]
+enforce_trusted_endpoints = true
+allow_user_trusted_endpoints = true
+user_trusted_endpoints = https://first.endpoint.com,https://endpoint.second.com
+```
+
+The endpoints in `user_trusted_endpoints` are used only when both `enforce_trusted_endpoints` and `allow_user_trusted_endpoints` are `true`.
+
+Specify endpoints as URLs with or without ports. A scheme is required. If no port is specified, the scheme must be `http` or `https`, which defaults the port to `80` or `443` respectively.
+
+You can also use wildcards, and you can nest them:
+
+- A prefix wildcard such as `https://*.prometheus.monitor.azure.com` matches any address with the suffix `prometheus.monitor.azure.com` and the `https` scheme. It doesn't match `https://prometheus.monitor.azure.com`, because prefix path segments are expected.
+- A nested wildcard such as `https://test.*.example.com` matches any single path segment in the wildcard position.
+- You can mix prefix and nested wildcards, such as `https://*.test.*.example.com`, which matches endpoints like `https://one.two.three.test.any.example.com`.
+
+{{< admonition type="caution" >}}
+Use this feature with caution. Requests sent to endpoints that aren't trusted might expose authentication tokens to unintended third parties.
+{{< /admonition >}}
+
 ## Private data source connect
 
 The data source supports [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query an Azure Monitor workspace that isn't exposed to the public internet.
